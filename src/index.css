@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #12302b;
+  --color-primary-container: #1f3a5f;
+  --color-gaza-teal: #1f7a6e;
+  --color-gaza-dark: #12302b;
+  --color-secondary: #835400;
+  --color-secondary-container: #e9b44c;
+  --color-secondary-fixed: #ffddb5;
+  --color-secondary-fixed-dim: #ffb956;
+  --color-tertiary: #002b18;
+  --color-tertiary-container: #004328;
+  --color-tertiary-fixed: #8df8bd;
+  --color-tertiary-fixed-dim: #71dba2;
+  --color-background: #f9f9ff;
+  --color-surface: #f9f9ff;
+  --color-surface-dim: #d8dae2;
+  --color-surface-bright: #f9f9ff;
+  --color-surface-container: #ecedf6;
+  --color-surface-container-low: #f2f3fc;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #e6e8f0;
+  --color-surface-container-highest: #e1e2ea;
+  --color-on-surface: #191c22;
+  --color-on-surface-variant: #43474e;
+  --color-outline: #74777f;
+  --color-outline-variant: #c4c6cf;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-primary: #ffffff;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #714800;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #4bb781;
+  --color-on-error: #ffffff;
+
+  --font-tajawal: "Tajawal", "IBM Plex Sans Arabic", sans-serif;
+  --font-ibm-arabic: "IBM Plex Sans Arabic", "Tajawal", sans-serif;
+  --font-numeral-hero: "IBM Plex Sans", "Tajawal", sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.icon-fill {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24 !important;
+}
+
+/* Custom styling */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.custom-gradient-mesh {
+  background: radial-gradient(circle at 10% 20%, rgba(31, 58, 95, 0.04) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(232, 163, 61, 0.05) 0%, transparent 40%);
+}
+
+/* Responsive touch target helper */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
