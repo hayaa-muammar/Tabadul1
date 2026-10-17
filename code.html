@@ -1,0 +1,917 @@
+<!DOCTYPE html><html class="scroll-smooth" dir="rtl" lang="ar" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<meta content="#12302b" name="theme-color">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+<meta content="تبادل" name="apple-mobile-web-app-title">
+<title>تبادل | Tabadul — المنصة والتطبيق الموحد لمكافآت وولاء متاجر قطاع غزة 2026</title>
+<!-- Google Fonts: Tajawal -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            dark: '#12302b',
+            navy: '#1f3a5f',
+            teal: '#1f7a6e',
+            tealLight: '#2a9d8f',
+            gold: '#e9b44c',
+            goldDark: '#c7922d',
+            warmBeige: '#f6f3ec',
+            surface: '#ffffff',
+            muted: '#52606d'
+          }
+        },
+        fontFamily: {
+          tajawal: ['"Tajawal"', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body {
+    font-family: 'Tajawal', sans-serif;
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+  }
+  .material-symbols-outlined.fill {
+    font-variation-settings: 'FILL' 1;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    appearance: none;
+    height: 24px;
+    width: 24px;
+    border-radius: 9999px;
+    background: #e9b44c;
+    border: 3px solid #12302b;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  }
+  .skeleton-shimmer {
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .phone-screen-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .phone-screen-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+</head>
+<body class="bg-[#f6f3ec] text-[#12302b] antialiased selection:bg-[#e9b44c] selection:text-[#12302b] pb-20 md:pb-0">
+<!-- ======================================================== -->
+<!-- 1. TOP HEADER (PLATFORM & APP NAVIGATION)                -->
+<!-- ======================================================== -->
+<header class="sticky top-0 z-40 bg-white/95 text-[#12302b] border-b border-[#12302b]/10 shadow-sm backdrop-blur-md"><!-- Ultra-lightweight Connection & Data-Saver Bar -->
+<div class="bg-[#f6f3ec] text-[#52606d] text-xs px-4 py-1.5 border-b border-[#12302b]/10 flex items-center justify-between">
+  <div class="max-w-7xl mx-auto w-full flex items-center justify-between gap-3 text-[11px] sm:text-xs">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-[#1f7a6e]"></span>
+      <span class="text-[#12302b] font-bold">شبكة غزة 2026 — متصل</span>
+    </div>
+    <div class="text-[#1f7a6e] font-bold hidden sm:flex items-center gap-1.5">
+      <span class="material-symbols-outlined text-sm">bolt</span>
+      <span class="">منصة ويب 100% خفيفة — لا تتطلب تحميل تطبيق</span>
+    </div>
+  </div>
+</div>
+<!-- Main Navigation -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+  <a class="flex items-center gap-3" href="#hero"><div class="h-10 w-auto flex items-center justify-center"><img alt="شعار تبادل الأصلي" class="h-full w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdiXQNmJzYIl6PECtK-0Z_eK5rLr6vyiV694yubGM6tX5iUgVUBCS9qo1D2zoByKVT8cvYptCEsHVna6sw77ll4n7Nvd1Vz5DI90zf-qUNwuux0oF_mOmf3xs70bwXSt01a-qiM-uG6Jhl_31Ti5oKhIm51tPQFAIQKYFi5IKOBkLbkyb5N_ncgv--iqOAwJFKYihJb0MaPWIsSQcHIIQnjfDJpDrs8m1_YAPT_wo28k4mi5nzkXePdB6NKTpNovOlj-g"></div><div class="flex flex-col text-right justify-center"><span class="text-xl font-black tracking-tight text-[#12302b] leading-none">تبادل</span><span class="text-[11px] font-bold text-[#c7922d] leading-tight mt-0.5">تسوّق بذكاء واكسب بولاء</span></div></a>
+  <nav class="hidden lg:flex items-center gap-6 text-sm font-bold text-[#12302b]"><a class="hover:text-[#1f7a6e] transition-colors" href="#hero">الرئيسية</a>
+    <a class="hover:text-[#1f7a6e] transition-colors" href="#how-it-works">كيف يعمل</a>
+    <a class="hover:text-[#1f7a6e] transition-colors" href="#calculator">حاسبة التوفير</a>
+    <a class="hover:text-[#1f7a6e] transition-colors" href="#merchants">المتاجر الشريكة</a>
+    <a class="hover:text-[#1f7a6e] transition-colors" href="#faq">الأسئلة الشائعة</a></nav>
+  <div class="flex items-center gap-2">
+    <a class="px-3.5 py-1.5 rounded-xl bg-[#f6f3ec] hover:bg-[#12302b]/10 text-[#12302b] font-bold text-xs flex items-center gap-1.5 border border-[#12302b]/15 transition-all" href="#merchants-section">
+      <span class="material-symbols-outlined text-sm text-[#1f7a6e]">storefront</span>
+      <span class="">بوابة التاجر</span>
+    </a>
+    <button class="px-3.5 py-1.5 rounded-xl bg-[#12302b] hover:bg-[#1f7a6e] text-white font-black text-xs flex items-center gap-1.5 shadow-sm transition-all" onclick="alert('أهلاً بك! رقم جوالك الفلسطيني هو حسابك في شبكة تبادل غزة.');">
+      <span class="material-symbols-outlined text-sm text-[#e9b44c]">person</span>
+      <span class="">دخول الزبون</span>
+    </button>
+  </div>
+</div></header>
+<!-- ======================================================== -->
+<!-- 2. HYBRID HERO: PLATFORM PORTAL + LIVE MOBILE PWA MOCKUP -->
+<!-- ======================================================== -->
+<section class="relative pt-10 pb-20 md:py-20 overflow-hidden bg-gradient-to-b from-[#f6f3ec] via-white to-[#f6f3ec]" id="hero"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-14">
+  <!-- Data saver announcement banner -->
+  <div class="mb-6 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#1f7a6e]/10 border border-[#1f7a6e]/20 text-xs sm:text-sm font-bold text-[#12302b]">
+    <span class="material-symbols-outlined text-[#1f7a6e] text-base">verified</span>
+    <span class="">وضع توفير البيانات: نصوص خفيفة وتحميل فوري للأسعار والمنتجات بدون استهلاك الحزم</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <!-- Right: Clear Value Proposition -->
+    <div class="lg:col-span-7 space-y-5 text-right">
+      <h1 class="text-2xl sm:text-3xl md:text-5xl font-black text-[#12302b] leading-[1.3]">
+        منصة تبادل للأزياء والأحذية في قطاع غزة — <br>
+        <span class="text-[#1f7a6e]">تسوّق بذكاء واكسب بولاء</span>
+      </h1>
+      <p class="text-sm sm:text-base md:text-lg text-[#52606d] leading-relaxed">
+        منصة ويب خفيفة وسريعة تعمل بسلاسة مع الإنترنت الضعيف. كاش باك 5% كنقاط تراكمية (200 نقطة = 1 ₪) تمشي معك عبر متاجر الملابس والأحذية في غزة بدون تعقيد.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <a class="px-6 py-3 rounded-xl bg-[#12302b] text-white font-bold text-sm shadow hover:bg-[#1f7a6e] transition-all flex items-center gap-2" href="#merchants">
+          <span class="material-symbols-outlined text-[#e9b44c] text-lg">shopping_bag</span>
+          <span class="">تصفح متاجر الأزياء</span>
+        </a>
+        <a class="px-5 py-3 rounded-xl bg-white border border-[#12302b]/20 hover:border-[#12302b] text-[#12302b] font-bold text-sm transition-all flex items-center gap-2" href="#merchants-section">
+          <span class="material-symbols-outlined text-[#1f7a6e] text-lg">add_business</span>
+          <span class="">سجل متجرك مجاناً (تجربة 14 يوماً)</span>
+        </a>
+      </div>
+
+      <!-- Key highlights row -->
+      <div class="pt-4 grid grid-cols-3 gap-3 border-t border-[#12302b]/10 text-center">
+        <div class="p-2.5 rounded-xl bg-white border border-[#12302b]/10">
+          <div class="font-black text-sm text-[#12302b]">5% كاش باك</div>
+          <div class="text-[11px] text-[#52606d]">200 نقطة = 1 ₪</div>
+        </div>
+        <div class="p-2.5 rounded-xl bg-white border border-[#12302b]/10">
+          <div class="font-black text-sm text-[#12302b]">رمز 4 أرقام</div>
+          <div class="text-[11px] text-[#52606d]">حماية أمان الاستلام</div>
+        </div>
+        <div class="p-2.5 rounded-xl bg-white border border-[#12302b]/10">
+          <div class="font-black text-sm text-[#12302b]">3% عمولة</div>
+          <div class="text-[11px] text-[#52606d]">فقط بعد نجاح التسليم</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left: Structured, ultra-fast loading live metrics summary card -->
+    <div class="lg:col-span-5">
+      <div class="bg-white rounded-2xl p-6 border border-[#12302b]/15 shadow-sm space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-[#12302b]/10">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-lg bg-[#1f7a6e]/15 text-[#1f7a6e] flex items-center justify-center font-bold">
+              <span class="material-symbols-outlined text-lg">account_balance_wallet</span>
+            </span>
+            <div>
+              <div class="font-black text-sm text-[#12302b]">محفظة المتسوق الموحدة</div>
+              <div class="text-[10px] text-[#52606d]">مربوطة برقم جوالك مباشرة</div>
+            </div>
+          </div>
+          <span class="px-2 py-0.5 rounded-full bg-[#8df8bd]/30 text-[#12302b] text-[10px] font-bold">نشطة بغزة</span>
+        </div>
+
+        <!-- Metric items -->
+        <div class="space-y-3">
+          <div class="p-3 rounded-xl bg-[#f6f3ec] border border-[#12302b]/10 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-bold text-[#52606d]">محفظة واحدة تمشي معك:</div>
+              <div class="text-xs font-black text-[#12302b] mt-0.5">2,000 نقطة معلقة في رصيدك</div>
+            </div>
+            <div class="text-right">
+              <div class="text-sm font-black text-[#1f7a6e]">= 10.00 ₪</div>
+              <div class="text-[10px] text-[#c7922d] font-bold">رصيد خصم متاح</div>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-[#f6f3ec] border border-[#12302b]/10 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[#1f7a6e] text-lg">pin</span>
+              <div>
+                <div class="text-xs font-black text-[#12302b]">حماية العملية برمز 4 أرقام</div>
+                <div class="text-[10px] text-[#52606d]">ضمان استلام القطعة وفحص المقاس قبل السداد</div>
+              </div>
+            </div>
+            <span class="text-xs font-mono font-bold text-[#12302b] bg-white px-2 py-1 rounded border border-[#12302b]/10"># # # #</span>
+          </div>
+
+          <div class="p-3 rounded-xl bg-[#f6f3ec] border border-[#12302b]/10 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[#e9b44c] text-lg">percent</span>
+              <div>
+                <div class="text-xs font-black text-[#12302b]">عمولة 3% فقط للتاجر عند البيع الناجح</div>
+                <div class="text-[10px] text-[#52606d]">بدون أي اشتراكات أو رسوم شهرية مسبقة</div>
+              </div>
+            </div>
+            <span class="text-xs font-bold text-[#1f7a6e]">0 ₪ تأسيس</span>
+          </div>
+        </div>
+
+        <div class="pt-2 text-center text-xs text-[#52606d]">
+          <span class="material-symbols-outlined text-xs align-middle text-[#1f7a6e]">check_circle</span>
+          <span class="">محسّن ليعمل بكفاءة فائقة على شبكات 2G/3G وانقطاع التيار</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+<!-- ======================================================== -->
+<!-- 3. PWA & WEB HYBRID CAPABILITIES BAR                     -->
+<!-- ======================================================== -->
+<section class="bg-[#12302b] text-white py-12 border-y border-[#e9b44c]/20"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <!-- Card 1 -->
+    <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+      <div class="w-10 h-10 rounded-lg bg-[#e9b44c]/20 text-[#e9b44c] flex items-center justify-center font-bold mb-3">
+        <span class="material-symbols-outlined text-xl">wifi_off</span>
+      </div>
+      <h3 class="font-black text-sm text-white mb-1">يعمل مع أضعف إنترنت</h3>
+      <p class="text-xs text-white/75 leading-relaxed">
+        أولوية عرض الأسعار والمقاسات والنصوص قبل الصور، مع استهلاك لا يتجاوز بضعة كيلوبايتات لحفظ باقات البيانات.
+      </p>
+    </div>
+    <!-- Card 2 -->
+    <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+      <div class="w-10 h-10 rounded-lg bg-[#1f7a6e]/30 text-[#8df8bd] flex items-center justify-center font-bold mb-3">
+        <span class="material-symbols-outlined text-xl">savings</span>
+      </div>
+      <h3 class="font-black text-sm text-white mb-1">كاش باك 5% حقيقي</h3>
+      <p class="text-xs text-white/75 leading-relaxed">
+        10 نقاط لكل 1 ₪. (200 نقطة = 1 ₪) صالحة لمدة 30 يوماً وتُستبدل في منتجك المفضل من ملابس وأحذية.
+      </p>
+    </div>
+    <!-- Card 3 -->
+    <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+      <div class="w-10 h-10 rounded-lg bg-[#e9b44c]/20 text-[#e9b44c] flex items-center justify-center font-bold mb-3">
+        <span class="material-symbols-outlined text-xl">security</span>
+      </div>
+      <h3 class="font-black text-sm text-white mb-1">أمان مالي كامل</h3>
+      <p class="text-xs text-white/75 leading-relaxed">
+        حجز المبلغ لدى المنصة حتى تأكيد استلام القطعة برمز الـ 4 أرقام وفحص المقاس والجودة براحة تامة.
+      </p>
+    </div>
+    <!-- Card 4 -->
+    <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+      <div class="w-10 h-10 rounded-lg bg-[#1f7a6e]/30 text-[#8df8bd] flex items-center justify-center font-bold mb-3">
+        <span class="material-symbols-outlined text-xl">chat</span>
+      </div>
+      <h3 class="font-black text-sm text-white mb-1">دعم مباشر عبر واتساب</h3>
+      <p class="text-xs text-white/75 leading-relaxed">
+        إشعارات وتقارير ميسرة تصل للتاجر والمشتري بدون الحاجة لتحميل تطبيقات ثقيلة أو التسجيل المعقد.
+      </p>
+    </div>
+  </div>
+</div></section>
+<!-- ======================================================== -->
+<!-- 4. HOW IT WORKS (FOR SHOPPERS & MERCHANTS)               -->
+<!-- ======================================================== -->
+<section class="py-20 bg-white" id="how-it-works"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="text-center max-w-2xl mx-auto mb-12">
+    <span class="text-xs font-black uppercase text-[#1f7a6e] bg-[#1f7a6e]/10 px-3.5 py-1 rounded-full">
+      بسيط ومباشر
+    </span>
+    <h2 class="text-2xl sm:text-3xl font-black text-[#12302b] mt-3">كيف يعمل «تبادل» بخطوات واضحة؟</h2>
+    <p class="text-[#52606d] text-sm mt-1.5">3 خطوات بسيطة لحماية حقك والحصول على كاش باك فوري في كل عملية تسوق.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Step 1 -->
+    <div class="bg-[#f6f3ec] rounded-2xl p-6 border border-[#12302b]/10 hover:shadow transition-all">
+      <div class="w-12 h-12 rounded-xl bg-[#12302b] text-white flex items-center justify-center font-black text-xl mb-4">
+        1
+      </div>
+      <span class="text-xs font-bold text-[#1f7a6e] block mb-1">الخطوة الأولى</span>
+      <h3 class="text-lg font-black text-[#12302b] mb-2">اطلب من متجر الأزياء المعتمد وادفع بأمان</h3>
+      <p class="text-[#52606d] text-xs leading-relaxed">
+        تصفح تشكيلة الملابس والأحذية من متاجر غزة المعتمدة عبر المنصة أو إنستغرام، واختر طريقة الدفع (عند الاستلام أو جوال باي).
+      </p>
+    </div>
+    <!-- Step 2 -->
+    <div class="bg-[#f6f3ec] rounded-2xl p-6 border border-[#12302b]/10 hover:shadow transition-all">
+      <div class="w-12 h-12 rounded-xl bg-[#1f7a6e] text-white flex items-center justify-center font-black text-xl mb-4">
+        2
+      </div>
+      <span class="text-xs font-bold text-[#1f7a6e] block mb-1">الخطوة الثانية</span>
+      <h3 class="text-lg font-black text-[#12302b] mb-2">استلم القطعة وتأكد من المقاس وأعطِ المندوب رمز 4 أرقام</h3>
+      <p class="text-[#52606d] text-xs leading-relaxed">
+        المبلغ يبقى محفوظاً ومحمياً حتى تعاين طلبيتك. عند الرضا التام، زوّد مندوب التوصيل برمز الأمان لتأكيد إتمام العملية فوراً.
+      </p>
+    </div>
+    <!-- Step 3 -->
+    <div class="bg-[#f6f3ec] rounded-2xl p-6 border-2 border-[#e9b44c] hover:shadow transition-all">
+      <div class="w-12 h-12 rounded-xl bg-[#e9b44c] text-[#12302b] flex items-center justify-center font-black text-xl mb-4">
+        3
+      </div>
+      <span class="text-xs font-bold text-[#c7922d] block mb-1">الخطوة الثالثة</span>
+      <h3 class="text-lg font-black text-[#12302b] mb-2">اكسب نقاطك واستبدلها بخصم مباشر في مشترياتك القادمة</h3>
+      <p class="text-[#52606d] text-xs leading-relaxed">
+        تُضاف نقاط الكاش باك 5% تلقائياً لمحفظتك (200 نقطة = 1 ₪) وتستبدلها كخصم نقدي في أي متجر أزياء أو أحذية شريك داخل غزة.
+      </p>
+    </div>
+  </div>
+</div></section>
+<!-- ======================================================== -->
+<!-- 5. INTERACTIVE POINTS & CASHBACK CALCULATOR              -->
+<!-- ======================================================== -->
+<section class="py-20 bg-[#f6f3ec] relative" id="calculator">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-xl mx-auto mb-12">
+<span class="text-xs font-black uppercase tracking-wider text-[#1f7a6e] bg-[#1f7a6e]/10 px-3.5 py-1.5 rounded-full">
+        حاسبة النقاط والوفر الذكية
+      </span>
+<h2 class="text-3xl sm:text-4xl font-black text-[#12302b] mt-3">احسب كم ستربح من كل تسوق</h2>
+<p class="text-[#52606d] text-sm sm:text-base mt-2">حرّك المؤشر لمعرفة عدد النقاط وقيمة الخصم المباشر المسترد لشواكل حقيقية.</p>
+</div>
+<div class="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xl border border-[#12302b]/10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Controls Column -->
+<div class="lg:col-span-7 space-y-6">
+<div>
+<div class="flex justify-between items-center mb-3">
+<label class="font-bold text-[#12302b] text-base" for="purchase-range">مشترياتك الشهرية المتوقعة من غزة:</label>
+<div class="flex items-baseline gap-1 text-3xl font-black text-[#1f7a6e]">
+<span id="calc-amount" class="">300</span>
+<span class="text-base font-normal text-[#52606d]">₪ شيكل</span>
+</div>
+</div>
+<input class="w-full h-3.5 bg-[#f6f3ec] rounded-lg appearance-none cursor-pointer focus:outline-none" id="purchase-range" max="2500" min="50" oninput="handleCalcChange(this.value)" step="50" type="range" value="300">
+<div class="flex justify-between text-xs text-[#52606d] font-bold mt-2">
+<span class="">50 ₪</span>
+<span class="">500 ₪</span>
+<span class="">1,200 ₪</span>
+<span class="">2,500 ₪</span>
+</div>
+</div>
+<!-- Explanatory note -->
+<div class="p-4 rounded-2xl bg-[#f6f3ec] border border-[#12302b]/10 space-y-2">
+<div class="flex items-center gap-2 text-sm font-bold text-[#12302b]">
+<span class="material-symbols-outlined text-[#e9b44c] fill">verified</span>
+<span class="">معادلة الشفافية والخصم المباشر في غزة</span>
+</div>
+<p class="text-xs text-[#52606d] leading-relaxed">
+              كل 1 ₪ تصرفه يمنحك 10 نقاط فورية. كل 1,000 نقطة مجمعة تمنحك خصماً نقدياً بقيمة 5 ₪ مستردة كاش باك تستخدمها متى شئت.
+            </p>
+</div>
+</div>
+<!-- Result Card Column -->
+<div class="lg:col-span-5 bg-gradient-to-br from-[#12302b] via-[#1f3a5f] to-[#12302b] text-white p-7 rounded-2xl shadow-xl text-center relative overflow-hidden">
+<div class="text-xs text-white/70 mb-1">النقاط المكتسبة فوراً:</div>
+<div class="flex items-center justify-center gap-2 mb-4">
+<span class="material-symbols-outlined text-[#e9b44c] text-3xl fill">stars</span>
+<span class="text-4xl md:text-5xl font-black text-[#e9b44c]" id="calc-points">3,000</span>
+<span class="text-sm font-bold text-white/80">نقطة</span>
+</div>
+<div class="pt-4 border-t border-white/15">
+<div class="text-xs text-white/70 mb-1">قيمة الخصم المباشر المسترد:</div>
+<div class="text-3xl md:text-4xl font-black text-white mb-2">
+<span id="calc-cash" class="">15.0</span> ₪ <span class="text-xs font-normal text-[#e9b44c]">(كاش باك)</span>
+</div>
+<p class="text-[11px] text-white/80 leading-normal bg-white/10 p-2.5 rounded-xl">
+              هذا الوفر يغطي تكلفة توصيل طلبية كاملة أو قطعة إكسسوار إضافية مجاناً في طلبك التالي!
+            </p>
+</div>
+<a class="mt-5 w-full py-3 rounded-xl bg-[#e9b44c] hover:bg-[#d69f37] text-[#12302b] font-black text-sm block text-center shadow active:scale-95 transition-all" href="#merchant-signup">
+            ابدأ جمع نقاطك الآن مجاناً
+          </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ======================================================== -->
+<!-- 6. FEATURED GAZA PARTNER STORES NETWORK                  -->
+<!-- ======================================================== -->
+<section class="py-20 md:py-28 bg-white" id="merchants"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
+    <div>
+      <span class="text-xs font-black uppercase text-[#1f7a6e] bg-[#1f7a6e]/10 px-3.5 py-1 rounded-full">
+        شبكة المتاجر المعتمدة في غزة
+      </span>
+      <h2 class="text-2xl md:text-3xl font-black text-[#12302b] mt-2">متاجر الأزياء والأحذية الموثقة</h2>
+      <p class="text-[#52606d] text-sm mt-1">متاجر وبوتيكات تضمن الجودة والمقاس الصحيح مع كاش باك 5% فوري عند كل عملية شراء.</p>
+    </div>
+    <!-- Clean Categories Filter (Strictly Fashion & Shoes) -->
+    <div class="flex flex-wrap items-center gap-1.5">
+      <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#12302b] text-white cursor-pointer">الكل</span>
+      <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#f6f3ec] text-[#52606d] hover:bg-[#12302b]/10 cursor-pointer">ملابس نسائية وعبايات</span>
+      <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#f6f3ec] text-[#52606d] hover:bg-[#12302b]/10 cursor-pointer">أزياء رجالية</span>
+      <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#f6f3ec] text-[#52606d] hover:bg-[#12302b]/10 cursor-pointer">ملابس أطفال</span>
+      <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#f6f3ec] text-[#52606d] hover:bg-[#12302b]/10 cursor-pointer">أحذية وبلاطين</span>
+    </div>
+  </div>
+
+  <!-- Resilient Store Cards Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <!-- Store 1: Women's Wear -->
+    <div class="bg-white rounded-xl overflow-hidden border border-[#12302b]/15 shadow-sm hover:shadow-md transition-all flex flex-col">
+      <div class="h-40 relative bg-[#f6f3ec] overflow-hidden">
+        <img alt="متجر بيت الشال للأزياء" class="w-full h-full object-cover" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtQheYrdOHsQdS1Fj73UDx4QMkCV_5Yx_C2WFqx-acHO2_TGRJ43gq-JE2EOig4YNMM9DcJfQ4i1IgqcqY_RkFuuRBSqGRMY5Tg1G29HMxR-MNVQKYMHw6rVXEHt3lVfREb1bR21xt0aB1MfJxy7bxUJJKh6DThQu2Q03u32uliT_VRlyje-h4-zmtHB1KrCqnsRJw0ou-g4-PH-W1sCvx9FUesF8hSjMj4YbSpMy7JWgJDWqQcy-wCw">
+        <span class="absolute top-2.5 right-2.5 bg-[#12302b] text-white text-[10px] font-black px-2 py-0.5 rounded shadow">
+          كاش باك 5%
+        </span>
+        <span class="absolute bottom-2.5 left-2.5 bg-white/95 text-[#1f7a6e] text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1 shadow-sm">
+          <span class="material-symbols-outlined text-xs fill">verified</span>
+          <span class="">عمر المختار</span>
+        </span>
+      </div>
+      <div class="p-4 flex-1 flex flex-col justify-between">
+        <div>
+          <div class="text-[11px] font-bold text-[#c7922d] flex items-center gap-1">
+            <span class="material-symbols-outlined text-xs">checkroom</span>
+            <span class="">ملابس نسائية وشالات</span>
+          </div>
+          <h3 class="text-base font-black text-[#12302b] mt-1">متجر بيت الشال للأزياء</h3>
+          <p class="text-xs text-[#52606d] mt-1 leading-relaxed">غزة — شارع عمر المختار • شالات حرير، فساتين، وتشكيلات أزياء محتشمة.</p>
+        </div>
+        <div class="mt-3 pt-2.5 border-t border-[#12302b]/10 flex items-center justify-between text-xs">
+          <span class="text-[#52606d]">معادلة الوفر:</span>
+          <span class="text-[#1f7a6e] font-black">200 نقطة = 1 ₪</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Store 2: Abayas -->
+    <div class="bg-white rounded-xl overflow-hidden border border-[#12302b]/15 shadow-sm hover:shadow-md transition-all flex flex-col">
+      <div class="h-40 relative bg-[#f6f3ec] overflow-hidden">
+        <img alt="سلطانة العبايات الفاخرة" class="w-full h-full object-cover" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8QEszdCp9E4PTPSiY4OtCN8FZkFNZjPaj_oD3wKxExcAcrrYGG6TyM5a8CIf1xswIY69B3EiDzQ62GEgOZouwYBEQOOpTAA6G5Q6ixBKL3IzKKxUXiIyY7ya69chrhDnN9ZP3LKlUAIgagQK9WBb0gKiYHX3wnF-wk6m1gLxcfYh9u4F207Dj7iIjJEOX7D4THmyeJAW7gxVPAuLEKquUCrrCqqsNaEEl-8WTCU0PFHO4HCG8gcTJZg">
+        <span class="absolute top-2.5 right-2.5 bg-[#12302b] text-white text-[10px] font-black px-2 py-0.5 rounded shadow">
+          كاش باك 5%
+        </span>
+        <span class="absolute bottom-2.5 left-2.5 bg-white/95 text-[#1f7a6e] text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1 shadow-sm">
+          <span class="material-symbols-outlined text-xs fill">verified</span>
+          <span class="">الرمال</span>
+        </span>
+      </div>
+      <div class="p-4 flex-1 flex flex-col justify-between">
+        <div>
+          <div class="text-[11px] font-bold text-[#c7922d] flex items-center gap-1">
+            <span class="material-symbols-outlined text-xs">styler</span>
+            <span class="">عبايات واستقبال</span>
+          </div>
+          <h3 class="text-base font-black text-[#12302b] mt-1">سلطانة العبايات الفاخرة</h3>
+          <p class="text-xs text-[#52606d] mt-1 leading-relaxed">غزة — حي الرمال • تصاميم خليجية، أقمشة كريب وشيفون مطرزة يدوياً.</p>
+        </div>
+        <div class="mt-3 pt-2.5 border-t border-[#12302b]/10 flex items-center justify-between text-xs">
+          <span class="text-[#52606d]">معادلة الوفر:</span>
+          <span class="text-[#1f7a6e] font-black">200 نقطة = 1 ₪</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Store 3: Shoes & Sneakers -->
+    <div class="bg-white rounded-xl overflow-hidden border border-[#12302b]/15 shadow-sm hover:shadow-md transition-all flex flex-col">
+      <div class="h-40 relative bg-[#f6f3ec] overflow-hidden">
+        <img alt="سنيكرز غزة للأحذية" class="w-full h-full object-cover" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm_YW-ys-YBhihc3B0P0KVn91QVnSWBS8DJd4fk7x7wVom-lnzqTuQSYtF07r9ULBTM1JOcV6p7_3mrRm1FUpa4hJ4_ioLexRYAemt6G3h3p1Fl7lXlQBoKqJyW4aS57sQ00Knv441Pq-qOuOmEOC5oAfBJAdcTwqpuBLIf4RfVe67t6cCTQposfPaN8IWg2eSQl91pM8Dntyqo9lHsrmqCYBToKTkaFLlXPprrnJP0vSiB2dVcxAvjg">
+        <span class="absolute top-2.5 right-2.5 bg-[#12302b] text-white text-[10px] font-black px-2 py-0.5 rounded shadow">
+          كاش باك 5%
+        </span>
+        <span class="absolute bottom-2.5 left-2.5 bg-white/95 text-[#1f7a6e] text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1 shadow-sm">
+          <span class="material-symbols-outlined text-xs fill">verified</span>
+          <span class="">شارع النصر</span>
+        </span>
+      </div>
+      <div class="p-4 flex-1 flex flex-col justify-between">
+        <div>
+          <div class="text-[11px] font-bold text-[#c7922d] flex items-center gap-1">
+            <span class="material-symbols-outlined text-xs">do_not_step</span>
+            <span class="">أحذية وبلاطين</span>
+          </div>
+          <h3 class="text-base font-black text-[#12302b] mt-1">سنيكرز غزة للأحذية</h3>
+          <p class="text-xs text-[#52606d] mt-1 leading-relaxed">غزة — شارع النصر • أحذية رياضية مريحة، سبورت كاجوال وبلاطين جينز.</p>
+        </div>
+        <div class="mt-3 pt-2.5 border-t border-[#12302b]/10 flex items-center justify-between text-xs">
+          <span class="text-[#52606d]">معادلة الوفر:</span>
+          <span class="text-[#1f7a6e] font-black">200 نقطة = 1 ₪</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Store 4: Kids & Boutique Fashion -->
+    <div class="bg-white rounded-xl overflow-hidden border border-[#12302b]/15 shadow-sm hover:shadow-md transition-all flex flex-col">
+      <div class="h-40 relative bg-[#f6f3ec] overflow-hidden">
+        <img alt="بوتيك لمسة فاشن" class="w-full h-full object-cover" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqr0Xk6CtkxiBQzT8iDTbXagaCQJOYTdxzbEcjAmLmdzwAmJRwiKqMKiakhmbvR9MjbiTdazf81OLd5FAjnbterhgsm3nOgC8I_hjDAV6eNGTgLmiBEL_TjQqynbZJTBkA0v9D3TZ6A_RpSDDPKtbCq1kCzdu8X8WqdaafyQJfRiOQx5TZXdYofcx7eVZnua51rQEWihl2bB_nqI3Fhjw_afj0cKzFnVKuMZwgs_KdN2NRsoH8BK-mBw">
+        <span class="absolute top-2.5 right-2.5 bg-[#12302b] text-white text-[10px] font-black px-2 py-0.5 rounded shadow">
+          كاش باك 5%
+        </span>
+        <span class="absolute bottom-2.5 left-2.5 bg-white/95 text-[#1f7a6e] text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1 shadow-sm">
+          <span class="material-symbols-outlined text-xs fill">verified</span>
+          <span class="">الرمال الجنوبي</span>
+        </span>
+      </div>
+      <div class="p-4 flex-1 flex flex-col justify-between">
+        <div>
+          <div class="text-[11px] font-bold text-[#c7922d] flex items-center gap-1">
+            <span class="material-symbols-outlined text-xs">child_care</span>
+            <span class="">ملابس أطفال وبوتيك</span>
+          </div>
+          <h3 class="text-base font-black text-[#12302b] mt-1">بوتيك لمسة Lamsa للأطفال</h3>
+          <p class="text-xs text-[#52606d] mt-1 leading-relaxed">غزة — الرمال الجنوبي • تشكيلات أطفال ومواليد وأطقم ولادي وبناتي مميزة.</p>
+        </div>
+        <div class="mt-3 pt-2.5 border-t border-[#12302b]/10 flex items-center justify-between text-xs">
+          <span class="text-[#52606d]">معادلة الوفر:</span>
+          <span class="text-[#1f7a6e] font-black">200 نقطة = 1 ₪</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+<!-- ======================================================== -->
+<!-- 7. MERCHANT PORTAL & REGISTRATION                        -->
+<!-- ======================================================== -->
+<section class="py-20 md:py-28 bg-[#12302b] text-white relative overflow-hidden" id="merchants-section">
+<div class="absolute -right-20 top-0 w-96 h-96 bg-[#1f7a6e]/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -left-20 bottom-0 w-96 h-96 bg-[#e9b44c]/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Content Column -->
+<div class="lg:col-span-7 space-y-6">
+<span class="text-xs font-black uppercase tracking-wider text-[#e9b44c] bg-[#e9b44c]/15 px-3.5 py-1.5 rounded-full">
+          أصحاب المتاجر ومشاريع إنستغرام بغزة
+        </span>
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-black leading-tight">
+          حوّل زبائن المرة الواحدة إلى <br>
+<span class="text-[#e9b44c]">زبائن دائمين مدى الحياة!</span>
+</h2>
+<p class="text-white/80 text-base md:text-lg leading-relaxed font-normal">
+          في سوق غزة المليء بالمنافسة، الخصم العشوائي يقلل أرباحك الصافية. برنامج الولاء التشاركي في «تبادل» يضمن عودة الزبونة للشراء منك مرة بعد أخرى، ويجلب لك زبائن جدد يحملون نقاطاً يريدون إنفاقها لديك.
+        </p>
+<!-- 4 Core Merchant Advantages -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+<div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+<div class="flex items-center gap-2 text-[#e9b44c] font-black text-sm mb-1.5">
+<span class="material-symbols-outlined text-lg">paid</span>
+<span class="">عمولة 3% فقط بعد إتمام البيع</span>
+</div>
+<p class="text-xs text-white/70 leading-relaxed">
+              لا توجد تكاليف تأسيس أو رسوم تسجيل؛ الدفع فقط عند اكتمال تسليم الطلب للزبون بنجاح.
+            </p>
+</div>
+<div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+<div class="flex items-center gap-2 text-[#e9b44c] font-black text-sm mb-1.5">
+<span class="material-symbols-outlined text-lg">chat</span>
+<span class="">تقارير تسوية أسبوعية عبر واتساب</span>
+</div>
+<p class="text-xs text-white/70 leading-relaxed">
+              ملخص أسبوعي شفاف يصلك مباشرة على رقم واتساب الخاص بمتجرك، موضحاً المبيعات والنمو.
+            </p>
+</div>
+<div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+<div class="flex items-center gap-2 text-[#e9b44c] font-black text-sm mb-1.5">
+<span class="material-symbols-outlined text-lg">verified_user</span>
+<span class="">تسويات نقدية وبنكية بانتظام</span>
+</div>
+<p class="text-xs text-white/70 leading-relaxed">
+              نظام تسوية مالية دقيق كل أسبوع، بتحويل بنكي فوري أو تسليم نقدي مباشر (كاش) داخل غزة.
+            </p>
+</div>
+<div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+<div class="flex items-center gap-2 text-[#e9b44c] font-black text-sm mb-1.5">
+<span class="material-symbols-outlined text-lg">group_add</span>
+<span class="">تدفق زبائن جدد من الشبكة</span>
+</div>
+<p class="text-xs text-white/70 leading-relaxed">
+              زبائن المتاجر الأخرى يأتون إلى متجرك لإنفاق نقاطهم المجمعة لديك، مما يضاعف مبيعاتك مجاناً.
+            </p>
+</div>
+</div>
+</div>
+<!-- Quick Merchant Signup Card -->
+<div class="lg:col-span-5 bg-white text-[#12302b] rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/20" id="merchant-signup">
+<div class="text-center mb-6">
+<span class="text-xs font-black text-[#1f7a6e] bg-[#1f7a6e]/10 px-3 py-1 rounded-full">عرض انطلاق 2026</span>
+<h3 class="text-2xl font-black text-[#12302b] mt-2">انضم كمتجر شريك في دقيقة</h3>
+<p class="text-xs text-[#52606d] mt-1">تجربة مجانية 14 يوماً بدون أي التزام مالي أو بطاقات بنكية.</p>
+</div>
+<form class="space-y-4" onsubmit="event.preventDefault(); alert('شكراً لاهتمامك! سيتواصل معك فريق تبادل عبر واتساب خلال أقل من ساعتين لتفعيل متجرك ولوحة تحكم PWA.');">
+<div>
+<label class="block text-xs font-bold text-[#12302b] mb-1">اسم المتجر أو صفحة الإنستغرام</label>
+<input class="w-full text-sm px-4 py-3 rounded-xl bg-[#f6f3ec] border border-[#12302b]/15 focus:border-[#1f7a6e] focus:bg-white focus:outline-none" placeholder="مثال: بوتيك غزة فاشن" required="" type="text">
+</div>
+<div>
+<label class="block text-xs font-bold text-[#12302b] mb-1">رقم الواتساب للتواصل (غزة)</label>
+<input class="w-full text-sm px-4 py-3 rounded-xl bg-[#f6f3ec] border border-[#12302b]/15 focus:border-[#1f7a6e] focus:bg-white focus:outline-none text-right" dir="ltr" placeholder="059xxxxxxx أو 056xxxxxxx" required="" type="tel">
+</div>
+<div>
+<label class="block text-xs font-bold text-[#12302b] mb-1">نوع المنتجات</label>
+<select class="w-full text-sm px-4 py-3 rounded-xl bg-[#f6f3ec] border border-[#12302b]/15 focus:border-[#1f7a6e] focus:bg-white focus:outline-none"><option>أزياء وملابس نسائية</option><option>أزياء رجالية</option><option>ملابس أطفال ومواليد</option><option>عبايات وشالات</option><option>أحذية وحقائب</option></select>
+</div>
+<button class="w-full py-4 rounded-xl bg-[#e9b44c] hover:bg-[#d69f37] text-[#12302b] font-black text-base shadow-md active:scale-95 transition-all" type="submit">
+            تفعيل التجربة المجانية (14 يوماً)
+          </button>
+<p class="text-[11px] text-center text-[#52606d] mt-2">
+            🔒 بياناتك محمية تماماً. سنرسل لك رابط لوحة التحكم البسيطة على الواتساب فوراً.
+          </p>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- ======================================================== -->
+<!-- 8. SMART RETENTION & AUTOMATED LOYALTY TOOLS            -->
+<!-- ======================================================== -->
+<section class="py-20 bg-[#f6f3ec]" id="smart-ai">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="text-xs font-black uppercase tracking-wider text-[#1f7a6e] bg-[#1f7a6e]/10 px-3.5 py-1.5 rounded-full">
+        الذكاء الاصطناعي للمحافظة على الزبائن
+      </span>
+<h2 class="text-3xl md:text-4xl font-black text-[#12302b] mt-3">المساعد الذكي التلقائي لمتجرك</h2>
+<p class="text-[#52606d] text-base mt-2">نظام مؤتمت يعمل خلف الكواليس لإعادة تنشيط الزبائن وزيادة تكرار الشراء دون أي مجهود إضافي منك.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Tool 1 -->
+<div class="bg-white rounded-3xl p-8 border border-[#12302b]/10 shadow-sm hover:shadow-md transition-all">
+<div class="w-14 h-14 rounded-2xl bg-[#e9b44c]/20 text-[#c7922d] flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl fill">hourglass_top</span>
+</div>
+<h3 class="text-xl font-black text-[#12302b] mb-3">حارس الصلاحية (Expiry Guard)</h3>
+<p class="text-[#52606d] text-sm leading-relaxed mb-4">
+          يرسل تنبيهاً ذكياً ولطيفاً عبر واتساب للزبون قبل 15 يوماً من موعد انتهاء صلاحية نقاطه: «معك 15 ₪ خصم في رصيدك ينتهي قريباً، اطلب اليوم واستفد منه!»
+        </p>
+<div class="text-xs font-bold text-[#1f7a6e] flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="">يرفع معدل الشراء المتكرر بنسبة +34%</span>
+</div>
+</div>
+<!-- Tool 2 -->
+<div class="bg-white rounded-3xl p-8 border border-[#12302b]/10 shadow-sm hover:shadow-md transition-all">
+<div class="w-14 h-14 rounded-2xl bg-[#1f7a6e]/20 text-[#1f7a6e] flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl fill">shopping_cart_checkout</span>
+</div>
+<h3 class="text-xl font-black text-[#12302b] mb-3">منبّه النية للسلات المتروكة</h3>
+<p class="text-[#52606d] text-sm leading-relaxed mb-4">
+          إذا استفسرت الزبونة عن سعر فستان أو عطر ولم تكمل الطلب، يرسل النظام حافزاً فورياً بنقاط مضاعفة أو خصم تشجيعي لإتمام الشراء خلال ساعات محددة.
+        </p>
+<div class="text-xs font-bold text-[#1f7a6e] flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="">استعادة 22% من المبيعات المفقودة</span>
+</div>
+</div>
+<!-- Tool 3 -->
+<div class="bg-white rounded-3xl p-8 border border-[#12302b]/10 shadow-sm hover:shadow-md transition-all">
+<div class="w-14 h-14 rounded-2xl bg-[#1f3a5f]/20 text-[#1f3a5f] flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl fill">replay</span>
+</div>
+<h3 class="text-xl font-black text-[#12302b] mb-3">مُرجع الزبائن الغائبين (Win-Back)</h3>
+<p class="text-[#52606d] text-sm leading-relaxed mb-4">
+          يكتشف الزبائن الذين لم يشتروا منذ أكثر من 45 يوماً، ويبادر بإهدائهم 100 نقطة مجانية صالحة لمدة محدودة لتحفيزهم على العودة للتسوق من متجرك.
+        </p>
+<div class="text-xs font-bold text-[#1f7a6e] flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="">بناء ولاء حقيقي مستدام</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ======================================================== -->
+<!-- 9. FREQUENTLY ASKED QUESTIONS (FAQ)                      -->
+<!-- ======================================================== -->
+<section class="py-20 md:py-28 bg-white border-t border-[#12302b]/10" id="faq"><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="text-center max-w-xl mx-auto mb-10">
+    <span class="text-xs font-black uppercase text-[#1f7a6e] bg-[#1f7a6e]/10 px-3.5 py-1 rounded-full">
+      كل ما تحتاج معرفته
+    </span>
+    <h2 class="text-2xl sm:text-3xl font-black text-[#12302b] mt-2">الأسئلة الشائعة</h2>
+    <p class="text-[#52606d] text-sm mt-1">إجابات مباشرة ومحددة لمتسوقي وتجار الملابس والأحذية في غزة.</p>
+  </div>
+
+  <div class="space-y-3">
+    <!-- FAQ 1 -->
+    <div class="bg-[#f6f3ec] rounded-xl border border-[#12302b]/10 p-4 sm:p-5">
+      <div class="flex items-center gap-2 text-[#12302b] font-bold text-base mb-1.5">
+        <span class="w-6 h-6 rounded-full bg-[#1f7a6e] text-white flex items-center justify-center text-xs font-black flex-shrink-0">1</span>
+        <span class="">هل أحتاج لتحميل تطبيق أو استهلاك ذاكرة الهاتف؟</span>
+      </div>
+      <p class="text-xs sm:text-sm text-[#52606d] leading-relaxed pr-8">
+        لا، إطلاقاً. منصة «تبادل» في نسختها الأولى هي منصة ويب خفيفة 100% تعمل على أي متصفح في غزة بأقل استهلاك للإنترنت. رقم جوالك هو حسابك، وتصلك تفاصيل الرصيد والطلبات مباشرة عبر واتساب.
+      </p>
+    </div>
+
+    <!-- FAQ 2 -->
+    <div class="bg-[#f6f3ec] rounded-xl border border-[#12302b]/10 p-4 sm:p-5">
+      <div class="flex items-center gap-2 text-[#12302b] font-bold text-base mb-1.5">
+        <span class="w-6 h-6 rounded-full bg-[#1f7a6e] text-white flex items-center justify-center text-xs font-black flex-shrink-0">2</span>
+        <span class="">ما هي معادلة الكاش باك والقيمة النقدية الفعلية للنقاط؟</span>
+      </div>
+      <p class="text-xs sm:text-sm text-[#52606d] leading-relaxed pr-8">
+        المعادلة شفافة ومحددة: تكسب 10 نقاط عن كل 1 ₪ تدفعه (ما يعادل 5% كاش باك). كل 200 نقطة تساوي 1 ₪ كاش مباشر يُخصم من فاتورتك عند الشراء من أي متجر ملابس أو أحذية شريك في غزة.
+      </p>
+    </div>
+
+    <!-- FAQ 3 -->
+    <div class="bg-[#f6f3ec] rounded-xl border border-[#12302b]/10 p-4 sm:p-5">
+      <div class="flex items-center gap-2 text-[#12302b] font-bold text-base mb-1.5">
+        <span class="w-6 h-6 rounded-full bg-[#1f7a6e] text-white flex items-center justify-center text-xs font-black flex-shrink-0">3</span>
+        <span class="">كيف يحميني رمز الأمان المكون من 4 أرقام؟</span>
+      </div>
+      <p class="text-xs sm:text-sm text-[#52606d] leading-relaxed pr-8">
+        عند طلب أي قطعة أزياء أو حذاء، يتم توليد رمز أمان خاص بالطلب من 4 أرقام. لا تسلّم هذا الرمز لمندوب التوصيل إلا بعد معاينة القطعة والتأكد من مطابقة المقاس والجودة، مما يضمن حقك الكامل قبل تحويل المبلغ.
+      </p>
+    </div>
+
+    <!-- FAQ 4 -->
+    <div class="bg-[#f6f3ec] rounded-xl border border-[#12302b]/10 p-4 sm:p-5">
+      <div class="flex items-center gap-2 text-[#12302b] font-bold text-base mb-1.5">
+        <span class="w-6 h-6 rounded-full bg-[#1f7a6e] text-white flex items-center justify-center text-xs font-black flex-shrink-0">4</span>
+        <span class="">ما هي المتاجر المشمولة في المنصة؟</span>
+      </div>
+      <p class="text-xs sm:text-sm text-[#52606d] leading-relaxed pr-8">
+        المنصة مخصصة حصرياً لقطاع الأزياء، الملابس النسائية، العبايات، الأزياء الرجالية، ملابس الأطفال، وبوتيكات الأحذية والبلاطين في غزة (عمر المختار، الرمال، النصر، والوسطى والجنوب) لضمان أعلى درجات التخصص والجودة.
+      </p>
+    </div>
+  </div>
+</div></section>
+<!-- ======================================================== -->
+<!-- 10. FOOTER                                               -->
+<!-- ======================================================== -->
+<footer class="bg-[#12302b] text-white pt-16 pb-12 border-t border-[#e9b44c]/20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+<!-- Brand & Identity -->
+<div class="lg:col-span-2 space-y-4">
+<div class="flex items-center gap-3">
+<div class="h-12 w-auto max-w-[140px] flex items-center p-1 rounded-lg">
+<img alt="شعار تبادل" class="h-full w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UzQQHoamC4yAS3SfYcwKKzuLsUQvju89zj2DorKREyzGtOhCHBGvsuOAgvSpv8FEadNFjncHuXs6zKVIPec3LRFLq1ROG7mjq7pS2_B8bUfq7hbY81mpeaYdWzSvg_HkLGyWxQ6g1cPBOWersB8WQQnMU5D49WBXWjB1YoXPARaWcDBplO2_aoDgdV-s3lFB7xo3jxg8yzv1UZUswrGr5rYof12WA288Ts53zmknZC9w">
+</div>
+<div>
+<span class="text-xl font-black text-white">تـبـادل | Tabadul</span>
+<span class="text-xs text-[#e9b44c] block font-bold">تسوّق بذكاء واكسب بولاء</span>
+</div>
+</div>
+<p class="text-sm text-white/70 leading-relaxed max-w-sm">المنصة والتطبيق الموحد لمكافآت وولاء عملاء الأزياء، الملابس، العبايات، والأحذية في قطاع غزة 2026. نربط المتسوقين بأفضل متاجر البوتيك والموضة المحلية لتجربة تسوق مجزية ومستدامة.</p>
+<div class="flex items-center gap-2 pt-1 text-[#e9b44c]">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+<span class="text-xs font-bold text-white/90">دعم مباشر 24/7 عبر واتساب غزة: 0599000000</span>
+</div>
+</div>
+<!-- Quick Navigation -->
+<div>
+<h4 class="text-sm font-black text-[#e9b44c] mb-4">روابط سريعة</h4>
+<ul class="space-y-2.5 text-sm text-white/70">
+<li class=""><a class="hover:text-white transition-colors" href="#hero">الرئيسية</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#how-it-works">كيف يعمل النظام</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#calculator">حاسبة النقاط والوفر</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#merchants">شبكة المتاجر المعتمدة</a></li>
+<li class=""><button class="hover:text-[#e9b44c] transition-colors text-right" onclick="openPwaModal()">تثبيت تطبيق PWA</button></li>
+</ul>
+</div>
+<!-- For Merchants -->
+<div>
+<h4 class="text-sm font-black text-[#e9b44c] mb-4">للتجار والشركاء</h4>
+<ul class="space-y-2.5 text-sm text-white/70">
+<li class=""><a class="hover:text-white transition-colors" href="#merchant-signup">تجربة مجانية 14 يوماً</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#smart-ai">المساعد الذكي للولاء</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#merchants-section">مزايا شبكة تبادل</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">سياسة التسويات الأسبوعية</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">لوحة تحكم التاجر</a></li>
+</ul>
+</div>
+<!-- Support & Terms -->
+<div>
+<h4 class="text-sm font-black text-[#e9b44c] mb-4">المساعدة والشروط</h4>
+<ul class="space-y-2.5 text-sm text-white/70">
+<li class=""><a class="hover:text-white transition-colors" href="#faq">الأسئلة الشائعة</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">شروط الخدمة</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">سياسة الخصوصية</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">مركز حماية المتسوق</a></li>
+<li class=""><a class="text-[#e9b44c] font-bold flex items-center gap-1 hover:underline" href="https://wa.me/970599000000" target="_blank">
+<span class="">تواصل عبر واتساب</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</a></li>
+</ul>
+</div>
+</div>
+<!-- Copyright -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/60 gap-4">
+<div class="">
+        © 2026 شبكة ومنصة تبادل للمكافآت والولاء. غزة، فلسطين. جميع الحقوق محفوظة.
+      </div>
+<div class="flex items-center gap-3 text-white/75">
+<span class="">صُمم خصيصاً لمجتمع وتجار قطاع غزة</span>
+<span class="">•</span>
+<span class="text-[#e9b44c] font-bold">النسخة الهجينة (Web &amp; PWA)</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- ======================================================== -->
+<!-- 11. MOBILE DOCKED BOTTOM APP NAVIGATION (PWA NATIVE FEEL) -->
+<!-- ======================================================== -->
+<nav aria-label="التنقل السفلي" class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-[#12302b]/15 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]"><div class="max-w-md mx-auto px-4 h-14 flex items-center justify-around">
+  <a class="flex flex-col items-center justify-center text-[#1f7a6e] text-xs font-bold" href="#hero">
+    <span class="material-symbols-outlined text-lg">home</span>
+    <span class="">الرئيسية</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-[#52606d] text-xs font-bold" href="#merchants">
+    <span class="material-symbols-outlined text-lg">storefront</span>
+    <span class="">المتاجر</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-[#52606d] text-xs font-bold" href="#calculator">
+    <span class="material-symbols-outlined text-lg">calculate</span>
+    <span class="">الحاسبة</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-[#52606d] text-xs font-bold" href="#merchants-section">
+    <span class="material-symbols-outlined text-lg">add_business</span>
+    <span class="">انضمام تاجر</span>
+  </a>
+</div></nav>
+<!-- ======================================================== -->
+<!-- 12. PWA INSTALL MODAL & SMART BOTTOM SHEET              -->
+<!-- ======================================================== -->
+<div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all duration-300 hidden" id="pwa-sheet-backdrop" onclick="if(event.target === this) closePwaModal()">
+
+</div>
+<!-- ======================================================== -->
+<!-- 13. INTERACTIVE JAVASCRIPT CONTROLLERS                   -->
+<!-- ======================================================== -->
+<script>
+  // Dynamic Calculator Formula: 1 NIS = 10 Points, 1000 Points = 5 NIS Cashback
+  function handleCalcChange(val) {
+    const amount = parseInt(val, 10);
+    const points = amount * 10;
+    const cashback = (points / 1000) * 5;
+
+    document.getElementById('calc-amount').innerText = amount.toLocaleString('en-US');
+    document.getElementById('calc-points').innerText = points.toLocaleString('en-US');
+    document.getElementById('calc-cash').innerText = cashback.toFixed(1);
+  }
+
+  // PWA Modal Helpers
+  function openPwaModal() {
+    document.getElementById('pwa-sheet-backdrop').classList.remove('hidden');
+  }
+  function closePwaModal() {
+    document.getElementById('pwa-sheet-backdrop').classList.add('hidden');
+  }
+
+  // Offline Banner Simulation
+  function toggleOfflineBanner() {
+    const banner = document.getElementById('offline-banner');
+    const label = document.getElementById('network-status-label');
+    const dot = document.getElementById('network-indicator-dot');
+    
+    if (banner.classList.contains('hidden')) {
+      banner.classList.remove('hidden');
+      if (label) label.innerText = 'أوفلاين';
+      if (dot) {
+        dot.classList.remove('bg-[#8df8bd]', 'animate-pulse');
+        dot.classList.add('bg-[#ba1a1a]');
+      }
+    } else {
+      banner.classList.add('hidden');
+      if (label) label.innerText = 'متصل';
+      if (dot) {
+        dot.classList.remove('bg-[#ba1a1a]');
+        dot.classList.add('bg-[#8df8bd]', 'animate-pulse');
+      }
+    }
+  }
+
+  // Mockup update button trigger
+  function toggleMockUpdate() {
+    alert('تم تحديث بيانات المحفظة وتخزينها محلياً في ذاكرة PWA دون استهلاك باقة الإنترنت.');
+  }
+
+  // Real-time clock simulator inside phone mock
+  function updateMockClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    const clockEl = document.getElementById('mock-clock');
+    if (clockEl) {
+      clockEl.innerText = hours + ':' + minutes;
+    }
+  }
+  setInterval(updateMockClock, 30000);
+  updateMockClock();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
