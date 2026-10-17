@@ -36,7 +36,6 @@ import MainLayout from '../../layouts/MainLayout';
 
 export default function HomePage() {
   const [calcAmount, setCalcAmount] = useState(100);
-  const [offline, setOffline] = useState(false);
   const [pwaOpen, setPwaOpen] = useState(false);
 
   const calcPoints = calcAmount * 10;
@@ -72,10 +71,6 @@ export default function HomePage() {
 
   const closePwaModal = () => {
     setPwaOpen(false);
-  };
-
-  const toggleOfflineBanner = () => {
-    setOffline((previous) => !previous);
   };
 
   const toggleMockUpdate = () => {

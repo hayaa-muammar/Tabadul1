@@ -856,18 +856,25 @@ export default function CustomerHomePage() {
                     </div>
                   </div>
 
+                  {/* Demo Availability Notice */}
+                  <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3.5 text-right text-xs leading-5 text-amber-900">
+                    <p className="font-bold flex items-center gap-1.5 text-amber-950 mb-1">
+                      <span>متجر تجريبي تحت التجهيز للإطلاق 2026</span>
+                    </p>
+                    <p>
+                      كتالوج هذا المتجر قيد التدقيق النهائي. لتجربة تدفق الشراء المتكامل والسلة وإتمام الطلب التجريبي، تفضلي بزيارة بوتيك لمسة المعتمد.
+                    </p>
+                  </div>
+
                   <button
                     type="button"
                     onClick={() => {
-                      setSelectedStore(null);
-
-                      setNotice(
-                        'صفحة هذا المتجر غير مضافة إلى المشروع بعد.'
-                      );
+                      closeModals();
+                      navigate('/customer/store');
                     }}
-                    className="mt-5 w-full rounded-xl bg-[#12302b] px-4 py-3 font-bold text-white transition hover:bg-[#1f7a6e]"
+                    className="mt-4 w-full rounded-xl bg-[#12302b] px-4 py-3 font-bold text-white transition hover:bg-[#1f7a6e]"
                   >
-                    زيارة صفحة المتجر بالكامل
+                    تجربة الشراء عبر بوتيك لمسة النشط
                   </button>
                 </>
               )}

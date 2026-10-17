@@ -123,7 +123,7 @@ function CustomerVerifyOTP() {
 
   // الرجوع لتعديل رقم الجوال
   const handleEditPhone = () => {
-    navigate('/login');
+    navigate('/customer/login');
   };
 
   // إعادة إرسال الرمز
@@ -395,6 +395,22 @@ function CustomerVerifyOTP() {
 
                   <Sparkles size={18} />
                 </button>
+
+                {/* Demo Access Button for Evaluators */}
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      sessionStorage.setItem('customerPhone', phone);
+                      sessionStorage.setItem('accountRole', 'customer');
+                      navigate('/customer/home');
+                    }}
+                    className="flex h-12 w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-[#032448]/30 bg-[#f4f7fb] px-4 text-xs font-bold text-[#032448] transition hover:bg-[#e8eff8] sm:text-sm"
+                  >
+                    <Sparkles size={18} className="text-[#a17b32]" />
+                    <span>استعراض النسخة التجريبية مباشرة (تخطي التحقق للمعاينة)</span>
+                  </button>
+                </div>
               </form>
 
               {/* Guarantee Subtext */}

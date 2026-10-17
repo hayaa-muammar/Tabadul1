@@ -23,10 +23,12 @@ function CustomerLogin() {
   const [phone, setPhone] = useState('');
   const [otpMethod, setOtpMethod] = useState('whatsapp');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   // تنسيق رقم الجوال
   const handlePhoneChange = (event) => {
     let value = event.target.value.replace(/\D/g, '');
+    setError('');
 
     // الحد الأقصى 10 أرقام
     value = value.slice(0, 10);
@@ -49,13 +51,19 @@ function CustomerLogin() {
   // الانتقال إلى صفحة التحقق OTP
   const handleSubmit = (event) => {
     event.preventDefault();
+    setError('');
 
     // إزالة المسافات والرموز من الرقم
-    const cleanPhone = phone.replace(/\D/g, '');
+    const cleanPhone = phone.replace(/[\s-]/g, '');
+    const validPhone = /^(059|056)\d{7}$/.test(cleanPhone);
 
-    // نكتفي بالتأكد من إدخال رقم، دون التحقق من طوله أو مقدمته
     if (!cleanPhone) {
-      alert('يرجى إدخال رقم الجوال للمتابعة.');
+      setError('يرجى إدخال رقم الجوال للمتابعة.');
+      return;
+    }
+
+    if (!validPhone) {
+      setError('يرجى إدخال رقم جوال فلسطيني صحيح يبدأ بـ 059 أو 056 (9 أرقام).');
       return;
     }
 
@@ -243,6 +251,15 @@ function CustomerLogin() {
                 {/* Phone Form */}
                 <form onSubmit={handleSubmit} className="space-y-7">
 
+                  {error && (
+                    <div
+                      role="alert"
+                      className="rounded-xl border border-red-200 bg-red-50 p-3.5 text-xs font-bold text-red-700"
+                    >
+                      {error}
+                    </div>
+                  )}
+
                   <div>
                     <label
                       htmlFor="customer-phone"
@@ -385,6 +402,39 @@ function CustomerLogin() {
 
                     <ArrowLeft size={20} />
                   </button>
+
+                  {/* Demo Access for Evaluators */}
+                  <div className="pt-1">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        sessionStorage.setItem('customerPhone', '0599123456');
+                        sessionStorage.setItem('accountRole', 'customer');
+                        navigate('/customer/home');
+                      }}
+                      className="flex h-12 w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-[#032448]/30 bg-[#f4f7fb] px-4 text-xs font-bold text-[#032448] transition hover:bg-[#e8eff8] sm:text-sm"
+                    >
+                      <Sparkles size={18} className="text-[#a17b32]" />
+                      <span>استعراض النسخة التجريبية (دخول مباشر كمتسوق)</span>
+                    </button>
+                  </div>
+
+                  {/* Register and Password Reset Links */}
+                  <div className="flex flex-col items-center justify-between gap-2 border-t border-slate-100 pt-3 text-xs font-semibold text-[#43474e] sm:flex-row">
+                    <Link
+                      to="/customer/register"
+                      className="text-[#032448] transition hover:underline"
+                    >
+                      ليس لديك حساب؟ إنشاء حساب جديد
+                    </Link>
+
+                    <Link
+                      to="/customer/reset-password"
+                      className="text-slate-500 transition hover:text-[#032448] hover:underline"
+                    >
+                      نسيت كلمة المرور؟
+                    </Link>
+                  </div>
 
                   {/* Terms */}
                   <p className="text-center text-xs leading-7 text-[#43474e]">

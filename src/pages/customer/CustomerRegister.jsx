@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import {
   Gift,
@@ -70,14 +70,11 @@ function CustomerRegister() {
       return;
     }
 
-    window.alert(
-      `تم التحقق من البيانات مبدئيًا.\n\n` +
-        `نوع الحساب: متسوق\n` +
-        `طريقة استلام الرمز: ${
-          otpMethod === 'whatsapp' ? 'واتساب' : 'رسالة نصية SMS'
-        }\n\n` +
-        'إرسال OTP وإنشاء الحساب الفعلي يحتاجان إلى Backend.'
-    );
+    sessionStorage.setItem('customerPhone', normalizedPhone);
+    sessionStorage.setItem('customerFullName', fullName.trim());
+    sessionStorage.setItem('customerOtpChannel', otpMethod);
+
+    navigate('/customer/verify-otp');
   };
 
   return (
@@ -385,21 +382,19 @@ function CustomerRegister() {
 
                   <span className="text-xs leading-snug text-[#191C22]">
                     أوافق على{' '}
-                    <a
-                      href="#terms"
-                      onClick={(event) => event.preventDefault()}
+                    <Link
+                      to="/terms"
                       className="font-bold text-[#1F7A6E] underline hover:text-[#12302B]"
                     >
                       شروط الاستخدام
-                    </a>{' '}
+                    </Link>{' '}
                     و{' '}
-                    <a
-                      href="#privacy"
-                      onClick={(event) => event.preventDefault()}
+                    <Link
+                      to="/privacy"
                       className="font-bold text-[#1F7A6E] underline hover:text-[#12302B]"
                     >
                       سياسة الخصوصية
-                    </a>{' '}
+                    </Link>{' '}
                     الخاصة بشبكة مكافآت تبادل لعام 2026.
                   </span>
                 </label>
@@ -440,6 +435,20 @@ function CustomerRegister() {
                     <ArrowLeft size={16} />
                   </button>
                 </p>
+              </div>
+
+              {/* وضع المعاينة التجريبي للمقيّمين */}
+              <div className="mt-4 rounded-xl border border-dashed border-[#1f7a6e]/40 bg-[#1f7a6e]/5 p-3.5 text-center">
+                <p className="mb-2 text-xs text-[#12302b]">
+                  ترغب في تقييم تجربة المتسوق فوراً دون المرور بخطوات التسجيل؟
+                </p>
+                <button
+                  type="button"
+                  onClick={() => navigate('/customer/home')}
+                  className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#12302b] px-4 py-2 text-xs font-bold text-white shadow-sm transition hover:bg-[#1a443d]"
+                >
+                  استعراض النسخة التجريبية كمتسوق (بدون تسجيل) ⚡
+                </button>
               </div>
             </form>
           </section>

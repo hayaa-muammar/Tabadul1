@@ -11,11 +11,8 @@ import {
   LockKeyhole,
   CheckCircle2,
   RefreshCw,
-  MapPin,
   ShoppingBag,
-  Bell,
   Store,
-  Award,
   Sparkles,
   SlidersHorizontal,
   X,
@@ -27,11 +24,11 @@ import {
   MessageCircle,
   History,
   QrCode,
-  Menu,
-  Tag,
 } from 'lucide-react';
 
+import { Link, useNavigate } from 'react-router-dom';
 import MainLayout from '../../layouts/MainLayout';
+import { useCartStore } from '../../store/useCartStore';
 
 const initialProducts = [
   {
@@ -143,7 +140,8 @@ function ImagePlaceholder({ className = '' }) {
 }
 
 function CustomerStorePage() {
-  const [products, setProducts] = useState(initialProducts);
+  const navigate = useNavigate();
+  const [products] = useState(initialProducts);
   const [activeCategory, setActiveCategory] = useState('كافة القطع');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
@@ -154,10 +152,16 @@ function CustomerStorePage() {
   const [favorites, setFavorites] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedProductSize, setSelectedProductSize] = useState('');
-  const [cart, setCart] = useState([]);
   const [notice, setNotice] = useState('');
   const [showCart, setShowCart] = useState(false);
   const [showWallet, setShowWallet] = useState(false);
+
+  const cart = useCartStore((state) => state.items);
+  const addItemToCart = useCartStore((state) => state.addItem);
+  const removeItemFromCart = useCartStore((state) => state.removeItem);
+  const cartTotal = useCartStore((state) => state.getSubtotal());
+  const cartPoints = useCartStore((state) => state.getTotalPoints());
+  const cartItemCount = useCartStore((state) => state.getItemCount());
 
   const walletPoints = 2400;
   const walletValue = walletPoints / 200;
@@ -251,38 +255,17 @@ function CustomerStorePage() {
       return;
     }
 
-    setCart((previous) => [
-      ...previous,
-      {
-        ...selectedProduct,
-        cartId: `${selectedProduct.id}-${Date.now()}`,
-        selectedSize: selectedProductSize,
-      },
-    ]);
+    addItemToCart(selectedProduct, {
+      size: selectedProductSize,
+      color: selectedProduct.color || 'شامبين عاجي',
+      quantity: 1,
+    });
 
-    setNotice('تمت إضافة القطعة إلى السلة بنجاح.');
+    setNotice(`تمت إضافة "${selectedProduct.name}" (مقاس ${selectedProductSize}) إلى السلة بنجاح.`);
   };
 
-  const removeFromCart = (cartId) => {
-    setCart((previous) =>
-      previous.filter((item) => item.cartId !== cartId)
-    );
-  };
-
-  const cartTotal = cart.reduce(
-    (total, item) => total + item.price,
-    0
-  );
-
-  const cartPoints = cart.reduce(
-    (total, item) => total + item.points,
-    0
-  );
-
-  const closeOverlays = () => {
-    setSelectedProduct(null);
-    setShowCart(false);
-    setShowWallet(false);
+  const removeFromCart = (cartItemId) => {
+    removeItemFromCart(cartItemId);
   };
 
   return (
@@ -294,18 +277,36 @@ function CustomerStorePage() {
         {/* Store Page */}
         <main className="mx-auto w-full max-w-7xl space-y-6 px-4 py-6 sm:px-6 lg:px-8">
 
-          {/* Breadcrumbs */}
-          <nav className="flex flex-wrap items-center gap-2 text-xs text-[#74777f]">
-            <span>منصة تبادل</span>
-            <ChevronLeft size={15} />
-            <span>استكشاف المتاجر المعتمدة</span>
-            <ChevronLeft size={15} />
-            <span>الأزياء النسائية</span>
-            <ChevronLeft size={15} />
-            <span className="font-bold text-[#12302b]">
-              بوتيك لمسة للأزياء والفساتين
-            </span>
-          </nav>
+          {/* Breadcrumbs & Back Navigation */}
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <nav className="flex flex-wrap items-center gap-2 text-xs text-[#74777f]">
+              <Link to="/customer/home" className="hover:text-[#12302b] transition-colors">منصة تبادل</Link>
+              <ChevronLeft size={15} />
+              <Link to="/customer/home" className="hover:text-[#12302b] transition-colors">استكشاف المتاجر المعتمدة</Link>
+              <ChevronLeft size={15} />
+              <span>الأزياء النسائية</span>
+              <ChevronLeft size={15} />
+              <span className="font-bold text-[#12302b]">
+                بوتيك لمسة للأزياء والفساتين
+              </span>
+            </nav>
+            <div className="flex items-center gap-2">
+              <Link
+                to="/customer/home"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-[#d1d5db] bg-white px-3 py-1.5 text-xs font-semibold text-[#12302b] hover:bg-neutral-50 shadow-sm transition-colors"
+              >
+                <ArrowRight size={14} />
+                <span>العودة إلى دليل المتاجر</span>
+              </Link>
+              <Link
+                to="/customer/cart"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-[#12302b] px-3.5 py-1.5 text-xs font-bold text-white hover:bg-[#1f7a6e] shadow-sm transition-colors"
+              >
+                <ShoppingBag size={14} />
+                <span>سلة المشتريات ({cartItemCount})</span>
+              </Link>
+            </div>
+          </div>
 
           {/* Store Hero */}
           <section className="overflow-hidden rounded-2xl border border-[#e1e2ea] bg-white shadow-sm">
@@ -918,6 +919,15 @@ function CustomerStorePage() {
                     <ShoppingBag size={18} />
                     إضافة إلى السلة
                   </button>
+
+                  <Link
+                    to={`/customer/product/${selectedProduct.id}`}
+                    onClick={() => setSelectedProduct(null)}
+                    className="flex h-11 w-full items-center justify-center gap-1.5 rounded-xl border border-[#12302b] text-xs font-bold text-[#12302b] transition hover:bg-neutral-50"
+                  >
+                    <span>فتح صفحة المواصفات وتفاصيل القطعة</span>
+                    <ArrowLeft size={16} />
+                  </Link>
                 </div>
               </div>
             </section>
@@ -949,7 +959,7 @@ function CustomerStorePage() {
               <div className="space-y-4">
                 {cart.map((item) => (
                   <div
-                    key={item.cartId}
+                    key={item.cartItemId || item.id}
                     className="flex items-center gap-3 rounded-xl border border-[#e1e2ea] p-3"
                   >
                     <ImagePlaceholder className="h-20 w-16 shrink-0 rounded-lg" />
@@ -960,17 +970,18 @@ function CustomerStorePage() {
                       </p>
 
                       <p className="mt-1 text-xs text-gray-500">
-                        المقاس: {item.selectedSize}
+                        المقاس: {item.size || item.selectedSize} · اللون: {item.color}
+                        {item.quantity > 1 ? ` · الكمية: ${item.quantity}` : ''}
                       </p>
 
                       <p className="mt-1 text-sm font-extrabold text-[#1f7a6e]">
-                        {item.price} ₪
+                        {item.price * (item.quantity || 1)} ₪
                       </p>
                     </div>
 
                     <button
                       type="button"
-                      onClick={() => removeFromCart(item.cartId)}
+                      onClick={() => removeFromCart(item.cartItemId)}
                       className="rounded-lg p-2 text-red-600 hover:bg-red-50"
                       aria-label="حذف القطعة من السلة"
                     >
@@ -994,13 +1005,12 @@ function CustomerStorePage() {
                     type="button"
                     onClick={() => {
                       setShowCart(false);
-                      setNotice(
-                        'إتمام الطلب يحتاج إلى ربط نظام الطلبات والدفع.'
-                      );
+                      navigate('/customer/cart');
                     }}
-                    className="mt-4 h-11 w-full rounded-xl bg-[#12302b] text-sm font-bold text-white"
+                    className="mt-4 flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#12302b] text-sm font-bold text-white transition hover:bg-[#1a443d]"
                   >
-                    متابعة الطلب
+                    <span>الانتقال لسلة المشتريات ومتابعة الطلب</span>
+                    <ArrowLeft size={16} />
                   </button>
                 </div>
               </div>
@@ -1049,9 +1059,9 @@ function CustomerStorePage() {
           >
             <ShoppingBag size={21} />
 
-            {cart.length > 0 && (
+            {cartItemCount > 0 && (
               <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#e9b44c] px-1 text-[10px] font-bold text-[#12302b]">
-                {cart.length}
+                {cartItemCount}
               </span>
             )}
           </button>
@@ -1222,6 +1232,13 @@ function ProductCard({
 
           <ArrowLeft size={17} />
         </button>
+
+        <Link
+          to={`/customer/product/${product.id}`}
+          className="mt-2 block text-center text-[11px] font-bold text-[#12302b] hover:text-[#1f7a6e] transition"
+        >
+          صفحة المواصفات المستقلة ↗
+        </Link>
       </div>
     </article>
   );

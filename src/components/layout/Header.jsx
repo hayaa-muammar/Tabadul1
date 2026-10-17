@@ -6,9 +6,11 @@ import {
   Menu,
   X,
   ChevronDown,
+  ShoppingBag,
 } from 'lucide-react';
 
 import { Link, useNavigate } from 'react-router-dom';
+import { useCartStore } from '../../store/useCartStore';
 
 const navigationLinks = [
   { label: 'الرئيسية', href: '/' },
@@ -21,6 +23,7 @@ function Header({ variant = 'public' }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [joinMenuOpen, setJoinMenuOpen] = useState(false);
 
+  const cartCount = useCartStore((state) => state.getItemCount());
   const navigate = useNavigate();
 
   const isCustomer = variant === 'customer';
@@ -176,6 +179,21 @@ function Header({ variant = 'public' }) {
             <CircleHelp size={20} />
           </Link>
 
+          {/* Cart */}
+          <Link
+            to="/customer/cart"
+            onClick={closeMenus}
+            aria-label={`سلة المشتريات (${cartCount} قطع)`}
+            className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-slate-700 transition hover:bg-slate-100"
+          >
+            <ShoppingBag size={20} />
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-[#e9b44c] px-1 text-[10px] font-black text-[#12302b]">
+                {cartCount}
+              </span>
+            )}
+          </Link>
+
           {/* Login */}
           <Link
             to={isCustomer ? '/customer/login' : isMerchant ? '/merchant/login' : '/login'}
@@ -186,16 +204,33 @@ function Header({ variant = 'public' }) {
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          type="button"
-          aria-label={menuOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((previous) => !previous)}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 text-[#082b4c] transition hover:bg-slate-50 sm:hidden"
-        >
-          {menuOpen ? <X size={23} /> : <Menu size={23} />}
-        </button>
+        {/* Mobile Header Actions (Cart + Menu) */}
+        <div className="flex items-center gap-2 sm:hidden">
+          <Link
+            to="/customer/cart"
+            onClick={closeMenus}
+            aria-label="سلة المشتريات"
+            className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 text-[#082b4c] transition hover:bg-slate-50"
+          >
+            <ShoppingBag size={20} />
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-[#e9b44c] px-1 text-[10px] font-black text-[#12302b]">
+                {cartCount}
+              </span>
+            )}
+          </Link>
+
+          {/* Mobile Menu Button */}
+          <button
+            type="button"
+            aria-label={menuOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((previous) => !previous)}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 text-[#082b4c] transition hover:bg-slate-50"
+          >
+            {menuOpen ? <X size={23} /> : <Menu size={23} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}

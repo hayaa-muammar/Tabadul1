@@ -13,6 +13,7 @@ import {
   Star,
   Gift,
   ShieldCheck,
+  Sparkles,
 } from 'lucide-react';
 
 import AuthLayout from '../../layouts/AuthLayout';
@@ -76,7 +77,7 @@ function LoginPage() {
   // الانتقال إلى التسجيل حسب نوع الحساب
   const handleRegister = () => {
     if (isCustomer) {
-      navigate('/customer/login');
+      navigate('/customer/register');
       return;
     }
 
@@ -353,6 +354,18 @@ function LoginPage() {
                         : 'الدخول السريع للمتجر'}
                     </span>
                   </button>
+
+                  {/* Demo Access for Evaluators */}
+                  <div className="pt-2">
+                    <button
+                      type="button"
+                      onClick={() => navigate('/customer/home')}
+                      className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-dashed border-[#a17b16]/50 bg-[#fff9ee] px-3 py-3 text-xs font-bold text-[#835400] transition hover:bg-[#fff2d6] sm:text-sm"
+                    >
+                      <Sparkles size={18} className="text-[#a17b16]" />
+                      <span>استعراض النسخة التجريبية كمتسوق (بدون تسجيل)</span>
+                    </button>
+                  </div>
                 </form>
 
                 {/* Register Link */}

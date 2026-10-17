@@ -12,6 +12,11 @@ import CustomerOTPError from './pages/customer/CustomerOTPError';
 import MerchantOTPError from './pages/merchant/MerchantOTPError';
 import CustomerHomePage from './pages/customer/CustomerHomePage';
 import CustomerStorePage from './pages/customer/CustomerStorePage';
+import ProductDetailsPage from './pages/customer/ProductDetailsPage';
+import CustomerCartPage from './pages/customer/CustomerCartPage';
+import CustomerCheckoutPage from './pages/customer/CustomerCheckoutPage';
+import MerchantRegister from './pages/merchant/MerchantRegister';
+import InfoPage from './pages/info/InfoPage';
 function App() {
   return (
     <Routes>
@@ -70,7 +75,7 @@ function App() {
       {/* تسجيل التاجر */}
       <Route
         path="/merchant/register"
-        element={<Navigate to="/login" replace />}
+        element={<MerchantRegister />}
       />
 <Route
   path="/customer/otp-error"
@@ -85,8 +90,56 @@ function App() {
   element={<CustomerHomePage />}
 />
 <Route
+  path="/stores"
+  element={<Navigate to="/customer/home" replace />}
+/>
+<Route
+  path="/rewards"
+  element={<Navigate to="/customer/home" replace />}
+/>
+<Route
+  path="/terms"
+  element={<InfoPage />}
+/>
+<Route
+  path="/privacy"
+  element={<InfoPage />}
+/>
+<Route
+  path="/help"
+  element={<InfoPage />}
+/>
+<Route
+  path="/faq"
+  element={<InfoPage />}
+/>
+<Route
   path="/customer/store"
   element={<CustomerStorePage />}
+/>
+<Route
+  path="/customer/product/:id"
+  element={<ProductDetailsPage />}
+/>
+<Route
+  path="/customer/cart"
+  element={<CustomerCartPage />}
+/>
+<Route
+  path="/cart"
+  element={<Navigate to="/customer/cart" replace />}
+/>
+<Route
+  path="/customer/checkout"
+  element={<CustomerCheckoutPage />}
+/>
+<Route
+  path="/checkout"
+  element={<Navigate to="/customer/checkout" replace />}
+/>
+<Route
+  path="/customer/order-confirmation"
+  element={<CustomerCheckoutPage />}
 />
       {/* أي مسار غير معروف */}
       <Route

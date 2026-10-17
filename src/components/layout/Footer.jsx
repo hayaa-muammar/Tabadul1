@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function Footer() {
   const footerLinks = [
     { label: 'شروط الاستخدام', href: '/terms' },
@@ -25,13 +27,13 @@ function Footer() {
           className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs font-semibold"
         >
           {footerLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              to={link.href}
               className="text-[#43474e] transition-colors duration-200 hover:text-[#032448]"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 

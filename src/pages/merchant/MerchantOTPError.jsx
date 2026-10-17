@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   Store,
-  Languages,
-  CircleHelp,
   LockKeyhole,
   Pencil,
   CircleAlert,
