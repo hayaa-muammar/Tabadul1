@@ -1,62 +1,45 @@
 import React, { useState } from 'react';
-import HomeHeader from '../components/home/HomeHeader';
+import Header from '../components/common/Header';
+import Footer from '../components/common/Footer';
+import OfflineAlertBanner from '../components/common/OfflineAlertBanner';
 import HeroSection from '../components/home/HeroSection';
-import PwaCapabilitiesBar from '../components/home/PwaCapabilitiesBar';
 import HowItWorksSection from '../components/home/HowItWorksSection';
 import PointsCalculator from '../components/home/PointsCalculator';
 import FeaturedStoresPreview from '../components/home/FeaturedStoresPreview';
 import MerchantPartnerSection from '../components/home/MerchantPartnerSection';
-import SmartRetentionSection from '../components/home/SmartRetentionSection';
 import FaqAccordion from '../components/home/FaqAccordion';
-import HomeFooter from '../components/home/HomeFooter';
-import MobileBottomNav from '../components/home/MobileBottomNav';
 import PwaQrModal from '../components/modals/PwaQrModal';
+import StoreQuickViewModal from '../components/modals/StoreQuickViewModal';
 import ToastNotification from '../components/common/ToastNotification';
 
 export default function HomePage() {
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
+  const [selectedStore, setSelectedStore] = useState(null);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f6f3ec] text-[#12302b] antialiased selection:bg-[#e9b44c] selection:text-[#12302b] pb-20 md:pb-0 font-tajawal">
+    <div className="min-h-screen flex flex-col bg-[#f9f9ff] text-on-surface">
+      <OfflineAlertBanner />
+      <Header />
       <ToastNotification />
 
-      {/* 1. TOP HEADER (PLATFORM & APP NAVIGATION) */}
-      <HomeHeader />
-
       <main className="flex-1">
-        {/* 2. HYBRID HERO */}
-        <HeroSection />
-
-        {/* 3. PWA & WEB HYBRID CAPABILITIES BAR */}
-        <PwaCapabilitiesBar />
-
-        {/* 4. HOW IT WORKS (FOR SHOPPERS & MERCHANTS) */}
+        <HeroSection onOpenQr={() => setIsQrModalOpen(true)} />
         <HowItWorksSection />
-
-        {/* 5. INTERACTIVE POINTS & CASHBACK CALCULATOR */}
         <PointsCalculator />
-
-        {/* 6. FEATURED GAZA PARTNER STORES NETWORK */}
-        <FeaturedStoresPreview />
-
-        {/* 7. MERCHANT PORTAL & REGISTRATION */}
+        <FeaturedStoresPreview onOpenModal={(store) => setSelectedStore(store)} />
         <MerchantPartnerSection />
-
-        {/* 8. SMART RETENTION & AUTOMATED LOYALTY TOOLS */}
-        <SmartRetentionSection />
-
-        {/* 9. FREQUENTLY ASKED QUESTIONS (FAQ) */}
         <FaqAccordion />
       </main>
 
-      {/* 10. FOOTER */}
-      <HomeFooter onOpenPwaModal={() => setIsQrModalOpen(true)} />
+      <Footer />
 
-      {/* 11. MOBILE DOCKED BOTTOM APP NAVIGATION */}
-      <MobileBottomNav />
-
-      {/* 12. PWA INSTALL MODAL & SMART BOTTOM SHEET */}
+      {/* Modals */}
       <PwaQrModal isOpen={isQrModalOpen} onClose={() => setIsQrModalOpen(false)} />
+      <StoreQuickViewModal
+        store={selectedStore}
+        isOpen={!!selectedStore}
+        onClose={() => setSelectedStore(null)}
+      />
     </div>
   );
 }

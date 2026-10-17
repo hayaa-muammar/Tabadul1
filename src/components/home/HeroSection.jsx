@@ -1,119 +1,63 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import InteractivePhoneMockup from './InteractivePhoneMockup';
+import StatsTicker from './StatsTicker';
 
-export default function HeroSection() {
+export default function HeroSection({ onOpenQr }) {
   return (
-    <section className="relative pt-10 pb-20 md:py-20 overflow-hidden bg-gradient-to-b from-[#f6f3ec] via-white to-[#f6f3ec]" id="hero">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-14">
-        {/* Data saver announcement banner */}
-        <div className="mb-6 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#1f7a6e]/10 border border-[#1f7a6e]/20 text-xs sm:text-sm font-bold text-[#12302b]">
-          <span className="material-symbols-outlined text-[#1f7a6e] text-base">verified</span>
-          <span>وضع توفير البيانات: نصوص خفيفة وتحميل فوري للأسعار والمنتجات بدون استهلاك الحزم</span>
-        </div>
+    <section className="relative pt-8 pb-14 md:py-20 overflow-hidden bg-gradient-to-b from-[#f6f3ec] via-white to-[#f6f3ec] text-right" id="hero">
+      {/* Ambient background glows */}
+      <div className="absolute -top-24 right-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-[#e9b44c]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-72 sm:w-96 h-72 sm:h-96 bg-[#1f7a6e]/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Right: Clear Value Proposition */}
-          <div className="lg:col-span-7 space-y-5 text-right">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-[#12302b] leading-[1.3]">
-              منصة تبادل للأزياء والأحذية في قطاع غزة — <br />
-              <span className="text-[#1f7a6e]">تسوّق بذكاء واكسب بولاء</span>
-            </h1>
-            <p className="text-sm sm:text-base md:text-lg text-[#52606d] leading-relaxed">
-              منصة ويب خفيفة وسريعة تعمل بسلاسة مع الإنترنت الضعيف. كاش باك 5% كنقاط تراكمية (200 نقطة = 1 ₪) تمشي معك عبر متاجر الملابس والأحذية في غزة بدون تعقيد.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <a
-                className="px-6 py-3 rounded-xl bg-[#12302b] text-white font-bold text-sm shadow hover:bg-[#1f7a6e] transition-all flex items-center gap-2 cursor-pointer"
-                href="#merchants"
-              >
-                <span className="material-symbols-outlined text-[#e9b44c] text-lg">shopping_bag</span>
-                <span>تصفح متاجر الأزياء</span>
-              </a>
-              <a
-                className="px-5 py-3 rounded-xl bg-white border border-[#12302b]/20 hover:border-[#12302b] text-[#12302b] font-bold text-sm transition-all flex items-center gap-2 cursor-pointer"
-                href="#merchants-section"
-              >
-                <span className="material-symbols-outlined text-[#1f7a6e] text-lg">add_business</span>
-                <span>سجل متجرك مجاناً (تجربة 14 يوماً)</span>
-              </a>
-            </div>
-
-            {/* Key highlights row */}
-            <div className="pt-4 grid grid-cols-3 gap-3 border-t border-[#12302b]/10 text-center">
-              <div className="p-2.5 rounded-xl bg-white border border-[#12302b]/10">
-                <div className="font-black text-sm text-[#12302b]">5% كاش باك</div>
-                <div className="text-[11px] text-[#52606d]">200 نقطة = 1 ₪</div>
-              </div>
-              <div className="p-2.5 rounded-xl bg-white border border-[#12302b]/10">
-                <div className="font-black text-sm text-[#12302b]">رمز 4 أرقام</div>
-                <div className="text-[11px] text-[#52606d]">حماية أمان الاستلام</div>
-              </div>
-              <div className="p-2.5 rounded-xl bg-white border border-[#12302b]/10">
-                <div className="font-black text-sm text-[#12302b]">3% عمولة</div>
-                <div className="text-[11px] text-[#52606d]">فقط بعد نجاح التسليم</div>
-              </div>
-            </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        
+        {/* Right Column: Web Platform Value Proposition (7 cols) */}
+        <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#12302b]/5 border border-[#12302b]/10 text-xs sm:text-sm font-bold text-[#12302b]">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#1f7a6e] animate-ping" />
+            <span>منصة ويب متكاملة + تطبيق جوال خفيف (PWA) لقطاع غزة 2026</span>
           </div>
 
-          {/* Left: Structured, ultra-fast loading live metrics summary card */}
-          <div className="lg:col-span-5">
-            <div className="bg-white rounded-2xl p-6 border border-[#12302b]/15 shadow-sm space-y-4 text-right">
-              <div className="flex items-center justify-between pb-3 border-b border-[#12302b]/10">
-                <div className="flex items-center gap-2">
-                  <span className="w-8 h-8 rounded-lg bg-[#1f7a6e]/15 text-[#1f7a6e] flex items-center justify-center font-bold">
-                    <span className="material-symbols-outlined text-lg">account_balance_wallet</span>
-                  </span>
-                  <div>
-                    <div className="font-black text-sm text-[#12302b]">محفظة المتسوق الموحدة</div>
-                    <div className="text-[10px] text-[#52606d]">مربوطة برقم جوالك مباشرة</div>
-                  </div>
-                </div>
-                <span className="px-2 py-0.5 rounded-full bg-[#8df8bd]/30 text-[#12302b] text-[10px] font-bold">نشطة بغزة</span>
-              </div>
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#12302b] leading-[1.25]">
+            منصة وتطبيق تبادل... <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-l from-[#1f7a6e] via-[#1f3a5f] to-[#e9b44c]">
+              نقاطك وكاش باك مشترياتك في كل متجر بغزة!
+            </span>
+          </h1>
 
-              {/* Metric items */}
-              <div className="space-y-3">
-                <div className="p-3 rounded-xl bg-[#f6f3ec] border border-[#12302b]/10 flex items-center justify-between">
-                  <div>
-                    <div className="text-xs font-bold text-[#52606d]">محفظة واحدة تمشي معك:</div>
-                    <div className="text-xs font-black text-[#12302b] mt-0.5">2,000 نقطة معلقة في رصيدك</div>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-sm font-black text-[#1f7a6e]">= 10.00 ₪</div>
-                    <div className="text-[10px] text-[#c7922d] font-bold">رصيد خصم متاح</div>
-                  </div>
-                </div>
+          <p className="text-sm sm:text-base md:text-lg text-[#52606d] leading-relaxed max-w-2xl font-normal">
+            محفظة رقمية موحدة تجمع مشترياتك من مئات متاجر وبوتيكات الأزياء، العبايات، ملابس الأطفال، والأحذية في غزة على إنستغرام وواتساب. بدون بطاقات بلاستيكية ولا تطبيقات ثقيلة: <strong className="text-[#12302b] font-bold">رقم جوالك هو محفظتك</strong>، تستبدل نقاطك بخصم فوري كاش عند الاستلام أو بجوال باي.
+          </p>
 
-                <div className="p-3 rounded-xl bg-[#f6f3ec] border border-[#12302b]/10 flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <span className="material-symbols-outlined text-[#1f7a6e] text-lg">pin</span>
-                    <div>
-                      <div className="text-xs font-black text-[#12302b]">حماية العملية برمز 4 أرقام</div>
-                      <div className="text-[10px] text-[#52606d]">ضمان استلام القطعة وفحص المقاس قبل السداد</div>
-                    </div>
-                  </div>
-                  <span className="text-xs font-mono font-bold text-[#12302b] bg-white px-2 py-1 rounded border border-[#12302b]/10"># # # #</span>
-                </div>
+          {/* Action Buttons */}
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <Link
+              to="/register"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-xl bg-[#12302b] text-white font-bold text-xs sm:text-sm md:text-base shadow-lg hover:bg-[#1f3a5f] active:scale-95 transition-all cursor-pointer"
+            >
+              <span className="material-symbols-outlined text-[#e9b44c] icon-fill">shopping_bag</span>
+              <span>ابدأ واكسب 200 نقطة هدية</span>
+            </Link>
 
-                <div className="p-3 rounded-xl bg-[#f6f3ec] border border-[#12302b]/10 flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <span className="material-symbols-outlined text-[#e9b44c] text-lg">percent</span>
-                    <div>
-                      <div className="text-xs font-black text-[#12302b]">عمولة 3% فقط للتاجر عند البيع الناجح</div>
-                      <div className="text-[10px] text-[#52606d]">بدون أي اشتراكات أو رسوم شهرية مسبقة</div>
-                    </div>
-                  </div>
-                  <span className="text-xs font-bold text-[#1f7a6e]">0 ₪ تأسيس</span>
-                </div>
-              </div>
-
-              <div className="pt-2 text-center text-xs text-[#52606d]">
-                <span className="material-symbols-outlined text-xs align-middle text-[#1f7a6e] ml-1">check_circle</span>
-                <span>محسّن ليعمل بكفاءة فائقة على شبكات 2G/3G وانقطاع التيار</span>
-              </div>
-            </div>
+            <Link
+              to="/merchant/login"
+              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-xl bg-white border-2 border-[#12302b]/20 hover:border-[#12302b] text-[#12302b] font-bold text-xs sm:text-sm md:text-base shadow-xs hover:shadow transition-all cursor-pointer"
+            >
+              <span className="material-symbols-outlined text-[#1f7a6e]">storefront</span>
+              <span>انضم كمتجر شريك</span>
+            </Link>
           </div>
+
+          {/* Trust Metrics Bar */}
+          <StatsTicker />
         </div>
+
+        {/* Left Column: Interactive Mobile PWA Mockup Frame (5 cols) */}
+        <div className="lg:col-span-5 flex justify-center pt-4 lg:pt-0">
+          <InteractivePhoneMockup onOpenQr={onOpenQr} />
+        </div>
+
       </div>
     </section>
   );
