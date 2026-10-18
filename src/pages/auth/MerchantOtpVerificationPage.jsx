@@ -94,7 +94,21 @@ export default function MerchantOtpVerificationPage() {
   return (
     <div className="bg-[#f9f9ff] text-[#191c22] antialiased min-h-screen flex flex-col font-tajawal selection:bg-[#ffddb5] selection:text-[#2a1800]">
       {/* TOP BAR (Direct conversion of 1code.html Header) */}
-      <header className="w-full top-0 sticky z-50 bg-white shadow-xs border-b border-[#e1e2ea]/60">
+      <header className="w-full top-0 sticky z-50 bg-white shadow-xs border-b border-[#12302b]/10">
+        {/* Ultra-lightweight Connection & Data-Saver Bar */}
+        <div className="bg-[#f6f3ec] text-[#52606d] text-xs px-4 py-1.5 border-b border-[#12302b]/10 flex items-center justify-between">
+          <div className="max-w-7xl mx-auto w-full flex items-center justify-between gap-3 text-[11px] sm:text-xs">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#1f7a6e]"></span>
+              <span className="text-[#12302b] font-bold">شبكة غزة 2026 — متصل</span>
+            </div>
+            <div className="text-[#1f7a6e] font-bold hidden sm:flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-sm">bolt</span>
+              <span>جلسة تاجر معتمدة — اتصال مشفر</span>
+            </div>
+          </div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-3 flex items-center justify-between">
           
           {/* Brand Anchor */}
@@ -104,22 +118,22 @@ export default function MerchantOtpVerificationPage() {
                 <img
                   alt="شعار تبادل"
                   className="h-9 w-auto object-contain"
-                  src="/logo.png"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdiXQNmJzYIl6PECtK-0Z_eK5rLr6vyiV694yubGM6tX5iUgVUBCS9qo1D2zoByKVT8cvYptCEsHVna6sw77ll4n7Nvd1Vz5DI90zf-qUNwuux0oF_mOmf3xs70bwXSt01a-qiM-uG6Jhl_31Ti5oKhIm51tPQFAIQKYFi5IKOBkLbkyb5N_ncgv--iqOAwJFKYihJb0MaPWIsSQcHIIQnjfDJpDrs8m1_YAPT_wo28k4mi5nzkXePdB6NKTpNovOlj-g"
                 />
               </div>
-              <div className="hidden sm:flex flex-col border-r border-[#c4c6cf] pr-3">
-                <span className="text-[11px] text-[#835400] font-bold tracking-tight">بوابة التجار المعتمدة</span>
-                <span className="text-xs text-[#43474e] font-medium">غزة 2026</span>
+              <div className="hidden sm:flex flex-col border-r border-[#12302b]/15 pr-3">
+                <span className="text-[11px] text-[#c7922d] font-bold tracking-tight">بوابة التجار المعتمدة</span>
+                <span className="text-xs text-[#52606d] font-medium">غزة 2026</span>
               </div>
             </Link>
           </div>
 
           {/* Navigation Links */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-semibold">
-            <Link to="/" className="text-[#43474e] hover:text-[#032448] transition-colors">الرئيسية</Link>
-            <Link to="/stores" className="text-[#43474e] hover:text-[#032448] transition-colors">المتاجر الشريكة</Link>
-            <Link to="/#calculator" className="text-[#43474e] hover:text-[#032448] transition-colors">المكافآت</Link>
-            <Link to="/faq" className="text-[#43474e] hover:text-[#032448] transition-colors">مركز المساعدة</Link>
+            <Link to="/" className="text-[#52606d] hover:text-[#12302b] transition-colors">الرئيسية</Link>
+            <Link to="/stores" className="text-[#52606d] hover:text-[#12302b] transition-colors">المتاجر الشريكة</Link>
+            <Link to="/#calculator" className="text-[#52606d] hover:text-[#12302b] transition-colors">المكافآت</Link>
+            <Link to="/#faq" className="text-[#52606d] hover:text-[#12302b] transition-colors">الأسئلة الشائعة</Link>
           </nav>
 
           {/* Trailing Action Cluster */}
