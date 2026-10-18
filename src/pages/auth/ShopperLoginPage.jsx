@@ -116,6 +116,33 @@ export default function ShopperLoginPage() {
                 </span>
               </div>
 
+              {/* Dual-Role Selector Switcher (from 1code.html) */}
+              <div className="grid grid-cols-2 gap-2.5 mb-6 p-1 bg-surface-container-low rounded-xl">
+                <div
+                  className="flex flex-col items-center justify-center gap-1.5 py-3 px-3 rounded-lg bg-surface-container-lowest text-primary shadow-xs border border-secondary/30 relative text-center"
+                >
+                  <span className="absolute -top-2.5 right-3 bg-secondary text-white text-[10px] font-black px-2 py-0.5 rounded-full shadow-xs">
+                    +200 نقطة ترحيب
+                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-[18px] text-[#e9b44c] icon-fill">shopping_bag</span>
+                    <span className="text-xs font-black">أنا متسوق / زبون</span>
+                  </div>
+                  <span className="text-[10px] text-on-surface-variant font-medium">اكسب نقاط 5% كاش باك</span>
+                </div>
+
+                <Link
+                  to="/merchant/login"
+                  className="flex flex-col items-center justify-center gap-1.5 py-3 px-3 rounded-lg text-on-surface-variant hover:text-primary transition-all text-center"
+                >
+                  <div className="flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-[18px]">storefront</span>
+                    <span className="text-xs font-bold">أنا تاجر / متجر</span>
+                  </div>
+                  <span className="text-[10px] text-on-surface-variant/80">ضاعف مبيعاتك بدون رسوم</span>
+                </Link>
+              </div>
+
               {/* Title & Explanation */}
               <div className="mb-6 space-y-1.5">
                 <h1 className="text-xl sm:text-2xl font-black text-primary">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Header from '../../components/common/Header';
+import MerchantHeader from '../../components/common/MerchantHeader';
 import Footer from '../../components/common/Footer';
 import BackButton from '../../components/common/BackButton';
 import PasswordInputField from '../../components/common/PasswordInputField';
@@ -21,13 +21,13 @@ export default function MerchantLoginPage() {
     setTimeout(() => {
       loginAsMerchant("059-8342190", "بوتيك لمسة للأزياء");
       setIsSubmitting(false);
-      navigate('/merchant/verify-otp');
+      navigate('/merchant/otp');
     }, 600);
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-on-surface text-right">
-      <Header />
+    <div className="min-h-screen flex flex-col bg-background text-on-surface text-right font-tajawal">
+      <MerchantHeader />
 
       <main className="flex-1 flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 md:px-8">
         <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
@@ -94,6 +94,30 @@ export default function MerchantLoginPage() {
                 <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">
                   لوحة التاجر
                 </span>
+              </div>
+
+              {/* Dual-Role Selector Switcher (from 1code.html) */}
+              <div className="grid grid-cols-2 gap-2.5 mb-6 p-1 bg-surface-container-low rounded-xl">
+                <Link
+                  to="/login"
+                  className="flex flex-col items-center justify-center gap-1.5 py-3 px-3 rounded-lg text-on-surface-variant hover:text-primary transition-all text-center"
+                >
+                  <div className="flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-[18px]">shopping_bag</span>
+                    <span className="text-xs font-bold">أنا متسوق / زبون</span>
+                  </div>
+                  <span className="text-[10px] text-on-surface-variant/80">اكسب نقاط 5% كاش باك</span>
+                </Link>
+
+                <div
+                  className="flex flex-col items-center justify-center gap-1.5 py-3 px-3 rounded-lg bg-surface-container-lowest text-primary shadow-xs border border-primary/20 text-center"
+                >
+                  <div className="flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-[18px] text-[#e9b44c] icon-fill">storefront</span>
+                    <span className="text-xs font-black">أنا تاجر / متجر</span>
+                  </div>
+                  <span className="text-[10px] text-[#1f7a6e] font-bold">بوابة الشركاء المعتمدة</span>
+                </div>
               </div>
 
               <div className="space-y-1.5 mb-6">

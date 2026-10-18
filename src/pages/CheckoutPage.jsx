@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import BackButton from '../components/common/BackButton';
@@ -165,9 +166,19 @@ export default function CheckoutPage() {
                         <span className="material-symbols-outlined text-[15px]">check_circle</span>
                         <span>الرصيد المتاح بالمحفظة: <strong>350.00 ₪</strong></span>
                       </span>
-                      <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
-                        كافٍ لتغطية الفاتورة ({finalTotal.toFixed(2)} ₪)
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                          كافٍ لتغطية الفاتورة ({finalTotal.toFixed(2)} ₪)
+                        </span>
+                        <Link
+                          to="/payment-alert"
+                          className="text-[11px] text-[#ba1a1a] hover:underline flex items-center gap-0.5 font-bold"
+                          title="محاكاة حالة رصيد المحفظة غير الكافي (19code.html)"
+                        >
+                          <span className="material-symbols-outlined text-[13px]">warning</span>
+                          <span>حالة عجز الرصيد</span>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </label>

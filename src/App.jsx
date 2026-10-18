@@ -13,15 +13,16 @@ import StoresDirectoryPage from './pages/StoresDirectoryPage'; // 11code.html
 import StoreDetailPage from './pages/StoreDetailPage'; // 12code.html
 import ProductDetailPage from './pages/ProductDetailPage'; // 13code.html
 import CartPage from './pages/CartPage'; // 14code.html (authenticated) & 16code.html (guest banner)
-import CheckoutPage from './pages/CheckoutPage'; // 17code.html
+import CheckoutPage from './pages/CheckoutPage'; // 17code.html & 18code.html
+import PaymentAlertPage from './pages/PaymentAlertPage'; // 19code.html
 
 // Auth Pages
-import ShopperLoginPage from './pages/auth/ShopperLoginPage'; // 3code.html
+import ShopperLoginPage from './pages/auth/ShopperLoginPage'; // 1code.html & 3code.html
 import ShopperRegisterPage from './pages/auth/ShopperRegisterPage'; // 8code.html
 import ShopperOtpVerificationPage from './pages/auth/ShopperOtpVerificationPage'; // 4code.html
 import ForgotPasswordPage from './pages/auth/ForgotPasswordPage'; // 7code.html
 import ResetPasswordPage from './pages/auth/ResetPasswordPage'; // 9code.html
-import MerchantLoginPage from './pages/auth/MerchantLoginPage'; // 5code.html
+import MerchantLoginPage from './pages/auth/MerchantLoginPage'; // 5code.html & 1code.html
 import MerchantOtpVerificationPage from './pages/auth/MerchantOtpVerificationPage'; // 1code.html & 6code.html
 import OtpErrorStatePage from './pages/auth/OtpErrorStatePage'; // 10code.html
 
@@ -48,10 +49,13 @@ export default function App() {
                 {/* 14code.html & 16code.html: Cart (Authenticated & Guest modes) */}
                 <Route path="/cart" element={<CartPage />} />
 
-                {/* 17code.html: Checkout & Escrow Payment */}
+                {/* 17code.html & 18code.html: Checkout & Escrow Payment */}
                 <Route path="/checkout" element={<CheckoutPage />} />
 
-                {/* 3code.html: Customer / Shopper Login */}
+                {/* 19code.html: Payment Insufficient Balance Alert */}
+                <Route path="/payment-alert" element={<PaymentAlertPage />} />
+
+                {/* 3code.html & 1code.html: Customer / Shopper Login */}
                 <Route path="/login" element={<ShopperLoginPage />} />
                 <Route path="/shopper/login" element={<ShopperLoginPage />} />
 
@@ -69,11 +73,12 @@ export default function App() {
                 {/* 9code.html: Reset Password */}
                 <Route path="/reset-password" element={<ResetPasswordPage />} />
 
-                {/* 5code.html: Merchant Login Portal */}
+                {/* 5code.html & 1code.html: Merchant Login Portal */}
                 <Route path="/merchant/login" element={<MerchantLoginPage />} />
 
                 {/* 1code.html & 6code.html: Merchant OTP Verification */}
                 <Route path="/merchant/otp" element={<MerchantOtpVerificationPage />} />
+                <Route path="/merchant/verify-otp" element={<MerchantOtpVerificationPage />} />
 
                 {/* 10code.html: Merchant OTP Error State */}
                 <Route path="/merchant/otp-error" element={<OtpErrorStatePage />} />
