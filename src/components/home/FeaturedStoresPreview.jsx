@@ -21,7 +21,7 @@ export default function FeaturedStoresPreview() {
       categoryLabel: 'ملابس نسائية وشالات',
       icon: 'checkroom',
       location: 'عمر المختار',
-      description: 'غزة — شارع عمر المختار • شالات حرير، فساتين، وتشكيلات أزياء محتشمة.',
+      description: 'شارع عمر المختار • شالات حرير، فساتين، وتشكيلات أزياء محتشمة.',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBtQheYrdOHsQdS1Fj73UDx4QMkCV_5Yx_C2WFqx-acHO2_TGRJ43gq-JE2EOig4YNMM9DcJfQ4i1IgqcqY_RkFuuRBSqGRMY5Tg1G29HMxR-MNVQKYMHw6rVXEHt3lVfREb1bR21xt0aB1MfJxy7bxUJJKh6DThQu2Q03u32uliT_VRlyje-h4-zmtHB1KrCqnsRJw0ou-g4-PH-W1sCvx9FUesF8hSjMj4YbSpMy7JWgJDWqQcy-wCw'
     },
     {
@@ -32,18 +32,18 @@ export default function FeaturedStoresPreview() {
       categoryLabel: 'عبايات واستقبال',
       icon: 'styler',
       location: 'الرمال',
-      description: 'غزة — حي الرمال • تصاميم خليجية، أقمشة كريب وشيفون مطرزة يدوياً.',
+      description: 'حي الرمال • تصاميم خليجية، أقمشة كريب وشيفون مطرزة يدوياً.',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB8QEszdCp9E4PTPSiY4OtCN8FZkFNZjPaj_oD3wKxExcAcrrYGG6TyM5a8CIf1xswIY69B3EiDzQ62GEgOZouwYBEQOOpTAA6G5Q6ixBKL3IzKKxUXiIyY7ya69chrhDnN9ZP3LKlUAIgagQK9WBb0gKiYHX3wnF-wk6m1gLxcfYh9u4F207Dj7iIjJEOX7D4THmyeJAW7gxVPAuLEKquUCrrCqqsNaEEl-8WTCU0PFHO4HCG8gcTJZg'
     },
     {
       id: 'store-3',
       link: '/stores',
       category: 'shoes',
-      name: 'سنيكرز غزة للأحذية',
+      name: 'سنيكرز للأحذية',
       categoryLabel: 'أحذية وبلاطين',
       icon: 'do_not_step',
       location: 'شارع النصر',
-      description: 'غزة — شارع النصر • أحذية رياضية مريحة، سبورت كاجوال وبلاطين جينز.',
+      description: 'شارع النصر • أحذية رياضية مريحة، سبورت كاجوال وبلاطين جينز.',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDm_YW-ys-YBhihc3B0P0KVn91QVnSWBS8DJd4fk7x7wVom-lnzqTuQSYtF07r9ULBTM1JOcV6p7_3mrRm1FUpa4hJ4_ioLexRYAemt6G3h3p1Fl7lXlQBoKqJyW4aS57sQ00Knv441Pq-qOuOmEOC5oAfBJAdcTwqpuBLIf4RfVe67t6cCTQposfPaN8IWg2eSQl91pM8Dntyqo9lHsrmqCYBToKTkaFLlXPprrnJP0vSiB2dVcxAvjg'
     },
     {
@@ -54,7 +54,7 @@ export default function FeaturedStoresPreview() {
       categoryLabel: 'ملابس أطفال وبوتيك',
       icon: 'child_care',
       location: 'الرمال الجنوبي',
-      description: 'غزة — الرمال الجنوبي • تشكيلات أطفال ومواليد وأطقم ولادي وبناتي مميزة.',
+      description: 'الرمال الجنوبي • تشكيلات أطفال ومواليد وأطقم ولادي وبناتي مميزة.',
       image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCqr0Xk6CtkxiBQzT8iDTbXagaCQJOYTdxzbEcjAmLmdzwAmJRwiKqMKiakhmbvR9MjbiTdazf81OLd5FAjnbterhgsm3nOgC8I_hjDAV6eNGTgLmiBEL_TjQqynbZJTBkA0v9D3TZ6A_RpSDDPKtbCq1kCzdu8X8WqdaafyQJfRiOQx5TZXdYofcx7eVZnua51rQEWihl2bB_nqI3Fhjw_afj0cKzFnVKuMZwgs_KdN2NRsoH8BK-mBw'
     }
   ];
@@ -69,7 +69,7 @@ export default function FeaturedStoresPreview() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
           <div>
             <span className="text-xs font-black uppercase text-[#1f7a6e] bg-[#1f7a6e]/10 px-3.5 py-1 rounded-full">
-              شبكة المتاجر المعتمدة في غزة
+              شبكة المتاجر المعتمدة
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-[#12302b] mt-2">متاجر الأزياء والأحذية الموثقة</h2>
             <p className="text-[#52606d] text-sm mt-1">متاجر وبوتيكات تضمن الجودة والمقاس الصحيح مع كاش باك 5% فوري عند كل عملية شراء.</p>

@@ -5,21 +5,15 @@ export default function HeroSection() {
   return (
     <section className="relative pt-10 pb-20 md:py-20 overflow-hidden bg-gradient-to-b from-[#f6f3ec] via-white to-[#f6f3ec]" id="hero">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-14">
-        {/* Data saver announcement banner */}
-        <div className="mb-6 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#1f7a6e]/10 border border-[#1f7a6e]/20 text-xs sm:text-sm font-bold text-[#12302b]">
-          <span className="material-symbols-outlined text-[#1f7a6e] text-base">verified</span>
-          <span>وضع توفير البيانات: نصوص خفيفة وتحميل فوري للأسعار والمنتجات بدون استهلاك الحزم</span>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Right: Clear Value Proposition */}
           <div className="lg:col-span-7 space-y-5 text-right">
             <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-[#12302b] leading-[1.3]">
-              منصة تبادل للأزياء والأحذية في قطاع غزة — <br />
+              منصة تبادل للأزياء والأحذية — <br />
               <span className="text-[#1f7a6e]">تسوّق بذكاء واكسب بولاء</span>
             </h1>
             <p className="text-sm sm:text-base md:text-lg text-[#52606d] leading-relaxed">
-              منصة ويب خفيفة وسريعة تعمل بسلاسة مع الإنترنت الضعيف. كاش باك 5% كنقاط تراكمية (200 نقطة = 1 ₪) تمشي معك عبر متاجر الملابس والأحذية في غزة بدون تعقيد.
+              منصة ويب خفيفة وسريعة تعمل بسلاسة مع الإنترنت الضعيف. كاش باك 5% كنقاط تراكمية (200 نقطة = 1 ₪) تمشي معك عبر متاجر الملابس والأحذية بدون تعقيد.
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -69,7 +63,7 @@ export default function HeroSection() {
                     <div className="text-[10px] text-[#52606d]">مربوطة برقم جوالك مباشرة</div>
                   </div>
                 </div>
-                <span className="px-2 py-0.5 rounded-full bg-[#8df8bd]/30 text-[#12302b] text-[10px] font-bold">نشطة بغزة</span>
+                <span className="px-2 py-0.5 rounded-full bg-[#8df8bd]/30 text-[#12302b] text-[10px] font-bold">نشطة</span>
               </div>
 
               {/* Metric items */}

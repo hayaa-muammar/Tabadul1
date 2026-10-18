@@ -27,7 +27,7 @@ export default function PwaQrModal({ isOpen, onClose }) {
             <span>جاهز للاستخدام دون إنترنت ⚡</span>
           </span>
           <h3 className="text-xl font-black text-[#12302b]">باركود الدفع والاستبدال المباشر</h3>
-          <p className="text-xs text-gray-500 mt-1">امسح الكود عند كاشير أي متجر معتمد في غزة</p>
+          <p className="text-xs text-gray-500 mt-1">امسح الكود عند كاشير أي متجر معتمد</p>
         </div>
 
         {/* QR Code Graphic Mockup */}

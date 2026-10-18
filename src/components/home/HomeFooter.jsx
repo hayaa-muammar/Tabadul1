@@ -22,11 +22,11 @@ export default function HomeFooter({ onOpenPwaModal }) {
               </div>
             </div>
             <p className="text-sm text-white/70 leading-relaxed max-w-sm">
-              المنصة والتطبيق الموحد لمكافآت وولاء عملاء الأزياء، الملابس، العبايات، والأحذية في قطاع غزة 2026. نربط المتسوقين بأفضل متاجر البوتيك والموضة المحلية لتجربة تسوق مجزية ومستدامة.
+              المنصة والتطبيق الموحد لمكافآت وولاء عملاء الأزياء، الملابس، العبايات، والأحذية 2026. نربط المتسوقين بأفضل متاجر البوتيك والموضة لتجربة تسوق مجزية ومستدامة.
             </p>
             <div className="flex items-center gap-2 pt-1 text-[#e9b44c]">
               <span className="material-symbols-outlined text-sm">support_agent</span>
-              <span className="text-xs font-bold text-white/90">دعم مباشر 24/7 عبر واتساب غزة: 0599000000</span>
+              <span className="text-xs font-bold text-white/90">دعم مباشر 24/7 عبر واتساب: 0599000000</span>
             </div>
           </div>
 
@@ -88,11 +88,9 @@ export default function HomeFooter({ onOpenPwaModal }) {
         {/* Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/60 gap-4">
           <div>
-            © 2026 شبكة ومنصة تبادل للمكافآت والولاء. غزة، فلسطين. جميع الحقوق محفوظة.
+            © 2026 شبكة ومنصة تبادل للمكافآت والولاء. جميع الحقوق محفوظة.
           </div>
           <div className="flex items-center gap-3 text-white/75">
-            <span>صُمم خصيصاً لمجتمع وتجار قطاع غزة</span>
-            <span>•</span>
             <span className="text-[#e9b44c] font-bold">النسخة الهجينة (Web &amp; PWA)</span>
           </div>
         </div>

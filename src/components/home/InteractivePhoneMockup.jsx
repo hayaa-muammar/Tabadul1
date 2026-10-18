@@ -81,7 +81,7 @@ export default function InteractivePhoneMockup({ onOpenQr }) {
                 </div>
                 <div>
                   <h4 className="font-black text-xs text-[#12302b]">سارة أحمد</h4>
-                  <p className="text-[10px] text-[#52606d]">غزة — حي الرمال • عضوية ذهبية</p>
+                  <p className="text-[10px] text-[#52606d]">عضوية ذهبية معتمدة</p>
                 </div>
               </div>
               <span className="px-2 py-0.5 rounded-full bg-[#1f7a6e]/10 text-[#1f7a6e] text-[10px] font-bold flex items-center gap-0.5">

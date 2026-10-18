@@ -24,7 +24,7 @@ export default function PointsCalculator() {
             <div className="lg:col-span-7 space-y-6">
               <div>
                 <div className="flex justify-between items-center mb-3">
-                  <label className="font-bold text-[#12302b] text-base" htmlFor="purchase-range">مشترياتك الشهرية المتوقعة من غزة:</label>
+                  <label className="font-bold text-[#12302b] text-base" htmlFor="purchase-range">مشترياتك الشهرية المتوقعة:</label>
                   <div className="flex items-baseline gap-1 text-3xl font-black text-[#1f7a6e]">
                     <span id="calc-amount">{amount.toLocaleString('en-US')}</span>
                     <span className="text-base font-normal text-[#52606d]">₪ شيكل</span>
@@ -40,7 +40,7 @@ export default function PointsCalculator() {
                   type="range"
                   value={amount}
                   onChange={(e) => setAmount(parseInt(e.target.value, 10))}
-                  aria-label="مشترياتك الشهرية المتوقعة من غزة"
+                  aria-label="مشترياتك الشهرية المتوقعة"
                 />
 
                 <div className="flex justify-between text-xs text-[#52606d] font-bold mt-2">
@@ -55,7 +55,7 @@ export default function PointsCalculator() {
               <div className="p-4 rounded-2xl bg-[#f6f3ec] border border-[#12302b]/10 space-y-2">
                 <div className="flex items-center gap-2 text-sm font-bold text-[#12302b]">
                   <span className="material-symbols-outlined text-[#e9b44c] fill">verified</span>
-                  <span>معادلة الشفافية والخصم المباشر في غزة</span>
+                  <span>معادلة الشفافية والخصم المباشر</span>
                 </div>
                 <p className="text-xs text-[#52606d] leading-relaxed">
                   كل 1 ₪ تصرفه يمنحك 10 نقاط فورية. كل 1,000 نقطة مجمعة تمنحك خصماً نقدياً بقيمة 5 ₪ مستردة كاش باك تستخدمها متى شئت.

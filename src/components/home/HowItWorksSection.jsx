@@ -21,7 +21,7 @@ export default function HowItWorksSection() {
             <span className="text-xs font-bold text-[#1f7a6e] block mb-1">الخطوة الأولى</span>
             <h3 className="text-lg font-black text-[#12302b] mb-2">اطلب من متجر الأزياء المعتمد وادفع بأمان</h3>
             <p className="text-[#52606d] text-xs leading-relaxed">
-              تصفح تشكيلة الملابس والأحذية من متاجر غزة المعتمدة عبر المنصة أو إنستغرام، واختر طريقة الدفع (عند الاستلام أو جوال باي).
+              تصفح تشكيلة الملابس والأحذية من المتاجر المعتمدة عبر المنصة أو إنستغرام، واختر طريقة الدفع (عند الاستلام أو جوال باي).
             </p>
           </div>
 
@@ -45,7 +45,7 @@ export default function HowItWorksSection() {
             <span className="text-xs font-bold text-[#c7922d] block mb-1">الخطوة الثالثة</span>
             <h3 className="text-lg font-black text-[#12302b] mb-2">اكسب نقاطك واستبدلها بخصم مباشر في مشترياتك القادمة</h3>
             <p className="text-[#52606d] text-xs leading-relaxed">
-              تُضاف نقاط الكاش باك 5% تلقائياً لمحفظتك (200 نقطة = 1 ₪) وتستبدلها كخصم نقدي في أي متجر أزياء أو أحذية شريك داخل غزة.
+              تُضاف نقاط الكاش باك 5% تلقائياً لمحفظتك (200 نقطة = 1 ₪) وتستبدلها كخصم نقدي في أي متجر أزياء أو أحذية شريك.
             </p>
           </div>
         </div>

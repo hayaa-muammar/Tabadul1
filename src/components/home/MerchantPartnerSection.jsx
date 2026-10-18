@@ -22,14 +22,14 @@ export default function MerchantPartnerSection() {
           {/* Content Column */}
           <div className="lg:col-span-7 space-y-6">
             <span className="text-xs font-black uppercase tracking-wider text-[#e9b44c] bg-[#e9b44c]/15 px-3.5 py-1.5 rounded-full inline-block">
-              أصحاب المتاجر ومشاريع إنستغرام بغزة
+              أصحاب المتاجر ومشاريع إنستغرام
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight">
               حوّل زبائن المرة الواحدة إلى <br />
               <span className="text-[#e9b44c]">زبائن دائمين مدى الحياة!</span>
             </h2>
             <p className="text-white/80 text-base md:text-lg leading-relaxed font-normal">
-              في سوق غزة المليء بالمنافسة، الخصم العشوائي يقلل أرباحك الصافية. برنامج الولاء التشاركي في «تبادل» يضمن عودة الزبونة للشراء منك مرة بعد أخرى، ويجلب لك زبائن جدد يحملون نقاطاً يريدون إنفاقها لديك.
+              في السوق المليء بالمنافسة، الخصم العشوائي يقلل أرباحك الصافية. برنامج الولاء التشاركي في «تبادل» يضمن عودة الزبونة للشراء منك مرة بعد أخرى، ويجلب لك زبائن جدد يحملون نقاطاً يريدون إنفاقها لديك.
             </p>
 
             {/* 4 Core Merchant Advantages */}
@@ -60,7 +60,7 @@ export default function MerchantPartnerSection() {
                   <span>تسويات نقدية وبنكية بانتظام</span>
                 </div>
                 <p className="text-xs text-white/70 leading-relaxed">
-                  نظام تسوية مالية دقيق كل أسبوع، بتحويل بنكي فوري أو تسليم نقدي مباشر (كاش) داخل غزة.
+                  نظام تسوية مالية دقيق كل أسبوع، بتحويل بنكي فوري أو تسليم نقدي مباشر (كاش).
                 </p>
               </div>
 
@@ -89,7 +89,7 @@ export default function MerchantPartnerSection() {
                 <label className="block text-xs font-bold text-[#12302b] mb-1">اسم المتجر أو صفحة الإنستغرام</label>
                 <input
                   className="w-full text-sm px-4 py-3 rounded-xl bg-[#f6f3ec] border border-[#12302b]/15 focus:border-[#1f7a6e] focus:bg-white focus:outline-none"
-                  placeholder="مثال: بوتيك غزة فاشن"
+                  placeholder="مثال: بوتيك فاشن"
                   required
                   type="text"
                   value={storeName}
@@ -98,7 +98,7 @@ export default function MerchantPartnerSection() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#12302b] mb-1">رقم الواتساب للتواصل (غزة)</label>
+                <label className="block text-xs font-bold text-[#12302b] mb-1">رقم الواتساب للتواصل</label>
                 <input
                   className="w-full text-sm px-4 py-3 rounded-xl bg-[#f6f3ec] border border-[#12302b]/15 focus:border-[#1f7a6e] focus:bg-white focus:outline-none text-right"
                   dir="ltr"
