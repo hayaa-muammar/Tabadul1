@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function HomeFooter({ onOpenPwaModal }) {
   return (
@@ -36,7 +37,7 @@ export default function HomeFooter({ onOpenPwaModal }) {
               <li><a className="hover:text-white transition-colors" href="#hero">الرئيسية</a></li>
               <li><a className="hover:text-white transition-colors" href="#how-it-works">كيف يعمل النظام</a></li>
               <li><a className="hover:text-white transition-colors" href="#calculator">حاسبة النقاط والوفر</a></li>
-              <li><a className="hover:text-white transition-colors" href="#merchants">شبكة المتاجر المعتمدة</a></li>
+              <li><Link className="hover:text-white transition-colors" to="/stores">شبكة المتاجر المعتمدة</Link></li>
               <li>
                 <button
                   type="button"
@@ -57,7 +58,7 @@ export default function HomeFooter({ onOpenPwaModal }) {
               <li><a className="hover:text-white transition-colors" href="#smart-ai">المساعد الذكي للولاء</a></li>
               <li><a className="hover:text-white transition-colors" href="#merchants-section">مزايا شبكة تبادل</a></li>
               <li><a className="hover:text-white transition-colors" href="#merchants-section">سياسة التسويات الأسبوعية</a></li>
-              <li><a className="hover:text-white transition-colors" href="/merchant/login">لوحة تحكم التاجر</a></li>
+              <li><Link className="hover:text-white transition-colors" to="/merchant/login">لوحة تحكم التاجر</Link></li>
             </ul>
           </div>
 

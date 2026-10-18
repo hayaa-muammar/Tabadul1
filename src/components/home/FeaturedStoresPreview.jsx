@@ -1,49 +1,88 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { storesData } from '../../data/storesData';
-import StoreCard from '../catalog/StoreCard';
 
-export default function FeaturedStoresPreview({ onOpenModal }) {
-  const [activeCategory, setActiveCategory] = useState("all");
+export default function FeaturedStoresPreview() {
+  const [activeCategory, setActiveCategory] = useState('all');
 
   const categories = [
-    { id: "all", label: "جميع المتاجر" },
-    { id: "women", label: "أزياء وفساتين" },
-    { id: "abayas", label: "عبايات وشالات" },
-    { id: "shoes", label: "أحذية فاخرة" },
-    { id: "kids", label: "ملابس أطفال" }
+    { id: 'all', label: 'الكل' },
+    { id: 'women', label: 'ملابس نسائية وعبايات' },
+    { id: 'men', label: 'أزياء رجالية' },
+    { id: 'kids', label: 'ملابس أطفال' },
+    { id: 'shoes', label: 'أحذية وبلاطين' }
   ];
 
-  const filteredStores = activeCategory === "all"
-    ? storesData.slice(0, 3)
-    : storesData.filter((s) => s.category === activeCategory).slice(0, 3);
+  const stores = [
+    {
+      id: 'store-1',
+      link: '/stores',
+      category: 'women',
+      name: 'متجر بيت الشال للأزياء',
+      categoryLabel: 'ملابس نسائية وشالات',
+      icon: 'checkroom',
+      location: 'عمر المختار',
+      description: 'غزة — شارع عمر المختار • شالات حرير، فساتين، وتشكيلات أزياء محتشمة.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBtQheYrdOHsQdS1Fj73UDx4QMkCV_5Yx_C2WFqx-acHO2_TGRJ43gq-JE2EOig4YNMM9DcJfQ4i1IgqcqY_RkFuuRBSqGRMY5Tg1G29HMxR-MNVQKYMHw6rVXEHt3lVfREb1bR21xt0aB1MfJxy7bxUJJKh6DThQu2Q03u32uliT_VRlyje-h4-zmtHB1KrCqnsRJw0ou-g4-PH-W1sCvx9FUesF8hSjMj4YbSpMy7JWgJDWqQcy-wCw'
+    },
+    {
+      id: 'store-2',
+      link: '/stores/sultana-abayas',
+      category: 'women',
+      name: 'سلطانة العبايات الفاخرة',
+      categoryLabel: 'عبايات واستقبال',
+      icon: 'styler',
+      location: 'الرمال',
+      description: 'غزة — حي الرمال • تصاميم خليجية، أقمشة كريب وشيفون مطرزة يدوياً.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB8QEszdCp9E4PTPSiY4OtCN8FZkFNZjPaj_oD3wKxExcAcrrYGG6TyM5a8CIf1xswIY69B3EiDzQ62GEgOZouwYBEQOOpTAA6G5Q6ixBKL3IzKKxUXiIyY7ya69chrhDnN9ZP3LKlUAIgagQK9WBb0gKiYHX3wnF-wk6m1gLxcfYh9u4F207Dj7iIjJEOX7D4THmyeJAW7gxVPAuLEKquUCrrCqqsNaEEl-8WTCU0PFHO4HCG8gcTJZg'
+    },
+    {
+      id: 'store-3',
+      link: '/stores',
+      category: 'shoes',
+      name: 'سنيكرز غزة للأحذية',
+      categoryLabel: 'أحذية وبلاطين',
+      icon: 'do_not_step',
+      location: 'شارع النصر',
+      description: 'غزة — شارع النصر • أحذية رياضية مريحة، سبورت كاجوال وبلاطين جينز.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDm_YW-ys-YBhihc3B0P0KVn91QVnSWBS8DJd4fk7x7wVom-lnzqTuQSYtF07r9ULBTM1JOcV6p7_3mrRm1FUpa4hJ4_ioLexRYAemt6G3h3p1Fl7lXlQBoKqJyW4aS57sQ00Knv441Pq-qOuOmEOC5oAfBJAdcTwqpuBLIf4RfVe67t6cCTQposfPaN8IWg2eSQl91pM8Dntyqo9lHsrmqCYBToKTkaFLlXPprrnJP0vSiB2dVcxAvjg'
+    },
+    {
+      id: 'store-4',
+      link: '/stores/lamsa-boutique',
+      category: 'kids',
+      name: 'بوتيك لمسة Lamsa للأطفال',
+      categoryLabel: 'ملابس أطفال وبوتيك',
+      icon: 'child_care',
+      location: 'الرمال الجنوبي',
+      description: 'غزة — الرمال الجنوبي • تشكيلات أطفال ومواليد وأطقم ولادي وبناتي مميزة.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCqr0Xk6CtkxiBQzT8iDTbXagaCQJOYTdxzbEcjAmLmdzwAmJRwiKqMKiakhmbvR9MjbiTdazf81OLd5FAjnbterhgsm3nOgC8I_hjDAV6eNGTgLmiBEL_TjQqynbZJTBkA0v9D3TZ6A_RpSDDPKtbCq1kCzdu8X8WqdaafyQJfRiOQx5TZXdYofcx7eVZnua51rQEWihl2bB_nqI3Fhjw_afj0cKzFnVKuMZwgs_KdN2NRsoH8BK-mBw'
+    }
+  ];
+
+  const displayedStores = activeCategory === 'all'
+    ? stores
+    : stores.filter((s) => s.category === activeCategory);
 
   return (
-    <section className="py-14 sm:py-20 md:py-24 bg-white text-right" id="merchants">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
-        
-        {/* Section Header & Tabs */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-2">
-            <span className="text-xs sm:text-sm font-bold text-[#1f7a6e] bg-[#1f7a6e]/10 px-3.5 py-1 rounded-full">
-              شبكة شركاء غزة
+    <section className="py-20 md:py-28 bg-white text-right" id="merchants">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
+          <div>
+            <span className="text-xs font-black uppercase text-[#1f7a6e] bg-[#1f7a6e]/10 px-3.5 py-1 rounded-full">
+              شبكة المتاجر المعتمدة في غزة
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#12302b]">
-              متاجر وبوتيكات أزياء معتمدة في تبادل
-            </h2>
-            <p className="text-xs sm:text-sm md:text-base text-on-surface-variant max-w-xl">
-              تسوّق من أفضل معارض الأزياء والعبايات والأحذية واجمع نقاط كاش باك موحدة في محفظة واحدة.
-            </p>
+            <h2 className="text-2xl md:text-3xl font-black text-[#12302b] mt-2">متاجر الأزياء والأحذية الموثقة</h2>
+            <p className="text-[#52606d] text-sm mt-1">متاجر وبوتيكات تضمن الجودة والمقاس الصحيح مع كاش باك 5% فوري عند كل عملية شراء.</p>
           </div>
 
-          {/* Category Filter Tabs */}
-          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 scrollbar-none">
+          {/* Clean Categories Filter (Strictly Fashion & Shoes) */}
+          <div className="flex flex-wrap items-center gap-1.5">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 type="button"
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   activeCategory === cat.id
                     ? 'bg-[#12302b] text-white shadow-xs'
                     : 'bg-[#f6f3ec] text-[#52606d] hover:bg-[#12302b]/10'
@@ -55,24 +94,46 @@ export default function FeaturedStoresPreview({ onOpenModal }) {
           </div>
         </div>
 
-        {/* Stores Grid Showcase */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredStores.map((store) => (
-            <StoreCard key={store.id} store={store} onOpenModal={onOpenModal} />
+        {/* Resilient Store Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {displayedStores.map((store) => (
+            <Link
+              key={store.id}
+              to={store.link}
+              className="bg-white rounded-xl overflow-hidden border border-[#12302b]/15 shadow-sm hover:shadow-md transition-all flex flex-col group cursor-pointer"
+            >
+              <div className="h-40 relative bg-[#f6f3ec] overflow-hidden">
+                <img
+                  alt={store.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                  src={store.image}
+                />
+                <span className="absolute top-2.5 right-2.5 bg-[#12302b] text-white text-[10px] font-black px-2 py-0.5 rounded shadow">
+                  كاش باك 5%
+                </span>
+                <span className="absolute bottom-2.5 left-2.5 bg-white/95 text-[#1f7a6e] text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1 shadow-sm">
+                  <span className="material-symbols-outlined text-xs fill">verified</span>
+                  <span>{store.location}</span>
+                </span>
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="text-[11px] font-bold text-[#c7922d] flex items-center gap-1">
+                    <span className="material-symbols-outlined text-xs">{store.icon}</span>
+                    <span>{store.categoryLabel}</span>
+                  </div>
+                  <h3 className="text-base font-black text-[#12302b] mt-1 group-hover:text-[#1f7a6e] transition-colors">{store.name}</h3>
+                  <p className="text-xs text-[#52606d] mt-1 leading-relaxed">{store.description}</p>
+                </div>
+                <div className="mt-3 pt-2.5 border-t border-[#12302b]/10 flex items-center justify-between text-xs">
+                  <span className="text-[#52606d]">معادلة الوفر:</span>
+                  <span className="text-[#1f7a6e] font-black">200 نقطة = 1 ₪</span>
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
-
-        {/* View All CTA */}
-        <div className="text-center pt-4">
-          <Link
-            to="/stores"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container border border-outline-variant/60 text-primary font-bold text-sm sm:text-base transition-all active:scale-95 shadow-xs"
-          >
-            <span>استكشف كافة المتاجر الـ 48 المعتمدة</span>
-            <span className="material-symbols-outlined text-[18px]">arrow_back</span>
-          </Link>
-        </div>
-
       </div>
     </section>
   );

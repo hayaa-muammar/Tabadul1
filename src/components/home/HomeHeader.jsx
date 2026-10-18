@@ -2,10 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function HomeHeader() {
-  const handleShopperLogin = () => {
-    alert('أهلاً بك! رقم جوالك الفلسطيني هو حسابك في شبكة تبادل غزة.');
-  };
-
   return (
     <header className="sticky top-0 z-40 bg-white/95 text-[#12302b] border-b border-[#12302b]/10 shadow-sm backdrop-blur-md">
       {/* Ultra-lightweight Connection & Data-Saver Bar */}
@@ -47,21 +43,20 @@ export default function HomeHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
+          <Link
+            to="/merchant/login"
             className="px-3.5 py-1.5 rounded-xl bg-[#f6f3ec] hover:bg-[#12302b]/10 text-[#12302b] font-bold text-xs flex items-center gap-1.5 border border-[#12302b]/15 transition-all"
-            href="#merchants-section"
           >
             <span className="material-symbols-outlined text-sm text-[#1f7a6e]">storefront</span>
             <span>بوابة التاجر</span>
-          </a>
-          <button
-            type="button"
+          </Link>
+          <Link
+            to="/login"
             className="px-3.5 py-1.5 rounded-xl bg-[#12302b] hover:bg-[#1f7a6e] text-white font-black text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
-            onClick={handleShopperLogin}
           >
             <span className="material-symbols-outlined text-sm text-[#e9b44c]">person</span>
             <span>دخول الزبون</span>
-          </button>
+          </Link>
         </div>
       </div>
     </header>

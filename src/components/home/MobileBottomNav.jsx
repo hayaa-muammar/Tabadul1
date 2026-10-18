@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function MobileBottomNav() {
   return (
@@ -8,18 +9,18 @@ export default function MobileBottomNav() {
           <span className="material-symbols-outlined text-lg">home</span>
           <span>الرئيسية</span>
         </a>
-        <a className="flex flex-col items-center justify-center text-[#52606d] text-xs font-bold" href="#merchants">
+        <Link className="flex flex-col items-center justify-center text-[#52606d] text-xs font-bold" to="/stores">
           <span className="material-symbols-outlined text-lg">storefront</span>
           <span>المتاجر</span>
-        </a>
+        </Link>
         <a className="flex flex-col items-center justify-center text-[#52606d] text-xs font-bold" href="#calculator">
           <span className="material-symbols-outlined text-lg">calculate</span>
           <span>الحاسبة</span>
         </a>
-        <a className="flex flex-col items-center justify-center text-[#52606d] text-xs font-bold" href="#merchants-section">
+        <Link className="flex flex-col items-center justify-center text-[#52606d] text-xs font-bold" to="/merchant/login">
           <span className="material-symbols-outlined text-lg">add_business</span>
           <span>انضمام تاجر</span>
-        </a>
+        </Link>
       </div>
     </nav>
   );

@@ -1,69 +1,55 @@
-import React, { useState } from 'react';
-import { faqData } from '../../data/faqData';
+import React from 'react';
 
 export default function FaqAccordion() {
-  const [openId, setOpenId] = useState("q1");
-
-  const toggle = (id) => {
-    setOpenId((prev) => (prev === id ? null : id));
-  };
+  const faqs = [
+    {
+      num: 1,
+      q: 'هل أحتاج لتحميل تطبيق أو استهلاك ذاكرة الهاتف؟',
+      a: 'لا، إطلاقاً. منصة «تبادل» في نسختها الأولى هي منصة ويب خفيفة 100% تعمل على أي متصفح في غزة بأقل استهلاك للإنترنت. رقم جوالك هو حسابك، وتصلك تفاصيل الرصيد والطلبات مباشرة عبر واتساب.'
+    },
+    {
+      num: 2,
+      q: 'ما هي معادلة الكاش باك والقيمة النقدية الفعلية للنقاط؟',
+      a: 'المعادلة شفافة ومحددة: تكسب 10 نقاط عن كل 1 ₪ تدفعه (ما يعادل 5% كاش باك). كل 200 نقطة تساوي 1 ₪ كاش مباشر يُخصم من فاتورتك عند الشراء من أي متجر ملابس أو أحذية شريك في غزة.'
+    },
+    {
+      num: 3,
+      q: 'كيف يحميني رمز الأمان المكون من 4 أرقام؟',
+      a: 'عند طلب أي قطعة أزياء أو حذاء، يتم توليد رمز أمان خاص بالطلب من 4 أرقام. لا تسلّم هذا الرمز لمندوب التوصيل إلا بعد معاينة القطعة والتأكد من مطابقة المقاس والجودة، مما يضمن حقك الكامل قبل تحويل المبلغ.'
+    },
+    {
+      num: 4,
+      q: 'ما هي المتاجر المشمولة في المنصة؟',
+      a: 'المنصة مخصصة حصرياً لقطاع الأزياء، الملابس النسائية، العبايات، الأزياء الرجالية، ملابس الأطفال، وبوتيكات الأحذية والبلاطين في غزة (عمر المختار، الرمال، النصر، والوسطى والجنوب) لضمان أعلى درجات التخصص والجودة.'
+    }
+  ];
 
   return (
-    <section className="py-14 sm:py-20 md:py-24 bg-white border-t border-[#12302b]/10 text-right" id="faq">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
-        
-        {/* Section Heading */}
-        <div className="text-center space-y-2">
-          <span className="text-xs sm:text-sm font-bold text-[#1f7a6e] bg-[#1f7a6e]/10 px-3.5 py-1 rounded-full">
-            إجابات واضحة ومباشرة
+    <section className="py-20 md:py-28 bg-white border-t border-[#12302b]/10 text-right" id="faq">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-xl mx-auto mb-10">
+          <span className="text-xs font-black uppercase text-[#1f7a6e] bg-[#1f7a6e]/10 px-3.5 py-1 rounded-full">
+            كل ما تحتاج معرفته
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#12302b]">
-            الأسئلة الشائعة حول منصة تبادل
-          </h2>
-          <p className="text-xs sm:text-sm md:text-base text-on-surface-variant max-w-lg mx-auto">
-            كل ما تود معرفته عن جمع النقاط، استبدال الكاش باك، والأمان الرقمي لطلباتك في قطاع غزة.
-          </p>
+          <h2 className="text-2xl sm:text-3xl font-black text-[#12302b] mt-2">الأسئلة الشائعة</h2>
+          <p className="text-[#52606d] text-sm mt-1">إجابات مباشرة ومحددة لمتسوقي وتجار الملابس والأحذية في غزة.</p>
         </div>
 
-        {/* Accordion List */}
-        <div className="space-y-3.5">
-          {faqData.map((item) => {
-            const isOpen = openId === item.id;
-            return (
-              <div
-                key={item.id}
-                className={`rounded-2xl border transition-all overflow-hidden ${
-                  isOpen 
-                    ? 'border-[#1f7a6e] bg-[#f6f3ec]/60 shadow-xs' 
-                    : 'border-gray-200 bg-white hover:border-gray-300'
-                }`}
-              >
-                <button
-                  type="button"
-                  onClick={() => toggle(item.id)}
-                  className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-right cursor-pointer"
-                  aria-expanded={isOpen}
-                >
-                  <span className={`font-bold text-sm sm:text-base ${isOpen ? 'text-[#1f7a6e]' : 'text-[#12302b]'}`}>
-                    {item.question}
-                  </span>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                    isOpen ? 'bg-[#1f7a6e] text-white rotate-180' : 'bg-gray-100 text-gray-600'
-                  }`}>
-                    <span className="material-symbols-outlined text-[18px]">expand_more</span>
-                  </div>
-                </button>
-
-                {isOpen && (
-                  <div className="px-5 pb-5 text-xs sm:text-sm text-on-surface-variant leading-relaxed border-t border-gray-100 pt-3 animate-fade-in">
-                    {item.answer}
-                  </div>
-                )}
+        <div className="space-y-3">
+          {faqs.map((faq) => (
+            <div key={faq.num} className="bg-[#f6f3ec] rounded-xl border border-[#12302b]/10 p-4 sm:p-5">
+              <div className="flex items-center gap-2 text-[#12302b] font-bold text-base mb-1.5">
+                <span className="w-6 h-6 rounded-full bg-[#1f7a6e] text-white flex items-center justify-center text-xs font-black flex-shrink-0">
+                  {faq.num}
+                </span>
+                <span>{faq.q}</span>
               </div>
-            );
-          })}
+              <p className="text-xs sm:text-sm text-[#52606d] leading-relaxed pr-8">
+                {faq.a}
+              </p>
+            </div>
+          ))}
         </div>
-
       </div>
     </section>
   );
