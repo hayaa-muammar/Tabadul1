@@ -43,7 +43,7 @@ export default function ShopperLoginPage() {
                 <span className="text-xl">🇵🇸</span>
                 <div>
                   <p className="font-bold text-sm text-white">منصة وتطبيق تبادل</p>
-                  <p className="text-[11px] text-[#ffddb5]">برنامج ولاء متاجر غزة 2026</p>
+                  <p className="text-[11px] text-[#ffddb5]">برنامج ولاء المتاجر 2026</p>
                 </div>
               </div>
 
@@ -72,7 +72,7 @@ export default function ShopperLoginPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-white text-xs sm:text-sm">كاش باك 5% على كل مشترى</h3>
-                    <p className="text-white/75 mt-0.5">كل 1 شيكل تنفقه في متاجر غزة المعتمدة يمنحك 10 نقاط ولاء.</p>
+                    <p className="text-white/75 mt-0.5">كل 1 شيكل تنفقه في المتاجر المعتمدة يمنحك 10 نقاط ولاء.</p>
                   </div>
                 </div>
 
@@ -92,7 +92,7 @@ export default function ShopperLoginPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-white text-xs sm:text-sm">محفظة ولاء موحدة للمتسوقين</h3>
-                    <p className="text-white/75 mt-0.5">رقم هاتفك هو بطاقتك الرقمية في كل أسواق غزة دون بطاقات بلاستيكية.</p>
+                    <p className="text-white/75 mt-0.5">رقم هاتفك هو بطاقتك الرقمية في كل الأسواق دون بطاقات بلاستيكية.</p>
                   </div>
                 </div>
               </div>
@@ -101,7 +101,7 @@ export default function ShopperLoginPage() {
             {/* Bottom Trust Note */}
             <div className="relative z-10 pt-4 mt-6 border-t border-white/20 flex items-center gap-2 text-xs text-white/80">
               <span className="material-symbols-outlined text-amber-400 text-base">verified_user</span>
-              <span>نظام الولاء الداعم للاقتصاد الوطني ومتاجر قطاع غزة 2026</span>
+              <span>نظام الولاء الداعم للاقتصاد الوطني والمتاجر 2026</span>
             </div>
           </section>
 

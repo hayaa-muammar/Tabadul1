@@ -56,7 +56,7 @@ export default function ShopperOtpVerificationPage() {
           <div className="flex items-center justify-between">
             <BackButton label="الرجوع لتعديل رقم الجوال" fallbackRoute="/login" />
             <span className="text-xs font-bold text-on-surface-variant bg-surface-container px-3 py-1 rounded-full border border-outline-variant/40">
-              خطوة التحقق • غزة 2026
+              خطوة التحقق • 2026
             </span>
           </div>
 
@@ -154,7 +154,7 @@ export default function ShopperOtpVerificationPage() {
                 <span>تشفير مالي 256-bit</span>
               </span>
               <span>•</span>
-              <span>منصة تبادل المعتمدة بغزة</span>
+              <span>منصة تبادل المعتمدة</span>
             </div>
 
           </div>

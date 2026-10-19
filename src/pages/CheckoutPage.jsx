@@ -97,7 +97,7 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block font-bold text-on-surface mb-1.5">تفاصيل العنوان في قطاع غزة</label>
+                  <label className="block font-bold text-on-surface mb-1.5">تفاصيل العنوان</label>
                   <input
                     type="text"
                     required

@@ -10,20 +10,6 @@ export default function SpecializedHeader({ variant, customTitle, customBadge })
 
   return (
     <header className="w-full top-0 sticky z-40 bg-white/95 text-[#12302b] border-b border-[#12302b]/10 shadow-sm backdrop-blur-md transition-all font-tajawal">
-      {/* Ultra-lightweight Connection & Status Bar */}
-      <div className="bg-[#f6f3ec] text-[#52606d] text-xs px-4 py-1.5 border-b border-[#12302b]/10 flex items-center justify-between">
-        <div className="max-w-7xl mx-auto w-full flex items-center justify-between gap-3 text-[11px] sm:text-xs">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#1f7a6e]"></span>
-            <span className="text-[#12302b] font-bold">شبكة غزة 2026 — متصل</span>
-          </div>
-          <div className="text-[#1f7a6e] font-bold hidden sm:flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-sm">shield</span>
-            <span>جلسة آمنة ومحمية بالكامل</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         

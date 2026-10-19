@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
     points: 2400,
     walletBalance: 12.00,
     address: "شارع النصر الرئيسي، بجوار مجمع النخيل الطبي، عمارة الأمل، الطابق الثالث",
-    city: "غزة",
+    city: "فلسطين",
     isGuest: false
   });
 
@@ -31,7 +31,7 @@ export function AuthProvider({ children }) {
       points: 2400,
       walletBalance: 12.00,
       address: "شارع النصر الرئيسي، بجوار مجمع النخيل الطبي، عمارة الأمل، الطابق الثالث",
-      city: "غزة",
+      city: "فلسطين",
       isGuest: false
     });
   };

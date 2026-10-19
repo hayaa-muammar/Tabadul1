@@ -38,7 +38,7 @@ export default function MerchantLoginPage() {
               
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#ffddb5] text-xs font-bold">
                 <span className="material-symbols-outlined text-[16px] text-[#e9b44c] icon-fill">verified</span>
-                <span>بوابة التجار المعتمدة — شبكة غزة 2026</span>
+                <span>بوابة التجار المعتمدة — شبكة 2026</span>
               </div>
 
               <div className="space-y-2">
@@ -46,7 +46,7 @@ export default function MerchantLoginPage() {
                   منظومة إدارة ولاء وتسويات المتاجر
                 </h1>
                 <p className="text-xs sm:text-sm text-white/85 leading-relaxed max-w-xl">
-                  لوحة تحكم خفيفة وسريعة مصممة خصيصاً لمتاجر وبوتيكات قطاع غزة لإدارة عمليات البيع، تسجيل نقاط الزبائن، ومتابعة التسويات المالية لحظة بلحظة.
+                  لوحة تحكم خفيفة وسريعة مصممة خصيصاً لمتاجر وبوتيكات الأزياء لإدارة عمليات البيع، تسجيل نقاط الزبائن، ومتابعة التسويات المالية لحظة بلحظة.
                 </p>
               </div>
 
@@ -199,7 +199,7 @@ export default function MerchantLoginPage() {
 
             {/* Bottom Join CTA */}
             <div className="pt-4 border-t border-outline-variant/30 text-center text-xs sm:text-sm text-on-surface-variant">
-              <span>هل تملك متجراً في غزة ولم تنضم بعد؟</span>
+              <span>هل تملك متجراً ولم تنضم بعد؟</span>
               <Link to="/#merchant-signup" className="font-bold text-gaza-teal hover:underline mr-1 block sm:inline mt-1 sm:mt-0">
                 سجّل متجرك كشريك معتمد مجاناً ➔
               </Link>

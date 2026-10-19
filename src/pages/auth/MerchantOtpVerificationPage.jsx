@@ -266,7 +266,7 @@ export default function MerchantOtpVerificationPage() {
               </div>
               <div className="flex items-center gap-1 text-[#74777f]">
                 <span className="material-symbols-outlined text-[15px]">location_on</span>
-                <span>غزة، فلسطين</span>
+                <span>فلسطين</span>
               </div>
             </div>
 
@@ -299,7 +299,7 @@ export default function MerchantOtpVerificationPage() {
               <span className="text-lg font-bold text-[#032448]">تبادل</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#835400]"></span>
             </div>
-            <span>جميع الحقوق محفوظة © منصة تبادل لمكافآت المتاجر في غزة 2026</span>
+            <span>جميع الحقوق محفوظة © منصة تبادل لمكافآت المتاجر 2026</span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-5 text-xs">
             <a className="text-[#43474e] hover:text-[#032448] transition-colors" href="#">شروط الاستخدام</a>

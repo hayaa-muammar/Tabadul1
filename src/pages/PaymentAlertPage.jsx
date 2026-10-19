@@ -242,7 +242,7 @@ export default function PaymentAlertPage() {
               <div className="bg-white p-4 rounded-2xl border border-[#c4c6cf]/30 flex items-center gap-3 shadow-xs">
                 <span className="material-symbols-outlined text-2xl text-[#12302b]">store</span>
                 <div>
-                  <p className="font-bold text-[#032448] text-xs">شركاء محليون في غزة</p>
+                  <p className="font-bold text-[#032448] text-xs">شركاء محليون معتمدون</p>
                   <p className="text-[11px] text-[#74777f]">توصيل سريع وموثوق من البوتيك</p>
                 </div>
               </div>

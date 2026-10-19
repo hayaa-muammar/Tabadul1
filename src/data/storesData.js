@@ -64,7 +64,7 @@ export const storesData = [
   },
   {
     id: "sneakers-gaza",
-    name: "سنيكرز غزة للأحذية الرياضية والفاخرة",
+    name: "سنيكرز للأحذية الرياضية والفاخرة",
     shortName: "سنيكرز",
     category: "shoes",
     categoryLabel: "أحذية رياضية وجلدية",

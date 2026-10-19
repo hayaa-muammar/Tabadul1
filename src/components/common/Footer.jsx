@@ -20,7 +20,7 @@ export default function Footer() {
               <span className="text-xl font-black text-[#e9b44c] tracking-tight">تبادل | Tabadul</span>
             </div>
             <p className="text-xs sm:text-sm text-white/80 leading-relaxed max-w-sm">
-              المنصة والتطبيق الموحد لمكافآت وولاء متاجر قطاع غزة 2026. اجمع نقاط كاش باك 5% من أرقى محلات الأزياء والأحذية واستبدلها فورياً برقم جوالك بدون بطاقات.
+              المنصة والتطبيق الموحد لمكافآت وولاء المتاجر 2026. اجمع نقاط كاش باك 5% من أرقى محلات الأزياء والأحذية واستبدلها فورياً برقم جوالك بدون بطاقات.
             </p>
             <div className="flex items-center gap-2 pt-1 text-xs text-[#8df8bd]">
               <span className="w-2 h-2 rounded-full bg-[#8df8bd] animate-pulse"></span>
@@ -74,7 +74,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/70 text-center sm:text-right">
           <div>
-            جميع الحقوق محفوظة © منصة تبادل لمكافآت المتاجر في غزة 2026
+            جميع الحقوق محفوظة © منصة تبادل لمكافآت المتاجر 2026
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             <span className="hover:text-white cursor-pointer">شروط الاستخدام</span>

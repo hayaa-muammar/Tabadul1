@@ -31,7 +31,7 @@ export default function MobileNavDrawer({ isOpen, onClose }) {
                 className="h-7 w-auto object-contain"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdiXQNmJzYIl6PECtK-0Z_eK5rLr6vyiV694yubGM6tX5iUgVUBCS9qo1D2zoByKVT8cvYptCEsHVna6sw77ll4n7Nvd1Vz5DI90zf-qUNwuux0oF_mOmf3xs70bwXSt01a-qiM-uG6Jhl_31Ti5oKhIm51tPQFAIQKYFi5IKOBkLbkyb5N_ncgv--iqOAwJFKYihJb0MaPWIsSQcHIIQnjfDJpDrs8m1_YAPT_wo28k4mi5nzkXePdB6NKTpNovOlj-g"
               />
-              <span className="font-black text-[#12302b] text-base leading-none">تبادل غزة</span>
+              <span className="font-black text-[#12302b] text-base leading-none">تبادل</span>
               <span className="text-[10px] bg-[#1f7a6e]/15 text-[#1f7a6e] font-bold px-2 py-0.5 rounded-full">
                 2026
               </span>
