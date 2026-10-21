@@ -9,25 +9,20 @@ export default function HomeFooter({ onOpenPwaModal }) {
           {/* Brand & Identity */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="h-12 w-auto max-w-[140px] flex items-center p-1 rounded-lg">
+              <div className="h-9 flex items-center justify-center">
                 <img
                   alt="شعار تبادل"
-                  className="h-full w-auto object-contain"
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1UzQQHoamC4yAS3SfYcwKKzuLsUQvju89zj2DorKREyzGtOhCHBGvsuOAgvSpv8FEadNFjncHuXs6zKVIPec3LRFLq1ROG7mjq7pS2_B8bUfq7hbY81mpeaYdWzSvg_HkLGyWxQ6g1cPBOWersB8WQQnMU5D49WBXWjB1YoXPARaWcDBplO2_aoDgdV-s3lFB7xo3jxg8yzv1UZUswrGr5rYof12WA288Ts53zmknZC9w"
+                  className="h-8 w-auto object-contain"
+                  src="/logo.png"
                 />
               </div>
               <div>
                 <span className="text-xl font-black text-white">تـبـادل | Tabadul</span>
-                <span className="text-xs text-[#e9b44c] block font-bold">تسوّق بذكاء واكسب بولاء</span>
               </div>
             </div>
             <p className="text-sm text-white/70 leading-relaxed max-w-sm">
-              المنصة والتطبيق الموحد لمكافآت وولاء عملاء الأزياء، الملابس، العبايات، والأحذية 2026. نربط المتسوقين بأفضل متاجر البوتيك والموضة لتجربة تسوق مجزية ومستدامة.
+              المنصة والتطبيق الموحد لمكافآت وولاء المتاجر 2026. اجمع نقاط كاش باك 5% من أرقى محلات الأزياء والأحذية واستبدلها فورياً برقم جوالك بدون بطاقات.
             </p>
-            <div className="flex items-center gap-2 pt-1 text-[#e9b44c]">
-              <span className="material-symbols-outlined text-sm">support_agent</span>
-              <span className="text-xs font-bold text-white/90">دعم مباشر 24/7 عبر واتساب: 0599000000</span>
-            </div>
           </div>
 
           {/* Quick Navigation */}
@@ -73,7 +68,7 @@ export default function HomeFooter({ onOpenPwaModal }) {
               <li>
                 <a
                   className="text-[#e9b44c] font-bold flex items-center gap-1 hover:underline"
-                  href="https://wa.me/970599000000"
+                  href="https://wa.me/972592540315"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
