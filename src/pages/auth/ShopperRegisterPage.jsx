@@ -6,11 +6,20 @@ import BackButton from '../../components/common/BackButton';
 import PhoneInputField from '../../components/common/PhoneInputField';
 import PasswordInputField from '../../components/common/PasswordInputField';
 import { useAuth } from '../../context/AuthContext';
+import { validatePhoneNumber } from '../../utils/phoneValidation';
 
 export default function ShopperRegisterPage() {
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
+  const [phoneCountry, setPhoneCountry] = useState("PS");
+  const [phoneError, setPhoneError] = useState(null);
+
   const [otpChannel, setOtpChannel] = useState("whatsapp");
+  const [sameAsPhone, setSameAsPhone] = useState(true);
+  const [whatsappNumber, setWhatsappNumber] = useState("");
+  const [whatsappCountry, setWhatsappCountry] = useState("PS");
+  const [whatsappError, setWhatsappError] = useState(null);
+
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [agreeTerms, setAgreeTerms] = useState(true);
@@ -21,12 +30,35 @@ export default function ShopperRegisterPage() {
 
   const handleRegister = (e) => {
     e.preventDefault();
+    setPhoneError(null);
+    setWhatsappError(null);
+    setError(null);
+
+    // 1. Validate Phone Number
+    const phoneVal = validatePhoneNumber(phone, phoneCountry, { isWhatsApp: false, required: true });
+    if (!phoneVal.isValid) {
+      setPhoneError(phoneVal.error);
+      setError(phoneVal.error);
+      return;
+    }
+
+    // 2. Validate WhatsApp Number if independent
+    if (otpChannel === "whatsapp" && !sameAsPhone) {
+      const waVal = validatePhoneNumber(whatsappNumber, whatsappCountry, { isWhatsApp: true, required: true });
+      if (!waVal.isValid) {
+        setWhatsappError(waVal.error);
+        setError(waVal.error);
+        return;
+      }
+    }
+
+    // 3. Validate Passwords
     if (password !== confirmPassword) {
       setError("كلمات المرور غير متطابقة، يرجى التأكد وإعادة المحاولة.");
       return;
     }
-    setError(null);
-    loginAsShopper(phone || "059-9123456", fullName || "سارة أحمد");
+
+    loginAsShopper(phoneVal.formatted || phone, fullName || "سارة أحمد");
     navigate('/verify-otp');
   };
 
@@ -108,13 +140,19 @@ export default function ShopperRegisterPage() {
               {/* Mobile Phone */}
               <div>
                 <label className="block text-xs sm:text-sm font-bold text-on-surface mb-1.5" htmlFor="reg-phone">
-                  رقم الجوال الفلسطيني <span className="text-error">*</span>
+                  رقم الهاتف المحمول <span className="text-error">*</span>
                 </label>
                 <PhoneInputField
                   id="reg-phone"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="059 123 4567"
+                  countryCode={phoneCountry}
+                  onCountryChange={(country) => setPhoneCountry(country.code)}
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                    setPhoneError(null);
+                    setError(null);
+                  }}
+                  error={phoneError}
                   required
                 />
               </div>
@@ -178,6 +216,48 @@ export default function ShopperRegisterPage() {
                     />
                   </label>
                 </div>
+
+                {/* Independent WhatsApp Option */}
+                {otpChannel === "whatsapp" && (
+                  <div className="mt-3 p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/60 space-y-2.5">
+                    <label className="flex items-center gap-2 cursor-pointer select-none">
+                      <input
+                        type="checkbox"
+                        checked={sameAsPhone}
+                        onChange={(e) => setSameAsPhone(e.target.checked)}
+                        className="rounded text-gaza-teal focus:ring-gaza-teal"
+                      />
+                      <span className="text-xs font-bold text-on-surface">
+                        استلام رمز الواتساب على نفس رقم الهاتف المحمول أعلاه
+                      </span>
+                    </label>
+
+                    {!sameAsPhone && (
+                      <div className="pt-2 border-t border-outline-variant/40 space-y-1.5">
+                        <label className="block text-xs font-bold text-on-surface" htmlFor="reg-whatsapp">
+                          رقم الواتساب المستقل لاستلام الرمز <span className="text-error">*</span>
+                        </label>
+                        <PhoneInputField
+                          id="reg-whatsapp"
+                          value={whatsappNumber}
+                          countryCode={whatsappCountry}
+                          onCountryChange={(country) => setWhatsappCountry(country.code)}
+                          onChange={(e) => {
+                            setWhatsappNumber(e.target.value);
+                            setWhatsappError(null);
+                            setError(null);
+                          }}
+                          error={whatsappError}
+                          isWhatsApp={true}
+                          required={!sameAsPhone}
+                        />
+                        <p className="text-[11px] text-on-surface-variant">
+                          يمكنك اختيار أي دولة حول العالم إذا كان رقم الواتساب مختلفاً عن رقم الاتصال.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* Password Pair Grid */}

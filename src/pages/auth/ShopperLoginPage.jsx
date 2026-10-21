@@ -6,9 +6,12 @@ import BackButton from '../../components/common/BackButton';
 import PhoneInputField from '../../components/common/PhoneInputField';
 import PasswordInputField from '../../components/common/PasswordInputField';
 import { useAuth } from '../../context/AuthContext';
+import { validatePhoneNumber } from '../../utils/phoneValidation';
 
 export default function ShopperLoginPage() {
   const [phone, setPhone] = useState("0599123456");
+  const [phoneCountry, setPhoneCountry] = useState("PS");
+  const [phoneError, setPhoneError] = useState(null);
   const [password, setPassword] = useState("password123");
   const [rememberMe, setRememberMe] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -18,9 +21,15 @@ export default function ShopperLoginPage() {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setPhoneError(null);
+    const phoneVal = validatePhoneNumber(phone, phoneCountry, { isWhatsApp: false, required: true });
+    if (!phoneVal.isValid) {
+      setPhoneError(phoneVal.error);
+      return;
+    }
     setIsSubmitting(true);
     setTimeout(() => {
-      loginAsShopper(phone, "سارة أحمد");
+      loginAsShopper(phoneVal.formatted || phone, "سارة أحمد");
       setIsSubmitting(false);
       navigate('/stores');
     }, 600);
@@ -157,12 +166,18 @@ export default function ShopperLoginPage() {
               <form onSubmit={handleLogin} className="space-y-4 sm:space-y-5">
                 <div>
                   <label className="block text-xs sm:text-sm font-bold text-on-surface mb-1.5" htmlFor="login-phone">
-                    رقم الهاتف المحمول (فلسطين) <span className="text-error">*</span>
+                    رقم الهاتف المحمول <span className="text-error">*</span>
                   </label>
                   <PhoneInputField
                     id="login-phone"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    countryCode={phoneCountry}
+                    onCountryChange={(c) => setPhoneCountry(c.code)}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                      setPhoneError(null);
+                    }}
+                    error={phoneError}
                     required
                   />
                 </div>

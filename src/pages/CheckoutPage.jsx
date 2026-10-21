@@ -5,9 +5,11 @@ import Footer from '../components/common/Footer';
 import BackButton from '../components/common/BackButton';
 import Breadcrumbs from '../components/common/Breadcrumbs';
 import ToastNotification from '../components/common/ToastNotification';
+import PhoneInputField from '../components/common/PhoneInputField';
 import { useCart } from '../context/CartContext';
 import { usePoints } from '../context/PointsContext';
 import { useAuth } from '../context/AuthContext';
+import { validatePhoneNumber, parseStoredNumber } from '../utils/phoneValidation';
 
 export default function CheckoutPage() {
   const { subtotal } = useCart();
@@ -16,8 +18,11 @@ export default function CheckoutPage() {
 
   const finalTotal = Math.max(0, subtotal - discountAmount);
 
+  const initialPhoneData = parseStoredNumber(user.phone || "+970 59 123 4567");
   const [recipientName, setRecipientName] = useState(user.name || "سارة أحمد");
-  const [recipientPhone, setRecipientPhone] = useState(user.phone || "+970 59 123 4567");
+  const [recipientPhone, setRecipientPhone] = useState(initialPhoneData.nationalNumber || "591234567");
+  const [recipientCountry, setRecipientCountry] = useState(initialPhoneData.countryCode || "PS");
+  const [recipientPhoneError, setRecipientPhoneError] = useState(null);
   const [addressDetails, setAddressDetails] = useState(user.address || "شارع النصر الرئيسي، بجوار مجمع النخيل الطبي، عمارة الأمل، الطابق الثالث");
   const [deliveryNotes, setDeliveryNotes] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("wallet");
@@ -26,6 +31,12 @@ export default function CheckoutPage() {
 
   const handleConfirmOrder = (e) => {
     e.preventDefault();
+    setRecipientPhoneError(null);
+    const phoneVal = validatePhoneNumber(recipientPhone, recipientCountry, { required: true });
+    if (!phoneVal.isValid) {
+      setRecipientPhoneError(phoneVal.error);
+      return;
+    }
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
@@ -85,14 +96,20 @@ export default function CheckoutPage() {
                 </div>
 
                 <div>
-                  <label className="block font-bold text-on-surface mb-1.5">رقم الهاتف المسجل</label>
-                  <input
-                    type="tel"
-                    required
-                    dir="ltr"
+                  <label className="block font-bold text-on-surface mb-1.5" htmlFor="recipient-phone">
+                    رقم الهاتف للتوصيل والتأكيد <span className="text-error">*</span>
+                  </label>
+                  <PhoneInputField
+                    id="recipient-phone"
                     value={recipientPhone}
-                    onChange={(e) => setRecipientPhone(e.target.value)}
-                    className="w-full h-11 px-3.5 text-right font-numeral-hero rounded-xl border border-outline-variant bg-surface-container-low text-on-surface focus:outline-none focus:border-gaza-teal"
+                    countryCode={recipientCountry}
+                    onCountryChange={(country) => setRecipientCountry(country.code)}
+                    onChange={(e) => {
+                      setRecipientPhone(e.target.value);
+                      setRecipientPhoneError(null);
+                    }}
+                    error={recipientPhoneError}
+                    required
                   />
                 </div>
 

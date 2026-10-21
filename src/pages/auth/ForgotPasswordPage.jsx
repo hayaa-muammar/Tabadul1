@@ -4,9 +4,12 @@ import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import BackButton from '../../components/common/BackButton';
 import PhoneInputField from '../../components/common/PhoneInputField';
+import { validatePhoneNumber } from '../../utils/phoneValidation';
 
 export default function ForgotPasswordPage() {
   const [phone, setPhone] = useState("");
+  const [phoneCountry, setPhoneCountry] = useState("PS");
+  const [phoneError, setPhoneError] = useState(null);
   const [otpMethod, setOtpMethod] = useState("whatsapp");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -14,6 +17,12 @@ export default function ForgotPasswordPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setPhoneError(null);
+    const phoneVal = validatePhoneNumber(phone, phoneCountry, { isWhatsApp: otpMethod === "whatsapp", required: true });
+    if (!phoneVal.isValid) {
+      setPhoneError(phoneVal.error);
+      return;
+    }
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
@@ -44,7 +53,7 @@ export default function ForgotPasswordPage() {
                 استعادة كلمة المرور
               </h1>
               <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-                أدخل رقم الجوال الفلسطيني المرتبط بحسابك وسنرسل لك رمز تحقق فريد (OTP) لتعيين كلمة مرور جديدة فوراً.
+                أدخل رقم هاتفك المحمول المرتبط بحسابك وسنرسل لك رمز تحقق فريد (OTP) لتعيين كلمة مرور جديدة فوراً.
               </p>
             </div>
 
@@ -52,13 +61,18 @@ export default function ForgotPasswordPage() {
               {/* Phone Input */}
               <div>
                 <label className="block text-xs sm:text-sm font-bold text-on-surface mb-1.5" htmlFor="forgot-phone">
-                  رقم الجوال الفلسطيني (059 أو 056) <span className="text-error">*</span>
+                  رقم الهاتف المحمول المسجل <span className="text-error">*</span>
                 </label>
                 <PhoneInputField
                   id="forgot-phone"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="59X XXX XXX"
+                  countryCode={phoneCountry}
+                  onCountryChange={(c) => setPhoneCountry(c.code)}
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                    setPhoneError(null);
+                  }}
+                  error={phoneError}
                   required
                 />
               </div>
@@ -119,7 +133,7 @@ export default function ForgotPasswordPage() {
                       </div>
                     </div>
                     <p className="text-[11px] text-on-surface-variant leading-tight">
-                      إرسال الرمز عبر شبكة الاتصالات الفلسطينية المعتمدة
+                      إرسال الرمز عبر شبكة الاتصالات المعتمدة
                     </p>
                   </label>
                 </div>

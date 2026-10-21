@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
+import PhoneInputField from '../common/PhoneInputField';
+import { validatePhoneNumber } from '../../utils/phoneValidation';
 
 export default function MerchantPartnerSection() {
   const [storeName, setStoreName] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
+  const [whatsappCountry, setWhatsappCountry] = useState('PS');
+  const [whatsappError, setWhatsappError] = useState(null);
   const [productType, setProductType] = useState('أزياء وملابس نسائية');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setWhatsappError(null);
+    const valResult = validatePhoneNumber(whatsapp, whatsappCountry, { isWhatsApp: true, required: true });
+    if (!valResult.isValid) {
+      setWhatsappError(valResult.error);
+      return;
+    }
     alert('شكراً لاهتمامك! سيتواصل معك فريق تبادل عبر واتساب خلال أقل من ساعتين لتفعيل متجرك ولوحة تحكم PWA.');
     setStoreName('');
     setWhatsapp('');
@@ -98,15 +108,21 @@ export default function MerchantPartnerSection() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#12302b] mb-1">رقم الواتساب للتواصل</label>
-                <input
-                  className="w-full text-sm px-4 py-3 rounded-xl bg-[#f6f3ec] border border-[#12302b]/15 focus:border-[#1f7a6e] focus:bg-white focus:outline-none text-right"
-                  dir="ltr"
-                  placeholder="059xxxxxxx أو 056xxxxxxx"
-                  required
-                  type="tel"
+                <label className="block text-xs font-bold text-[#12302b] mb-1" htmlFor="partner-whatsapp">
+                  رقم الواتساب للتواصل <span className="text-error">*</span>
+                </label>
+                <PhoneInputField
+                  id="partner-whatsapp"
                   value={whatsapp}
-                  onChange={(e) => setWhatsapp(e.target.value)}
+                  countryCode={whatsappCountry}
+                  onCountryChange={(country) => setWhatsappCountry(country.code)}
+                  onChange={(e) => {
+                    setWhatsapp(e.target.value);
+                    setWhatsappError(null);
+                  }}
+                  error={whatsappError}
+                  isWhatsApp={true}
+                  required
                 />
               </div>
 
