@@ -7,7 +7,6 @@ export default function FeaturedStoresPreview() {
   const categories = [
     { id: 'all', label: 'الكل' },
     { id: 'women', label: 'ملابس نسائية وعبايات' },
-    { id: 'men', label: 'أزياء رجالية' },
     { id: 'kids', label: 'ملابس أطفال' },
     { id: 'shoes', label: 'أحذية وبلاطين' }
   ];
@@ -33,7 +32,7 @@ export default function FeaturedStoresPreview() {
       icon: 'styler',
       location: 'الرمال',
       description: 'حي الرمال • تصاميم خليجية، أقمشة كريب وشيفون مطرزة يدوياً.',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB8QEszdCp9E4PTPSiY4OtCN8FZkFNZjPaj_oD3wKxExcAcrrYGG6TyM5a8CIf1xswIY69B3EiDzQ62GEgOZouwYBEQOOpTAA6G5Q6ixBKL3IzKKxUXiIyY7ya69chrhDnN9ZP3LKlUAIgagQK9WBb0gKiYHX3wnF-wk6m1gLxcfYh9u4F207Dj7iIjJEOX7D4THmyeJAW7gxVPAuLEKquUCrrCqqsNaEEl-8WTCU0PFHO4HCG8gcTJZg'
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDP3-XUQwMHRQUt1XvhjNhDTFMrazEbR0zlEiQJZXrObkHdfXKE80xd7nf7XJHJ6EbC6BrGyD6ckC09rp-6LZI9uQdty8PKZ2ANpZShB1oyJeNmm-YZNrnMaS_QPZjkWVuPbfB-RGGWdNPoFfuxw3ThZrSTRd3XTIdQsZwA4-4okiV1q7nz1NK8cxHc7qywNDsmjpeDU6uqW-AR9rQfki2n9rYtRYz2t91d3nU9uGVcNgZk9RPuNYmg3A'
     },
     {
       id: 'store-3',
@@ -44,7 +43,7 @@ export default function FeaturedStoresPreview() {
       icon: 'do_not_step',
       location: 'شارع النصر',
       description: 'شارع النصر • أحذية رياضية مريحة، سبورت كاجوال وبلاطين جينز.',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDm_YW-ys-YBhihc3B0P0KVn91QVnSWBS8DJd4fk7x7wVom-lnzqTuQSYtF07r9ULBTM1JOcV6p7_3mrRm1FUpa4hJ4_ioLexRYAemt6G3h3p1Fl7lXlQBoKqJyW4aS57sQ00Knv441Pq-qOuOmEOC5oAfBJAdcTwqpuBLIf4RfVe67t6cCTQposfPaN8IWg2eSQl91pM8Dntyqo9lHsrmqCYBToKTkaFLlXPprrnJP0vSiB2dVcxAvjg'
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBGXJXbnT7SF8byoEqAYReTuAhhgDFCO6qJYylPi85oYiw2X855g7ucZfa-jONdDQXrHq7_ghxDZiobPvpw5mypUWiGnH5aGSI4XV1fu4lnfHWJzrbWNOfDRsJBBk-tXT5Gs1rO6jxbKcLJfMAjGFFfYuBVwuZazqJyZPmvWAKMJhznmPUQ6NHQ_Euozra8K3XIaS-k8hCGnLwzlwRBdDGIkyi2HmE1JKFazAyGjoQ1Zx2i4hnEiTQsXg'
     },
     {
       id: 'store-4',
@@ -55,7 +54,7 @@ export default function FeaturedStoresPreview() {
       icon: 'child_care',
       location: 'الرمال الجنوبي',
       description: 'الرمال الجنوبي • تشكيلات أطفال ومواليد وأطقم ولادي وبناتي مميزة.',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCqr0Xk6CtkxiBQzT8iDTbXagaCQJOYTdxzbEcjAmLmdzwAmJRwiKqMKiakhmbvR9MjbiTdazf81OLd5FAjnbterhgsm3nOgC8I_hjDAV6eNGTgLmiBEL_TjQqynbZJTBkA0v9D3TZ6A_RpSDDPKtbCq1kCzdu8X8WqdaafyQJfRiOQx5TZXdYofcx7eVZnua51rQEWihl2bB_nqI3Fhjw_afj0cKzFnVKuMZwgs_KdN2NRsoH8BK-mBw'
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAXubLGyPKfCt5wHWOIixwTwfD4UGBRkapYWC6jmuiWyysI68WqUijVaASNd_OGVoINjPNPflaCGkqWaLWB-k2wXektCwBsrNUstnOu1k6GO6SC06a-manyVANGKc6hUSrGE8oEhvDDMjdAO9lhkTWxJArBREsRK3ie5hh9QH-kEXJJVJa-8AtSfpbmCJeL8Ogh6njaadAgHVBIYg_r5iKoSBetEu50AWjnu88E-iFy3YnABiUhQB-21A'
     }
   ];
 
@@ -95,38 +94,47 @@ export default function FeaturedStoresPreview() {
         </div>
 
         {/* Resilient Store Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4.5 lg:gap-5">
           {displayedStores.map((store) => (
             <Link
               key={store.id}
               to={store.link}
-              className="bg-white rounded-xl overflow-hidden border border-[#12302b]/15 shadow-sm hover:shadow-md transition-all flex flex-col group cursor-pointer"
+              className="bg-white rounded-xl overflow-hidden border border-[#12302b]/15 shadow-xs hover:shadow-md transition-all flex flex-col group cursor-pointer h-full"
             >
-              <div className="h-40 relative bg-[#f6f3ec] overflow-hidden">
+              {/* Compact Store Banner Image */}
+              <div className="h-32 sm:h-34 relative bg-[#f6f3ec] overflow-hidden">
                 <img
                   alt={store.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                   src={store.image}
                 />
-                <span className="absolute top-2.5 right-2.5 bg-[#12302b] text-white text-[10px] font-black px-2 py-0.5 rounded shadow">
+                <span className="absolute top-2 right-2 bg-[#12302b] text-white text-[9.5px] font-black px-2 py-0.5 rounded shadow-xs">
                   كاش باك 5%
                 </span>
-                <span className="absolute bottom-2.5 left-2.5 bg-white/95 text-[#1f7a6e] text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1 shadow-sm">
-                  <span className="material-symbols-outlined text-xs fill">verified</span>
+                <span className="absolute bottom-2 left-2 bg-white/95 text-[#1f7a6e] text-[9.5px] font-bold px-2 py-0.5 rounded flex items-center gap-1 shadow-xs backdrop-blur-xs">
+                  <span className="material-symbols-outlined text-[13px] fill">verified</span>
                   <span>{store.location}</span>
                 </span>
               </div>
-              <div className="p-4 flex-1 flex flex-col justify-between">
+
+              {/* Compact Card Details */}
+              <div className="p-3 sm:p-3.5 flex-1 flex flex-col justify-between">
                 <div>
-                  <div className="text-[11px] font-bold text-[#c7922d] flex items-center gap-1">
-                    <span className="material-symbols-outlined text-xs">{store.icon}</span>
+                  <div className="text-[10.5px] font-bold text-[#c7922d] flex items-center gap-1">
+                    <span className="material-symbols-outlined text-[13px]">{store.icon}</span>
                     <span>{store.categoryLabel}</span>
                   </div>
-                  <h3 className="text-base font-black text-[#12302b] mt-1 group-hover:text-[#1f7a6e] transition-colors">{store.name}</h3>
-                  <p className="text-xs text-[#52606d] mt-1 leading-relaxed">{store.description}</p>
+                  <h3 className="text-sm sm:text-[15px] font-black text-[#12302b] mt-0.5 line-clamp-1 group-hover:text-[#1f7a6e] transition-colors">
+                    {store.name}
+                  </h3>
+                  <p className="text-[11px] sm:text-xs text-[#52606d] mt-1 line-clamp-2 leading-relaxed">
+                    {store.description}
+                  </p>
                 </div>
-                <div className="mt-3 pt-2.5 border-t border-[#12302b]/10 flex items-center justify-between text-xs">
+
+                {/* Cashback & Savings Equation */}
+                <div className="mt-2.5 pt-2 border-t border-[#12302b]/10 flex items-center justify-between text-[11px] sm:text-xs">
                   <span className="text-[#52606d]">معادلة الوفر:</span>
                   <span className="text-[#1f7a6e] font-black">200 نقطة = 1 ₪</span>
                 </div>
