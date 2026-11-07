@@ -52,8 +52,14 @@ export default function Footer() {
             <h4 className="text-xs font-black text-[#e9b44c] tracking-wider uppercase">بوابة الشركاء والدعم</h4>
             <ul className="space-y-2 text-xs sm:text-sm text-white/85">
               <li>
-                <Link to="/merchant/login" className="hover:text-[#e9b44c] transition-colors flex items-center gap-1.5">
+                <Link to="/merchant/landing" className="hover:text-[#e9b44c] transition-colors flex items-center gap-1.5">
                   <span className="material-symbols-outlined text-[16px] text-[#e9b44c]">storefront</span>
+                  <span>انضم كتاجر (بوابة الشركاء)</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/merchant/login" className="hover:text-[#e9b44c] transition-colors flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-[16px] text-[#e9b44c]">login</span>
                   <span>دخول لوحة تحكم التاجر</span>
                 </Link>
               </li>

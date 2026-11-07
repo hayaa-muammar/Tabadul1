@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PhoneInputField from '../common/PhoneInputField';
 import { validatePhoneNumber } from '../../utils/phoneValidation';
 
@@ -83,6 +84,16 @@ export default function MerchantPartnerSection() {
                   زبائن المتاجر الأخرى يأتون إلى متجرك لإنفاق نقاطهم المجمعة لديك، مما يضاعف مبيعاتك مجاناً.
                 </p>
               </div>
+            </div>
+
+            <div className="pt-2">
+              <Link
+                to="/merchant/landing"
+                className="inline-flex items-center gap-2 text-sm font-bold text-[#e9b44c] hover:text-[#f8d082] transition-colors"
+              >
+                <span>استعرض صفحة التاجر الكاملة وباقات الاشتراك (باقة 79 ₪) والمزايا الذكية</span>
+                <span className="material-symbols-outlined text-base rotate-180">arrow_forward</span>
+              </Link>
             </div>
           </div>
 

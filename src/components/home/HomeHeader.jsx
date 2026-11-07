@@ -7,11 +7,11 @@ export default function HomeHeader() {
       {/* Main Navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         <a className="flex items-center gap-3" href="#hero">
-          <div className="h-10 w-auto flex items-center justify-center">
+          <div className="h-10 sm:h-11 w-auto flex items-center justify-center">
             <img
-              alt="شعار تبادل الأصلي"
-              className="h-full w-auto object-contain"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdiXQNmJzYIl6PECtK-0Z_eK5rLr6vyiV694yubGM6tX5iUgVUBCS9qo1D2zoByKVT8cvYptCEsHVna6sw77ll4n7Nvd1Vz5DI90zf-qUNwuux0oF_mOmf3xs70bwXSt01a-qiM-uG6Jhl_31Ti5oKhIm51tPQFAIQKYFi5IKOBkLbkyb5N_ncgv--iqOAwJFKYihJb0MaPWIsSQcHIIQnjfDJpDrs8m1_YAPT_wo28k4mi5nzkXePdB6NKTpNovOlj-g"
+              alt="شعار منصة تبادل"
+              className="h-full w-auto object-contain rounded-lg"
+              src="/logo.png"
             />
           </div>
           <div className="flex flex-col text-right justify-center">
@@ -30,7 +30,7 @@ export default function HomeHeader() {
 
         <div className="flex items-center gap-2">
           <Link
-            to="/merchant/login"
+            to="/merchant/landing"
             className="px-3.5 py-1.5 rounded-xl bg-[#f6f3ec] hover:bg-[#12302b]/10 text-[#12302b] font-bold text-xs flex items-center gap-1.5 border border-[#12302b]/15 transition-all"
           >
             <span className="material-symbols-outlined text-sm text-[#1f7a6e]">storefront</span>

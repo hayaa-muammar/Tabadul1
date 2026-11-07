@@ -11,11 +11,11 @@ export default function MerchantHeader() {
         
         {/* Brand Anchor */}
         <Link to="/" className="flex items-center gap-3 group focus:outline-none shrink-0">
-          <div className="h-10 w-auto flex items-center justify-center">
+          <div className="h-10 sm:h-11 w-auto flex items-center justify-center">
             <img
-              alt="شعار تبادل الأصلي"
-              className="h-full w-auto object-contain transition-transform group-hover:scale-105 duration-200"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdiXQNmJzYIl6PECtK-0Z_eK5rLr6vyiV694yubGM6tX5iUgVUBCS9qo1D2zoByKVT8cvYptCEsHVna6sw77ll4n7Nvd1Vz5DI90zf-qUNwuux0oF_mOmf3xs70bwXSt01a-qiM-uG6Jhl_31Ti5oKhIm51tPQFAIQKYFi5IKOBkLbkyb5N_ncgv--iqOAwJFKYihJb0MaPWIsSQcHIIQnjfDJpDrs8m1_YAPT_wo28k4mi5nzkXePdB6NKTpNovOlj-g"
+              alt="شعار منصة تبادل"
+              className="h-full w-auto object-contain transition-transform group-hover:scale-105 duration-200 rounded-lg"
+              src="/logo.png"
             />
           </div>
           <div className="flex flex-col text-right justify-center">
@@ -27,23 +27,146 @@ export default function MerchantHeader() {
         </Link>
 
         {/* Center Merchant Navigation */}
-        <nav className="hidden lg:flex items-center gap-4 text-xs xl:text-sm font-bold">
-          <Link
-            to="/"
-            className="text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5 px-3 py-2 rounded-xl transition-colors"
-          >
-            الرئيسية
-          </Link>
-          <Link
-            to="/stores"
-            className="text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5 px-3 py-2 rounded-xl transition-colors"
-          >
-            المتاجر الشريكة
-          </Link>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#12302b]/5 border border-[#12302b]/10 text-[#12302b] text-xs font-bold">
-            <span className="material-symbols-outlined text-sm text-[#e9b44c] icon-fill">verified</span>
-            <span>بوابة التجار المعتمدة 2026</span>
-          </div>
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-xs xl:text-sm font-bold">
+          {location.pathname.startsWith('/merchant') &&
+           !location.pathname.includes('/login') &&
+           !location.pathname.includes('/otp') &&
+           !location.pathname.includes('/landing') &&
+           !location.pathname.includes('/onboarding') &&
+           !location.pathname.includes('/application') ? (
+            <>
+              <Link
+                to="/merchant/dashboard"
+                className={`px-3 py-1.5 rounded-xl transition-colors ${
+                  location.pathname === '/merchant/dashboard' || location.pathname === '/merchant'
+                    ? 'bg-[#12302b] text-white'
+                    : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
+                }`}
+              >
+                لوحة التحكم
+              </Link>
+              <Link
+                to="/merchant/orders"
+                className={`px-3 py-1.5 rounded-xl transition-colors ${
+                  location.pathname === '/merchant/orders'
+                    ? 'bg-[#12302b] text-white'
+                    : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
+                }`}
+              >
+                الطلبات
+              </Link>
+              <Link
+                to="/merchant/products"
+                className={`px-3 py-1.5 rounded-xl transition-colors ${
+                  location.pathname.startsWith('/merchant/products')
+                    ? 'bg-[#12302b] text-white'
+                    : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
+                }`}
+              >
+                المنتجات
+              </Link>
+              <Link
+                to="/merchant/wallet"
+                className={`px-3 py-1.5 rounded-xl transition-colors ${
+                  location.pathname.startsWith('/merchant/wallet')
+                    ? 'bg-[#12302b] text-white'
+                    : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
+                }`}
+              >
+                المحفظة والتحويلات
+              </Link>
+              <Link
+                to="/merchant/offers"
+                className={`px-3 py-1.5 rounded-xl transition-colors ${
+                  location.pathname.startsWith('/merchant/offers')
+                    ? 'bg-[#12302b] text-white'
+                    : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
+                }`}
+              >
+                العروض
+              </Link>
+              <Link
+                to="/merchant/reviews"
+                className={`px-3 py-1.5 rounded-xl transition-colors ${
+                  location.pathname.startsWith('/merchant/reviews')
+                    ? 'bg-[#12302b] text-white'
+                    : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
+                }`}
+              >
+                التقييمات
+              </Link>
+              <Link
+                to="/merchant/help"
+                className={`px-3 py-1.5 rounded-xl transition-colors ${
+                  location.pathname.startsWith('/merchant/help') || location.pathname.startsWith('/merchant/support') || location.pathname.startsWith('/merchant/tickets')
+                    ? 'bg-[#12302b] text-white'
+                    : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
+                }`}
+              >
+                المساعدة
+              </Link>
+              <Link
+                to="/merchant/settings"
+                className={`px-3 py-1.5 rounded-xl transition-colors ${
+                  location.pathname.startsWith('/merchant/settings') || location.pathname.startsWith('/merchant/store-settings')
+                    ? 'bg-[#12302b] text-white'
+                    : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
+                }`}
+              >
+                الإعدادات
+              </Link>
+              <Link
+                to="/merchant/profile"
+                className={`px-3 py-1.5 rounded-xl transition-colors ${
+                  location.pathname.startsWith('/merchant/profile')
+                    ? 'bg-[#12302b] text-white'
+                    : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
+                }`}
+              >
+                الملف الشخصي
+              </Link>
+              <Link
+                to="/merchant/reports"
+                className={`px-3 py-1.5 rounded-xl transition-colors ${
+                  location.pathname === '/merchant/reports'
+                    ? 'bg-[#12302b] text-white'
+                    : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
+                }`}
+              >
+                التقارير
+              </Link>
+              <Link
+                to="/merchant/subscription"
+                className={`px-3 py-1.5 rounded-xl transition-colors flex items-center gap-1 ${
+                  location.pathname.startsWith('/merchant/subscription')
+                    ? 'bg-[#12302b] text-white'
+                    : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
+                }`}
+              >
+                <span className="material-symbols-outlined text-sm text-[#e9b44c] icon-fill">stars</span>
+                <span>الباقات والاشتراك</span>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/"
+                className="text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5 px-3 py-2 rounded-xl transition-colors"
+              >
+                الرئيسية
+              </Link>
+              <Link
+                to="/stores"
+                className="text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5 px-3 py-2 rounded-xl transition-colors"
+              >
+                المتاجر الشريكة
+              </Link>
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#12302b]/5 border border-[#12302b]/10 text-[#12302b] text-xs font-bold">
+                <span className="material-symbols-outlined text-sm text-[#e9b44c] icon-fill">verified</span>
+                <span>بوابة التجار المعتمدة 2026</span>
+              </div>
+            </>
+          )}
         </nav>
 
         {/* Left Actions Cluster (Merchant Focus) */}

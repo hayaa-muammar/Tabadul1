@@ -27,9 +27,9 @@ export default function MobileNavDrawer({ isOpen, onClose }) {
           <div className="p-4 border-b border-outline-variant/30 flex items-center justify-between bg-surface-container-low">
             <div className="flex items-center gap-2.5">
               <img
-                alt="شعار تبادل الأصلي"
-                className="h-7 w-auto object-contain"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdiXQNmJzYIl6PECtK-0Z_eK5rLr6vyiV694yubGM6tX5iUgVUBCS9qo1D2zoByKVT8cvYptCEsHVna6sw77ll4n7Nvd1Vz5DI90zf-qUNwuux0oF_mOmf3xs70bwXSt01a-qiM-uG6Jhl_31Ti5oKhIm51tPQFAIQKYFi5IKOBkLbkyb5N_ncgv--iqOAwJFKYihJb0MaPWIsSQcHIIQnjfDJpDrs8m1_YAPT_wo28k4mi5nzkXePdB6NKTpNovOlj-g"
+                alt="شعار منصة تبادل"
+                className="h-8 w-auto object-contain rounded-md"
+                src="/logo.png"
               />
               <span className="font-black text-[#12302b] text-base leading-none">تبادل</span>
               <span className="text-[10px] bg-[#1f7a6e]/15 text-[#1f7a6e] font-bold px-2 py-0.5 rounded-full">
@@ -153,17 +153,73 @@ export default function MobileNavDrawer({ isOpen, onClose }) {
             </Link>
 
             <Link
-              to="/checkout"
+              to="/checkout/wallet"
               onClick={onClose}
               className={`flex items-center gap-3 px-3.5 py-3 rounded-xl transition-colors ${
-                location.pathname === '/checkout' 
+                location.pathname.startsWith('/checkout') || location.pathname.startsWith('/payment')
                   ? 'bg-gaza-teal/10 text-gaza-teal' 
                   : 'text-on-surface hover:bg-surface-container-low'
               }`}
             >
               <span className="material-symbols-outlined text-[20px]">payments</span>
-              <span>إتمام الطلب والدفع الآمن</span>
+              <span>إتمام الطلب والدفع المعتمد</span>
             </Link>
+
+            {!user.isGuest && (
+              <>
+                <Link
+                  to="/customer/dashboard"
+                  onClick={onClose}
+                  className={`flex items-center gap-3 px-3.5 py-3 rounded-xl transition-colors ${
+                    location.pathname === '/customer/dashboard' 
+                      ? 'bg-gaza-teal/10 text-gaza-teal' 
+                      : 'text-on-surface hover:bg-surface-container-low'
+                  }`}
+                >
+                  <span className="material-symbols-outlined text-[20px]">dashboard</span>
+                  <span>لوحة تحكم المتسوق والمكافآت</span>
+                </Link>
+
+                <Link
+                  to="/customer/orders"
+                  onClick={onClose}
+                  className={`flex items-center gap-3 px-3.5 py-3 rounded-xl transition-colors ${
+                    location.pathname.startsWith('/customer/orders') || location.pathname.startsWith('/orders')
+                      ? 'bg-gaza-teal/10 text-gaza-teal' 
+                      : 'text-on-surface hover:bg-surface-container-low'
+                  }`}
+                >
+                  <span className="material-symbols-outlined text-[20px]">local_shipping</span>
+                  <span>سجل طلباتي وتتبع الشحنات</span>
+                </Link>
+
+                <Link
+                  to="/customer/wallet"
+                  onClick={onClose}
+                  className={`flex items-center gap-3 px-3.5 py-3 rounded-xl transition-colors ${
+                    location.pathname === '/customer/wallet' 
+                      ? 'bg-gaza-teal/10 text-gaza-teal' 
+                      : 'text-on-surface hover:bg-surface-container-low'
+                  }`}
+                >
+                  <span className="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+                  <span>محفظة النقاط الشاملة</span>
+                </Link>
+
+                <Link
+                  to="/customer/profile"
+                  onClick={onClose}
+                  className={`flex items-center gap-3 px-3.5 py-3 rounded-xl transition-colors ${
+                    location.pathname === '/customer/profile' 
+                      ? 'bg-gaza-teal/10 text-gaza-teal' 
+                      : 'text-on-surface hover:bg-surface-container-low'
+                  }`}
+                >
+                  <span className="material-symbols-outlined text-[20px]">person</span>
+                  <span>الملف الشخصي والعناوين</span>
+                </Link>
+              </>
+            )}
           </nav>
 
           {/* Quick Demo Mode Switcher */}
@@ -204,14 +260,14 @@ export default function MobileNavDrawer({ isOpen, onClose }) {
           </Link>
 
           {!user.isGuest ? (
-            <button
-              type="button"
-              onClick={() => { logout(); onClose(); }}
+            <Link
+              to="/customer/logout"
+              onClick={onClose}
               className="flex items-center justify-center gap-1.5 w-full py-2 text-error text-xs font-bold hover:underline cursor-pointer"
             >
               <span className="material-symbols-outlined text-[16px]">logout</span>
               <span>تسجيل الخروج</span>
-            </button>
+            </Link>
           ) : null}
         </div>
       </div>

@@ -303,23 +303,34 @@ export default function CheckoutPage() {
 
               {/* Submit CTA */}
               <div className="pt-2">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-3.5 px-4 bg-gaza-teal hover:bg-primary text-white font-bold text-sm sm:text-base rounded-xl transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      <span>جاري معالجة الدفع الآمن...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="material-symbols-outlined text-xl">lock</span>
-                      <span>تأكيد الدفع {finalTotal.toFixed(2)} ₪ وتسجيل الطلب</span>
-                    </>
-                  )}
-                </button>
+                {isOrderConfirmed ? (
+                  <Link
+                    to="/orders"
+                    className="w-full py-3.5 px-4 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm sm:text-base rounded-xl transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <span className="material-symbols-outlined text-xl">local_shipping</span>
+                    <span>الانتقال لمتابعة الطلب في قائمة طلباتي</span>
+                    <span className="material-symbols-outlined text-base">arrow_back</span>
+                  </Link>
+                ) : (
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-3.5 px-4 bg-gaza-teal hover:bg-primary text-white font-bold text-sm sm:text-base rounded-xl transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <span>جاري معالجة الدفع الآمن...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="material-symbols-outlined text-xl">lock</span>
+                        <span>تأكيد الدفع {finalTotal.toFixed(2)} ₪ وتسجيل الطلب</span>
+                      </>
+                    )}
+                  </button>
+                )}
 
                 <p className="mt-2 text-center text-[11px] text-on-surface-variant flex items-center justify-center gap-1">
                   <span className="material-symbols-outlined text-[14px] text-gaza-teal">verified_user</span>

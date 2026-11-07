@@ -15,11 +15,11 @@ export default function SpecializedHeader({ variant, customTitle, customBadge })
         
         {/* Brand Anchor */}
         <Link to="/" className="flex items-center gap-3 group focus:outline-none shrink-0">
-          <div className="h-10 w-auto flex items-center justify-center">
+          <div className="h-10 sm:h-11 w-auto flex items-center justify-center">
             <img
-              alt="شعار تبادل الأصلي"
-              className="h-full w-auto object-contain transition-transform group-hover:scale-105 duration-200"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdiXQNmJzYIl6PECtK-0Z_eK5rLr6vyiV694yubGM6tX5iUgVUBCS9qo1D2zoByKVT8cvYptCEsHVna6sw77ll4n7Nvd1Vz5DI90zf-qUNwuux0oF_mOmf3xs70bwXSt01a-qiM-uG6Jhl_31Ti5oKhIm51tPQFAIQKYFi5IKOBkLbkyb5N_ncgv--iqOAwJFKYihJb0MaPWIsSQcHIIQnjfDJpDrs8m1_YAPT_wo28k4mi5nzkXePdB6NKTpNovOlj-g"
+              alt="شعار منصة تبادل"
+              className="h-full w-auto object-contain transition-transform group-hover:scale-105 duration-200 rounded-lg"
+              src="/logo.png"
             />
           </div>
           <div className="flex flex-col text-right justify-center">

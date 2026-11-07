@@ -63,7 +63,7 @@ export default function OtpErrorStatePage() {
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
-      navigate('/stores');
+      navigate('/merchant/dashboard');
     }, 800);
   };
 

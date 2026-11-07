@@ -88,8 +88,8 @@ export default function MerchantOtpVerificationPage() {
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
-      // Navigate to stores directory or merchant dashboard
-      navigate('/stores');
+      // Navigate to merchant dashboard
+      navigate('/merchant/dashboard');
     }, 800);
   };
 

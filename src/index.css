@@ -14,7 +14,7 @@
   --color-tertiary-fixed: #8df8bd;
   --color-tertiary-fixed-dim: #71dba2;
   --color-background: #f9f9ff;
-  --color-surface: #f9f9ff;
+  --color-surface: #ffffff;
   --color-surface-dim: #d8dae2;
   --color-surface-bright: #f9f9ff;
   --color-surface-container: #ecedf6;
@@ -34,6 +34,18 @@
   --color-on-tertiary: #ffffff;
   --color-on-tertiary-container: #4bb781;
   --color-on-error: #ffffff;
+
+  --color-cream: #F6F3EC;
+  --color-brand: #12302B;
+  --color-brand-dark: #0B1E1B;
+  --color-teal: #1F7A6E;
+  --color-teal-light: #E8F5F2;
+  --color-gold: #E9B44C;
+  --color-gold-hover: #DC9E2E;
+  --color-gold-soft: #FDF8EC;
+  --color-bronze: #8A6420;
+  --color-bordercol: #E1DACB;
+  --color-textmuted: #526661;
 
   --font-tajawal: "Tajawal", "IBM Plex Sans Arabic", sans-serif;
   --font-ibm-arabic: "IBM Plex Sans Arabic", "Tajawal", sans-serif;
@@ -82,4 +94,114 @@ input[type=number] {
 .touch-target {
   min-height: 44px;
   min-width: 44px;
+}
+
+
+/* ==========================================================
+   Merchant Landing Page Custom Utilities & Component Styles
+   ========================================================== */
+.bg-cream { background-color: #F6F3EC; }
+.bg-surface { background-color: #FFFFFF; }
+.bg-brand { background-color: #12302B; }
+.bg-brand-dark { background-color: #0B1E1B; }
+.text-brand { color: #12302B; }
+.text-brand-dark { color: #0B1E1B; }
+.text-teal { color: #1F7A6E; }
+.bg-teal { background-color: #1F7A6E; }
+.bg-teal-light { background-color: #E8F5F2; }
+.border-teal { border-color: #1F7A6E; }
+.text-gold { color: #E9B44C; }
+.bg-gold { background-color: #E9B44C; }
+.bg-gold-soft { background-color: #FDF8EC; }
+.text-bronze { color: #8A6420; }
+.border-bordercol { border-color: #E1DACB; }
+.text-textmuted { color: #526661; }
+
+.text-cream { color: #F6F3EC !important; }
+.text-cream\/80 { color: rgba(246, 243, 236, 0.8) !important; }
+.text-cream\/70 { color: rgba(246, 243, 236, 0.7) !important; }
+.text-cream\/60 { color: rgba(246, 243, 236, 0.6) !important; }
+.border-cream\/30 { border-color: rgba(246, 243, 236, 0.3) !important; }
+.bg-cream\/40 { background-color: rgba(246, 243, 236, 0.4) !important; }
+
+.shadow-soft {
+  box-shadow: 0 4px 20px -2px rgba(18, 48, 43, 0.05);
+}
+.shadow-premium {
+  box-shadow: 0 12px 36px -4px rgba(18, 48, 43, 0.08), 0 4px 12px -2px rgba(233, 180, 76, 0.06);
+}
+.shadow-floating {
+  box-shadow: 0 20px 40px -8px rgba(18, 48, 43, 0.12);
+}
+
+.btn-gold {
+  background-color: #E9B44C;
+  color: #12302B;
+  font-weight: 700;
+  min-height: 46px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(233, 180, 76, 0.35);
+  cursor: pointer;
+}
+.btn-gold:hover {
+  background-color: #DC9E2E;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 180, 76, 0.45);
+}
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background-color: #FFFFFF;
+  color: #12302B;
+  border: 1.5px solid #12302B;
+  font-weight: 700;
+  min-height: 46px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background-color: #F6F3EC;
+  border-color: #1F7A6E;
+  color: #1F7A6E;
+}
+
+.card-ledger {
+  background-color: #FFFFFF;
+  border: 1px solid #E1DACB;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px -2px rgba(18, 48, 43, 0.04);
+  transition: all 0.3s ease;
+}
+.card-ledger:hover {
+  box-shadow: 0 10px 30px -4px rgba(18, 48, 43, 0.08);
+}
+
+/* Subscription and Luxury UI Gradients */
+.gold-shimmer {
+  background: linear-gradient(135deg, #FFF6E5 0%, #FDEFD4 50%, #FFFDF8 100%);
+}
+.luxury-mesh {
+  background-color: #12302B;
+  background-image: radial-gradient(at 10% 20%, rgba(31, 122, 110, 0.45) 0px, transparent 50%),
+                    radial-gradient(at 90% 80%, rgba(233, 180, 76, 0.25) 0px, transparent 50%);
+}
+
+/* Toggle Switch Styles for Merchant Settings */
+.switch-checkbox:checked + .switch-label {
+  background-color: #1F7A6E;
+}
+.switch-checkbox:checked + .switch-label .switch-handle {
+  transform: translateX(-20px);
 }
