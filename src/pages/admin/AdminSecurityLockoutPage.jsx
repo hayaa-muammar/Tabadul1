@@ -44,7 +44,7 @@ export default function AdminSecurityLockoutPage() {
         <div className="max-w-[1360px] mx-auto px-6 h-16 flex items-center justify-between">
           {/* Brand & Sovereign Identity */}
           <div className="flex items-center gap-4">
-            <Link to="/" className="flex items-center gap-3 bg-[#0c221e] px-3.5 py-1.5 rounded-xl border border-[#1b3d37] hover:border-[#E9B44C]/40 transition-colors">
+            <Link to="/admin/login" className="flex items-center gap-3 bg-[#0c221e] px-3.5 py-1.5 rounded-xl border border-[#1b3d37] hover:border-[#E9B44C]/40 transition-colors">
               <img
                 alt="شعار منصة تبادل السيادية"
                 className="h-8 w-auto object-contain rounded-md"

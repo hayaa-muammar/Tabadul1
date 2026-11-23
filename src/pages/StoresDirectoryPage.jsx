@@ -53,7 +53,7 @@ export default function StoresDirectoryPage() {
         
         {/* Top Back Action */}
         <div className="flex items-center justify-between">
-          <BackButton label="العودة للرئيسية" fallbackRoute="/" />
+          <BackButton label="العودة للرئيسية" fallbackRoute="/shopper" />
           <span className="text-xs font-bold text-on-surface-variant bg-surface-container px-3 py-1 rounded-full border border-outline-variant/40">
             دليل المتاجر المعتمدة • 2026
           </span>

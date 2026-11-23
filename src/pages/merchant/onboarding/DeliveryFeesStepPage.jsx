@@ -22,13 +22,13 @@ export default function DeliveryFeesStepPage() {
     <div className="min-h-screen flex flex-col bg-[#F6F3EC] text-[#12302B] font-tajawal antialiased selection:bg-[#E9B44C] selection:text-[#12302B]">
       <MerchantHeader />
 
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 md:px-8 py-8">
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 md:px-6 py-6 sm:py-8">
         {/* Stepper Progress */}
-        <section className="bg-white rounded-2xl p-6 md:p-8 border border-[#E1DACB] shadow-sm mb-8">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+        <section className="bg-white rounded-2xl p-5 md:p-6 border border-[#E1DACB] shadow-xs mb-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-base sm:text-lg font-bold text-[#12302B]">إعداد وتأهيل متجر الأزياء والأحذية</h2>
+                <h2 className="text-lg md:text-xl font-bold text-[#12302B]">إعداد وتأهيل متجر الأزياء والأحذية</h2>
                 <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#E9B44C]/20 text-[#12302B] border border-[#E9B44C]/50">
                   إنجاز 66% من ملف المتجر
                 </span>
@@ -73,9 +73,9 @@ export default function DeliveryFeesStepPage() {
         </section>
 
         {/* Main Content Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <section className="lg:col-span-8 bg-white rounded-2xl p-6 md:p-8 border border-[#E1DACB] shadow-sm space-y-6">
-            <form onSubmit={handleContinue} className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start">
+          <section className="lg:col-span-8 bg-white rounded-2xl p-5 sm:p-6 md:p-7 border border-[#E1DACB] shadow-xs space-y-5">
+            <form onSubmit={handleContinue} className="space-y-5">
               {/* Delivery Mechanism */}
               <div>
                 <h3 className="text-base font-bold text-[#12302B] mb-1">آلية التوصيل المعتمدة للمتجر</h3>
@@ -261,23 +261,22 @@ export default function DeliveryFeesStepPage() {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-6 border-t border-[#E1DACB] flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="pt-5 border-t border-[#E1DACB] flex flex-col sm:flex-row items-center justify-between gap-3">
                 <button
                   type="button"
                   onClick={() => navigate('/merchant/onboarding/branding')}
-                  className="w-full sm:w-auto px-6 h-12 rounded-xl border border-[#12302B]/30 hover:bg-[#F6F3EC] text-[#12302B] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  className="w-full sm:w-auto px-5 h-11 rounded-xl border border-[#12302B]/30 hover:bg-[#F6F3EC] text-[#12302B] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
-                  <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
+                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                   <span>السابق (الهوية والوصف)</span>
                 </button>
 
                 <button
                   type="submit"
-                  onClick={handleContinue}
-                  className="w-full sm:w-auto px-8 h-12 rounded-xl bg-[#E9B44C] hover:bg-[#dda437] text-[#12302B] font-bold text-xs sm:text-sm shadow-md hover:shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  className="w-full sm:w-auto px-7 h-11 rounded-xl bg-[#E9B44C] hover:bg-[#dda437] text-[#12302B] font-bold text-xs sm:text-sm shadow-sm hover:shadow flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
                   <span>متابعة إلى المستحقات والتحويل المالي (الخطوة 5)</span>
-                  <span className="material-symbols-outlined text-[20px]">arrow_back</span>
+                  <span className="material-symbols-outlined text-[18px]">arrow_back</span>
                 </button>
               </div>
             </form>

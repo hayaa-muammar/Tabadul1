@@ -10,12 +10,12 @@ export function AuthProvider({ children }) {
     firstName: "سارة",
     phone: "059-9123456",
     role: "shopper",
-    tier: "المستوى الذهبي",
+    tier: "VIP الذهبي",
     tierCode: "VIP",
-    points: 2400,
-    walletBalance: 12.00,
+    points: 3000,
+    walletBalance: 15.00,
     address: "شارع النصر الرئيسي، بجوار مجمع النخيل الطبي، عمارة الأمل، الطابق الثالث",
-    city: "فلسطين",
+    city: "غزة، فلسطين",
     isGuest: false
   });
 
@@ -26,12 +26,12 @@ export function AuthProvider({ children }) {
       firstName: customName.split(' ')[0] || "سارة",
       phone: customPhone,
       role: "shopper",
-      tier: "المستوى الذهبي",
+      tier: "VIP الذهبي",
       tierCode: "VIP",
-      points: 2400,
-      walletBalance: 12.00,
+      points: 3000,
+      walletBalance: 15.00,
       address: "شارع النصر الرئيسي، بجوار مجمع النخيل الطبي، عمارة الأمل، الطابق الثالث",
-      city: "فلسطين",
+      city: "غزة، فلسطين",
       isGuest: false
     });
   };

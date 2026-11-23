@@ -14,6 +14,7 @@ export default function StoreInfoStepPage() {
     shoes: true,
     kids: false,
   });
+  const [error, setError] = useState('');
 
   const toggleCategory = (key) => {
     setCategories((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -21,6 +22,22 @@ export default function StoreInfoStepPage() {
 
   const handleContinue = (e) => {
     if (e && e.preventDefault) e.preventDefault();
+    setError('');
+
+    if (!storeName.trim()) {
+      setError('يرجى إدخال اسم المتجر أو البوتيك.');
+      return;
+    }
+    if (!storeSocial.trim()) {
+      setError('يرجى إدخال رابط صفحة المتجر على وسائل التواصل الاجتماعي.');
+      return;
+    }
+    const hasCategory = Object.values(categories).some(Boolean);
+    if (!hasCategory) {
+      setError('يرجى اختيار فئة أزياء واحدة على الأقل للاستمرار.');
+      return;
+    }
+
     navigate('/merchant/onboarding/branding');
   };
 
@@ -29,21 +46,21 @@ export default function StoreInfoStepPage() {
       <MerchantHeader />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 md:px-8 py-8">
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 md:px-6 py-6 sm:py-8">
         {/* Stepper (6 Steps) */}
-        <section aria-label="شريط التقدم" className="bg-white rounded-2xl p-6 md:p-8 border border-[#E1DACB] shadow-sm mb-8">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+        <section aria-label="شريط التقدم" className="bg-white rounded-2xl p-5 md:p-6 border border-[#E1DACB] shadow-xs mb-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
             <div>
               <p className="text-xs text-[#576b66] mb-1 font-medium">مسار انضمام متجر أزياء وأحذية</p>
-              <h1 className="text-xl md:text-2xl font-bold text-[#12302B]">الخطوة 2: بيانات المتجر وفئات الأزياء</h1>
+              <h1 className="text-lg md:text-xl font-bold text-[#12302B]">الخطوة 2: بيانات المتجر وفئات الأزياء</h1>
             </div>
-            <div className="bg-[#E9B44C]/20 text-[#835400] border border-[#E9B44C]/40 rounded-full px-4 py-1.5 text-xs font-bold flex items-center gap-1.5 shadow-xs self-start md:self-auto">
-              <span className="material-symbols-outlined text-[18px]">store</span>
+            <div className="bg-[#E9B44C]/20 text-[#835400] border border-[#E9B44C]/40 rounded-full px-3.5 py-1 text-xs font-bold flex items-center gap-1.5 shadow-xs self-start md:self-auto">
+              <span className="material-symbols-outlined text-[16px]">store</span>
               <span>إنجاز 33% من ملف المتجر</span>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 p-2 bg-[#F6F3EC] rounded-xl border border-[#E1DACB]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-2.5 p-2 bg-[#F6F3EC] rounded-xl border border-[#E1DACB]">
             {/* Step 1: Done */}
             <div className="p-2.5 rounded-lg flex items-center justify-between gap-1.5 text-xs border border-[#1F7A6E]/30 bg-emerald-50/60">
               <div className="flex flex-col">
@@ -113,10 +130,17 @@ export default function StoreInfoStepPage() {
         </section>
 
         {/* Main Content Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start">
           {/* Form Column */}
-          <section className="lg:col-span-8 bg-white rounded-2xl p-6 md:p-8 border border-[#E1DACB] shadow-sm">
-            <form onSubmit={handleContinue} className="space-y-6">
+          <section className="lg:col-span-8 bg-white rounded-2xl p-5 sm:p-6 md:p-7 border border-[#E1DACB] shadow-xs">
+            <form onSubmit={handleContinue} className="space-y-5">
+              {error && (
+                <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-xs sm:text-sm flex items-center gap-2">
+                  <span className="material-symbols-outlined text-base">error</span>
+                  <span>{error}</span>
+                </div>
+              )}
+
               {/* 1. Store Name Field */}
               <div className="space-y-2">
                 <div className="flex justify-between items-baseline">
@@ -297,23 +321,22 @@ export default function StoreInfoStepPage() {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-6 border-t border-[#E1DACB] flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="pt-5 border-t border-[#E1DACB] flex flex-col sm:flex-row items-center justify-between gap-3">
                 <button
                   type="button"
                   onClick={() => navigate('/merchant/otp')}
-                  className="w-full sm:w-auto px-6 h-12 rounded-xl border border-[#12302B]/30 hover:bg-[#F6F3EC] text-[#12302B] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  className="w-full sm:w-auto px-5 h-11 rounded-xl border border-[#12302B]/30 hover:bg-[#F6F3EC] text-[#12302B] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
-                  <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
+                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                   <span>السابق (التحقق من الهاتف)</span>
                 </button>
 
                 <button
                   type="submit"
-                  onClick={handleContinue}
-                  className="w-full sm:w-auto px-8 h-12 rounded-xl bg-[#E9B44C] hover:bg-[#dda437] text-[#12302B] font-bold text-xs sm:text-sm shadow-md hover:shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  className="w-full sm:w-auto px-7 h-11 rounded-xl bg-[#E9B44C] hover:bg-[#dda437] text-[#12302B] font-bold text-xs sm:text-sm shadow-sm hover:shadow flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
                   <span>متابعة إلى شعار ووصف المتجر (الخطوة 3)</span>
-                  <span className="material-symbols-outlined text-[20px]">arrow_back</span>
+                  <span className="material-symbols-outlined text-[18px]">arrow_back</span>
                 </button>
               </div>
             </form>

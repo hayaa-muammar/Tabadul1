@@ -94,7 +94,7 @@ export default function BillSummaryCard({ onCheckout = null, buttonText = null }
       <button
         type="button"
         onClick={handleProceed}
-        className="w-full h-13 sm:h-14 bg-primary hover:bg-primary-container text-white rounded-xl font-bold text-sm sm:text-base shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer group"
+        className="w-full h-11 sm:h-12 bg-primary hover:bg-primary-container text-white rounded-xl font-bold text-xs sm:text-sm shadow-sm hover:shadow transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer group"
       >
         <span>{buttonText || `متابعة لإتمام الطلب والدفع الآمن (${finalTotal.toFixed(2)} ₪)`}</span>
         <span className="material-symbols-outlined text-xl transition-transform group-hover:-translate-x-1">

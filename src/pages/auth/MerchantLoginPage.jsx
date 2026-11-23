@@ -7,19 +7,32 @@ import PasswordInputField from '../../components/common/PasswordInputField';
 import { useAuth } from '../../context/AuthContext';
 
 export default function MerchantLoginPage() {
-  const [storeId, setStoreId] = useState("0598342190");
-  const [pin, setPin] = useState("1234");
-  const [rememberSession, setRememberSession] = useState(true);
+  const [storeId, setStoreId] = useState("");
+  const [pin, setPin] = useState("");
+  const [rememberSession, setRememberSession] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
   const { loginAsMerchant } = useAuth();
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setError(null);
+
+    if (!storeId || !storeId.trim()) {
+      setError("يرجى إدخال رقم هاتف المتجر أو اسم المستخدم للمتابعة.");
+      return;
+    }
+
+    if (!pin || pin.trim().length < 4) {
+      setError("يجب إدخال رمز الدخول السري المكون من 4 أرقام على الأقل.");
+      return;
+    }
+
     setIsSubmitting(true);
     setTimeout(() => {
-      loginAsMerchant("059-8342190", "بوتيك لمسة للأزياء");
+      loginAsMerchant(storeId, "بوتيك لمسة للأزياء");
       setIsSubmitting(false);
       navigate('/merchant/otp');
     }, 600);
@@ -90,7 +103,7 @@ export default function MerchantLoginPage() {
             <div>
               {/* Back Link */}
               <div className="flex items-center justify-between mb-4">
-                <BackButton label="العودة للرئيسية" fallbackRoute="/" />
+                <BackButton label="العودة للرئيسية" fallbackRoute="/merchant/landing" />
                 <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">
                   لوحة التاجر
                 </span>
@@ -128,6 +141,13 @@ export default function MerchantLoginPage() {
                   أدخل رقم المتجر المفوض والرمز السري للوصول للوحة التحكم.
                 </p>
               </div>
+
+              {error && (
+                <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-xl border border-red-200 text-xs flex items-center gap-2 font-bold">
+                  <span className="material-symbols-outlined text-base">error</span>
+                  <span>{error}</span>
+                </div>
+              )}
 
               <form onSubmit={handleLogin} className="space-y-4">
                 <div>
@@ -200,7 +220,7 @@ export default function MerchantLoginPage() {
             {/* Bottom Join CTA */}
             <div className="pt-4 border-t border-outline-variant/30 text-center text-xs sm:text-sm text-on-surface-variant">
               <span>هل تملك متجراً ولم تنضم بعد؟</span>
-              <Link to="/#merchant-signup" className="font-bold text-gaza-teal hover:underline mr-1 block sm:inline mt-1 sm:mt-0">
+              <Link to="/merchant/landing" className="font-bold text-gaza-teal hover:underline mr-1 block sm:inline mt-1 sm:mt-0">
                 سجّل متجرك كشريك معتمد مجاناً ➔
               </Link>
             </div>

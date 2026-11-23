@@ -9,11 +9,12 @@ import { useAuth } from '../../context/AuthContext';
 import { validatePhoneNumber } from '../../utils/phoneValidation';
 
 export default function ShopperLoginPage() {
-  const [phone, setPhone] = useState("0599123456");
+  const [phone, setPhone] = useState("");
   const [phoneCountry, setPhoneCountry] = useState("PS");
   const [phoneError, setPhoneError] = useState(null);
-  const [password, setPassword] = useState("password123");
-  const [rememberMe, setRememberMe] = useState(true);
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState(null);
+  const [rememberMe, setRememberMe] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const navigate = useNavigate();
@@ -22,16 +23,36 @@ export default function ShopperLoginPage() {
   const handleLogin = (e) => {
     e.preventDefault();
     setPhoneError(null);
-    const phoneVal = validatePhoneNumber(phone, phoneCountry, { isWhatsApp: false, required: true });
-    if (!phoneVal.isValid) {
-      setPhoneError(phoneVal.error);
-      return;
+    setPasswordError(null);
+
+    let hasError = false;
+
+    if (!phone || !phone.trim()) {
+      setPhoneError("يرجى إدخال رقم الهاتف المحمول للمتابعة.");
+      hasError = true;
+    } else {
+      const phoneVal = validatePhoneNumber(phone, phoneCountry, { isWhatsApp: false, required: true });
+      if (!phoneVal.isValid) {
+        setPhoneError(phoneVal.error);
+        hasError = true;
+      }
     }
+
+    if (!password || !password.trim()) {
+      setPasswordError("يرجى إدخال كلمة المرور للمتابعة.");
+      hasError = true;
+    } else if (password.trim().length < 6) {
+      setPasswordError("كلمة المرور يجب أن تتكون من 6 خانات على الأقل.");
+      hasError = true;
+    }
+
+    if (hasError) return;
+
     setIsSubmitting(true);
     setTimeout(() => {
-      loginAsShopper(phoneVal.formatted || phone, "سارة أحمد");
+      loginAsShopper(phone, "سارة أحمد");
       setIsSubmitting(false);
-      navigate('/stores');
+      navigate('/customer/dashboard');
     }, 600);
   };
 
@@ -119,7 +140,7 @@ export default function ShopperLoginPage() {
             <div>
               {/* Header Action Bar */}
               <div className="flex items-center justify-between mb-6">
-                <BackButton label="العودة للرئيسية" fallbackRoute="/" />
+                <BackButton label="العودة للرئيسية" fallbackRoute="/shopper" />
                 <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">
                   بوابة المتسوقين
                 </span>
@@ -197,9 +218,18 @@ export default function ShopperLoginPage() {
                   <PasswordInputField
                     id="login-pwd"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      setPasswordError(null);
+                    }}
                     required
                   />
+                  {passwordError && (
+                    <p className="text-error text-xs mt-1.5 flex items-center gap-1">
+                      <span className="material-symbols-outlined text-sm">error</span>
+                      <span>{passwordError}</span>
+                    </p>
+                  )}
                 </div>
 
                 {/* Remember & OTP Alternatives */}

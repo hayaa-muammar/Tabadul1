@@ -14,7 +14,7 @@ export default function SpecializedHeader({ variant, customTitle, customBadge })
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         
         {/* Brand Anchor */}
-        <Link to="/" className="flex items-center gap-3 group focus:outline-none shrink-0">
+        <Link to="/shopper" className="flex items-center gap-3 group focus:outline-none shrink-0" title="لوحة تحكم المتسوق الرئيسية">
           <div className="h-10 sm:h-11 w-auto flex items-center justify-center">
             <img
               alt="شعار منصة تبادل"
@@ -39,7 +39,7 @@ export default function SpecializedHeader({ variant, customTitle, customBadge })
         ) : (
           <nav className="hidden md:flex items-center gap-3 text-xs font-bold">
             <Link
-              to="/"
+              to="/shopper"
               className="px-3.5 py-2 rounded-xl bg-[#f6f3ec] hover:bg-[#12302b]/10 text-[#12302b] transition-colors flex items-center gap-1.5 border border-[#12302b]/10"
             >
               <span className="material-symbols-outlined text-sm">home</span>
@@ -68,7 +68,7 @@ export default function SpecializedHeader({ variant, customTitle, customBadge })
           ) : (
             <>
               <Link
-                to="/"
+                to="/shopper"
                 className="px-3.5 py-1.5 rounded-xl bg-[#12302b] hover:bg-[#1f7a6e] text-white font-black text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
               >
                 <span className="material-symbols-outlined text-sm text-[#e9b44c]">home</span>

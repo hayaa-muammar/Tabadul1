@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Breadcrumbs({ items = [] }) {
+export default function Breadcrumbs({ items = [], homeRoute = "/shopper" }) {
   return (
     <nav aria-label="مسار التصفح" className="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md flex-wrap py-2">
-      <Link to="/" className="hover:text-primary transition-colors flex items-center gap-1">
+      <Link to={homeRoute} className="hover:text-primary transition-colors flex items-center gap-1">
         <span className="material-symbols-outlined text-[16px]">home</span>
         <span className="text-xs sm:text-sm">الرئيسية</span>
       </Link>

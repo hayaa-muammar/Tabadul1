@@ -75,7 +75,7 @@ export default function InsufficientBalancePage() {
       {/* Breadcrumbs & Step Indicator */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2 w-full">
         <nav className="flex items-center gap-2 text-xs text-[#74777f]">
-          <Link to="/" className="hover:text-[#032448] transition-colors">الرئيسية</Link>
+          <Link to="/shopper" className="hover:text-[#032448] transition-colors">الرئيسية</Link>
           <span className="material-symbols-outlined text-[14px]">arrow_back_ios</span>
           <Link to="/cart" className="hover:text-[#032448] transition-colors">سلة المشتريات</Link>
           <span className="material-symbols-outlined text-[14px]">arrow_back_ios</span>

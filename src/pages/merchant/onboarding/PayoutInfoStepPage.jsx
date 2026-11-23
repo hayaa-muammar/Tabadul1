@@ -11,9 +11,28 @@ export default function PayoutInfoStepPage() {
   const [iban, setIban] = useState('PS04PALS00001234567890123456');
   const [jawwalPayPhone, setJawwalPayPhone] = useState('0599123456');
   const [payoutCycle, setPayoutCycle] = useState('weekly');
+  const [error, setError] = useState('');
 
   const handleContinue = (e) => {
     if (e && e.preventDefault) e.preventDefault();
+    setError('');
+
+    if (payoutMethod === 'bank') {
+      if (!accountHolder.trim()) {
+        setError('يرجى إدخال اسم صاحب الحساب التجاري كما يظهر لدى البنك.');
+        return;
+      }
+      if (!iban.trim() || iban.trim().length < 15) {
+        setError('يرجى إدخال رقم آيبان (IBAN) صحيح ومكتمل.');
+        return;
+      }
+    } else if (payoutMethod === 'jawwal_pay') {
+      if (!jawwalPayPhone.trim() || jawwalPayPhone.trim().length < 9) {
+        setError('يرجى إدخال رقم محفظة جوال باي (Jawwal Pay) صحيح ومكوّن من 9 أرقام على الأقل.');
+        return;
+      }
+    }
+
     navigate('/merchant/onboarding/review');
   };
 
@@ -21,13 +40,13 @@ export default function PayoutInfoStepPage() {
     <div className="min-h-screen flex flex-col bg-[#F6F3EC] text-[#12302B] font-tajawal antialiased selection:bg-[#E9B44C] selection:text-[#12302B]">
       <MerchantHeader />
 
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 md:px-8 py-8">
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 md:px-6 py-6 sm:py-8">
         {/* Stepper Progress */}
-        <section className="bg-white rounded-2xl p-6 md:p-8 border border-[#E1DACB] shadow-sm mb-8">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+        <section className="bg-white rounded-2xl p-5 md:p-6 border border-[#E1DACB] shadow-xs mb-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-base sm:text-lg font-bold text-[#12302B]">إعداد وتأهيل متجر الأزياء والأحذية</h2>
+                <h2 className="text-lg md:text-xl font-bold text-[#12302B]">إعداد وتأهيل متجر الأزياء والأحذية</h2>
                 <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#E9B44C]/20 text-[#12302B] border border-[#E9B44C]/50">
                   إنجاز 83% من ملف المتجر
                 </span>
@@ -72,15 +91,22 @@ export default function PayoutInfoStepPage() {
         </section>
 
         {/* Main Content Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <section className="lg:col-span-8 bg-white rounded-2xl p-6 md:p-8 border border-[#E1DACB] shadow-sm space-y-6">
-            <form onSubmit={handleContinue} className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start">
+          <section className="lg:col-span-8 bg-white rounded-2xl p-5 sm:p-6 md:p-7 border border-[#E1DACB] shadow-xs space-y-5">
+            <form onSubmit={handleContinue} className="space-y-5">
               <div className="border-b border-[#E1DACB] pb-4">
-                <h1 className="text-xl font-bold text-[#12302B]">المستحقات والتحويل المالي</h1>
+                <h1 className="text-lg sm:text-xl font-bold text-[#12302B]">المستحقات والتحويل المالي</h1>
                 <p className="text-xs text-[#576b66] mt-1">
                   أين ترغب في استلام أرباح مبيعاتك وقيم النقاط المستبدلة في متجرك؟
                 </p>
               </div>
+
+              {error && (
+                <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-xs sm:text-sm flex items-center gap-2">
+                  <span className="material-symbols-outlined text-base">error</span>
+                  <span>{error}</span>
+                </div>
+              )}
 
               {/* Method selection */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -214,23 +240,22 @@ export default function PayoutInfoStepPage() {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-6 border-t border-[#E1DACB] flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="pt-5 border-t border-[#E1DACB] flex flex-col sm:flex-row items-center justify-between gap-3">
                 <button
                   type="button"
                   onClick={() => navigate('/merchant/onboarding/delivery-fees')}
-                  className="w-full sm:w-auto px-6 h-12 rounded-xl border border-[#12302B]/30 hover:bg-[#F6F3EC] text-[#12302B] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  className="w-full sm:w-auto px-5 h-11 rounded-xl border border-[#12302B]/30 hover:bg-[#F6F3EC] text-[#12302B] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
-                  <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
+                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                   <span>السابق (التوصيل والرسوم)</span>
                 </button>
 
                 <button
                   type="submit"
-                  onClick={handleContinue}
-                  className="w-full sm:w-auto px-8 h-12 rounded-xl bg-[#E9B44C] hover:bg-[#dda437] text-[#12302B] font-bold text-xs sm:text-sm shadow-md hover:shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  className="w-full sm:w-auto px-7 h-11 rounded-xl bg-[#E9B44C] hover:bg-[#dda437] text-[#12302B] font-bold text-xs sm:text-sm shadow-sm hover:shadow flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
                   <span>متابعة إلى المراجعة والاعتماد (الخطوة الأخيرة)</span>
-                  <span className="material-symbols-outlined text-[20px]">arrow_back</span>
+                  <span className="material-symbols-outlined text-[18px]">arrow_back</span>
                 </button>
               </div>
             </form>

@@ -25,7 +25,7 @@ export default function MobileNavDrawer({ isOpen, onClose }) {
         <div>
           {/* Header */}
           <div className="p-4 border-b border-outline-variant/30 flex items-center justify-between bg-surface-container-low">
-            <div className="flex items-center gap-2.5">
+            <Link to="/shopper" onClick={onClose} className="flex items-center gap-2.5">
               <img
                 alt="شعار منصة تبادل"
                 className="h-8 w-auto object-contain rounded-md"
@@ -35,7 +35,7 @@ export default function MobileNavDrawer({ isOpen, onClose }) {
               <span className="text-[10px] bg-[#1f7a6e]/15 text-[#1f7a6e] font-bold px-2 py-0.5 rounded-full">
                 2026
               </span>
-            </div>
+            </Link>
             <button 
               onClick={onClose}
               className="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container transition-colors cursor-pointer"
@@ -83,11 +83,11 @@ export default function MobileNavDrawer({ isOpen, onClose }) {
           {/* Navigation Links */}
           <nav className="p-3 space-y-1 text-sm font-bold">
             <Link
-              to="/"
+              to="/shopper"
               onClick={onClose}
               className={`flex items-center gap-3 px-3.5 py-3 rounded-xl transition-colors ${
-                location.pathname === '/' 
-                  ? 'bg-gaza-teal/10 text-gaza-teal' 
+                ['/shopper', '/shopper/dashboard', '/customer/dashboard', '/shopper-landing'].includes(location.pathname)
+                  ? 'bg-gaza-teal/10 text-gaza-teal font-black' 
                   : 'text-on-surface hover:bg-surface-container-low'
               }`}
             >
@@ -168,11 +168,11 @@ export default function MobileNavDrawer({ isOpen, onClose }) {
             {!user.isGuest && (
               <>
                 <Link
-                  to="/customer/dashboard"
+                  to="/shopper"
                   onClick={onClose}
                   className={`flex items-center gap-3 px-3.5 py-3 rounded-xl transition-colors ${
-                    location.pathname === '/customer/dashboard' 
-                      ? 'bg-gaza-teal/10 text-gaza-teal' 
+                    ['/shopper', '/shopper/dashboard', '/customer/dashboard', '/shopper-landing'].includes(location.pathname)
+                      ? 'bg-gaza-teal/10 text-gaza-teal font-black' 
                       : 'text-on-surface hover:bg-surface-container-low'
                   }`}
                 >

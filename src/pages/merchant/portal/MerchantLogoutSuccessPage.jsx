@@ -11,7 +11,7 @@ export default function MerchantLogoutSuccessPage() {
         <div className="flex justify-between items-center w-full px-4 sm:px-6 py-3.5 max-w-7xl mx-auto">
           {/* Brand Logo Cluster */}
           <div className="flex items-center gap-4">
-            <Link to="/" className="flex items-center gap-3 group focus:outline-none">
+            <Link to="/merchant/landing" className="flex items-center gap-3 group focus:outline-none">
               <div className="h-10 sm:h-11 w-auto flex items-center justify-center">
                 <img
                   alt="شعار منصة تبادل"
@@ -32,8 +32,8 @@ export default function MerchantLogoutSuccessPage() {
 
           {/* Public Navigation Links */}
           <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-xs sm:text-sm font-bold text-gray-600">
-            <Link to="/" className="hover:text-[#12302b] transition-colors">
-              الرئيسية
+            <Link to="/merchant/landing" className="hover:text-[#12302b] transition-colors">
+              رئيسية التجار
             </Link>
             <Link to="/stores" className="hover:text-[#12302b] transition-colors">
               دليل المتاجر
@@ -176,12 +176,12 @@ export default function MerchantLogoutSuccessPage() {
 
               {/* Secondary CTA */}
               <button
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/merchant/landing')}
                 type="button"
                 className="w-full sm:w-auto min-w-[210px] h-12 inline-flex items-center justify-center gap-2 px-6 rounded-xl bg-white border-2 border-[#12302b] text-[#12302b] hover:bg-[#f6f3ec] text-xs sm:text-sm font-bold transition-all active:scale-95 cursor-pointer"
               >
                 <span className="material-symbols-outlined text-xl text-[#12302b]">storefront</span>
-                <span>الذهاب إلى الصفحة الرئيسية</span>
+                <span>الذهاب لبوابة التجار</span>
               </button>
             </div>
 
@@ -217,8 +217,8 @@ export default function MerchantLogoutSuccessPage() {
             <Link to="/terms" className="hover:text-[#12302b] transition-colors">
               شروط انضمام التجار
             </Link>
-            <Link to="/contact" className="hover:text-[#12302b] transition-colors">
-              اتصل بنا
+            <Link to="/merchant/help" className="hover:text-[#12302b] transition-colors">
+              مركز الدعم الفني
             </Link>
           </div>
         </div>

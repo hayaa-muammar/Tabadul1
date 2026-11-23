@@ -62,11 +62,11 @@ export default function CustomerWalletPage() {
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 space-y-8">
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs sm:text-sm text-[#74777f]">
-          <Link to="/" className="hover:text-[#12302B] transition-colors">
+          <Link to="/shopper" className="hover:text-[#12302B] transition-colors">
             الرئيسية
           </Link>
           <span className="material-symbols-outlined text-sm">chevron_left</span>
-          <Link to="/customer/dashboard" className="hover:text-[#12302B] transition-colors">
+          <Link to="/shopper" className="hover:text-[#12302B] transition-colors">
             لوحة التحكم
           </Link>
           <span className="material-symbols-outlined text-sm">chevron_left</span>

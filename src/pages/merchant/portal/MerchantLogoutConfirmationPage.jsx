@@ -43,11 +43,14 @@ export default function MerchantLogoutConfirmationPage() {
 
             {/* Desktop Navigation Items */}
             <nav className="hidden lg:flex items-center gap-6 mr-4 text-xs font-bold text-[#43474e]">
-              <Link to="/orders" className="hover:text-[#032448] transition-colors">
-                حالة الطلب
+              <Link to="/merchant/orders" className="hover:text-[#032448] transition-colors">
+                الطلبات
               </Link>
-              <Link to="/stores" className="hover:text-[#032448] transition-colors">
-                دليل المتاجر
+              <Link to="/merchant/products" className="hover:text-[#032448] transition-colors">
+                المنتجات
+              </Link>
+              <Link to="/merchant/help" className="hover:text-[#032448] transition-colors">
+                مركز المساعدة
               </Link>
               <Link to="/terms" className="hover:text-[#032448] transition-colors">
                 الشروط والأحكام
@@ -273,8 +276,8 @@ export default function MerchantLogoutConfirmationPage() {
             <Link to="/terms" className="hover:text-[#032448] transition-colors">
               شروط انضمام التجار
             </Link>
-            <Link to="/contact" className="hover:text-[#032448] transition-colors">
-              اتصل بنا
+            <Link to="/merchant/help" className="hover:text-[#032448] transition-colors">
+              الدعم الفني المباشر
             </Link>
           </div>
         </div>

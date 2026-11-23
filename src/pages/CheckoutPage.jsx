@@ -28,15 +28,29 @@ export default function CheckoutPage() {
   const [paymentMethod, setPaymentMethod] = useState("wallet");
   const [isOrderConfirmed, setIsOrderConfirmed] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState(null);
 
   const handleConfirmOrder = (e) => {
     e.preventDefault();
     setRecipientPhoneError(null);
+    setFormError(null);
+
+    if (!recipientName.trim()) {
+      setFormError("يرجى إدخال اسم المستلم.");
+      return;
+    }
+
     const phoneVal = validatePhoneNumber(recipientPhone, recipientCountry, { required: true });
     if (!phoneVal.isValid) {
       setRecipientPhoneError(phoneVal.error);
       return;
     }
+
+    if (!addressDetails.trim()) {
+      setFormError("يرجى إدخال تفاصيل عنوان التوصيل.");
+      return;
+    }
+
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
@@ -300,6 +314,14 @@ export default function CheckoutPage() {
                   <span className="text-xs font-bold text-gaza-teal mr-1">₪</span>
                 </div>
               </div>
+
+              {/* Error Alert */}
+              {formError && (
+                <div className="p-3 bg-red-50 text-red-700 rounded-xl border border-red-200 text-xs flex items-center gap-2 font-bold">
+                  <span className="material-symbols-outlined text-base">error</span>
+                  <span>{formError}</span>
+                </div>
+              )}
 
               {/* Submit CTA */}
               <div className="pt-2">

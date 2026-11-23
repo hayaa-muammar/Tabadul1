@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function BackButton({ 
   label = "الرجوع", 
-  fallbackRoute = "/", 
+  fallbackRoute = "/shopper", 
   className = "",
   showIcon = true 
 }) {

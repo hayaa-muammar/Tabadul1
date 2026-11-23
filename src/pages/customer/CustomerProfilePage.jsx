@@ -24,11 +24,11 @@ export default function CustomerProfilePage() {
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow">
         {/* Breadcrumb */}
         <nav aria-label="مسار التنقل" className="flex items-center gap-2 text-xs font-medium text-[#12302B]/60 mb-6">
-          <Link to="/" className="hover:text-[#1F7A6E] transition-colors">
+          <Link to="/shopper" className="hover:text-[#1F7A6E] transition-colors">
             الرئيسية
           </Link>
           <span className="material-symbols-outlined text-sm">chevron_left</span>
-          <Link to="/customer/dashboard" className="hover:text-[#1F7A6E] transition-colors">
+          <Link to="/shopper" className="hover:text-[#1F7A6E] transition-colors">
             لوحة التحكم
           </Link>
           <span className="material-symbols-outlined text-sm">chevron_left</span>

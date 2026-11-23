@@ -26,6 +26,7 @@ export default function WalletCheckoutPage() {
   const [deliveryNotes, setDeliveryNotes] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('wallet');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   // Financial calculations from 23code.html (products: 335, delivery: 0, points discount: -12, net: 323)
   const productsTotal = subtotal > 0 ? subtotal : 335.0;
@@ -34,6 +35,21 @@ export default function WalletCheckoutPage() {
 
   const handleSubmitOrder = (e) => {
     e.preventDefault();
+    setError('');
+
+    if (!recipientName.trim()) {
+      setError('يرجى إدخال اسم المستلم.');
+      return;
+    }
+    if (!recipientPhone.trim() || recipientPhone.trim().length < 8) {
+      setError('يرجى إدخال رقم هاتف المستلم بشكل صحيح.');
+      return;
+    }
+    if (!addressDetails.trim()) {
+      setError('يرجى إدخال تفاصيل عنوان التوصيل.');
+      return;
+    }
+
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
@@ -52,7 +68,7 @@ export default function WalletCheckoutPage() {
       <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Step Indicator Progress / Breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-6 flex items-center flex-wrap gap-2 text-xs md:text-sm text-[#4a5a56] font-medium">
-          <Link to="/" className="hover:text-[#1f7a6e] transition-colors flex items-center gap-1">
+          <Link to="/shopper" className="hover:text-[#1f7a6e] transition-colors flex items-center gap-1">
             <span className="material-symbols-outlined text-[16px] leading-none">home</span>
             <span>الرئيسية</span>
           </Link>
@@ -76,17 +92,24 @@ export default function WalletCheckoutPage() {
           <section className="lg:col-span-7 space-y-6">
             
             {/* Recipient & Delivery Address Card */}
-            <div className="bg-white rounded-xl p-6 border border-[#e1e2ea] shadow-sm">
-              <div className="flex items-center justify-between pb-4 mb-5 border-b border-[#f2f3fc]">
+            <div className="bg-white rounded-xl p-5 sm:p-6 border border-[#e1e2ea] shadow-xs">
+              <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-[#f2f3fc]">
                 <div className="flex items-center gap-2.5">
-                  <span className="material-symbols-outlined text-[#032448] text-[24px]">local_shipping</span>
-                  <h2 className="text-lg font-bold text-[#032448]">بيانات المستلم وعنوان التوصيل</h2>
+                  <span className="material-symbols-outlined text-[#032448] text-[22px]">local_shipping</span>
+                  <h2 className="text-base sm:text-lg font-bold text-[#032448]">بيانات المستلم وعنوان التوصيل</h2>
                 </div>
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#71dba2]/20 text-[#004328] text-xs font-semibold">
                   <span className="material-symbols-outlined text-[14px]">check_circle</span>
                   <span>عنوان مسجل</span>
                 </span>
               </div>
+
+              {error && (
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-xs sm:text-sm flex items-center gap-2">
+                  <span className="material-symbols-outlined text-base">error</span>
+                  <span>{error}</span>
+                </div>
+              )}
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -304,7 +327,7 @@ export default function WalletCheckoutPage() {
                   type="button"
                   onClick={handleSubmitOrder}
                   disabled={isSubmitting}
-                  className="w-full py-4 px-6 bg-[#1f7a6e] hover:bg-[#12302b] text-white font-bold rounded-xl shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 text-base cursor-pointer"
+                  className="w-full py-3 px-5 bg-[#1f7a6e] hover:bg-[#12302b] text-white font-bold rounded-xl shadow-sm transition-all active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>
@@ -313,7 +336,7 @@ export default function WalletCheckoutPage() {
                     </>
                   ) : (
                     <>
-                      <span className="material-symbols-outlined text-[22px]">lock</span>
+                      <span className="material-symbols-outlined text-[20px]">lock</span>
                       <span>تأكيد الدفع {netTotal.toFixed(2)} ₪ وتسجيل الطلب</span>
                     </>
                   )}

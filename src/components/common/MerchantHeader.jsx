@@ -4,13 +4,24 @@ import { Link, useLocation } from 'react-router-dom';
 export default function MerchantHeader() {
   const location = useLocation();
 
+  const isMerchantPortal = location.pathname.startsWith('/merchant') &&
+    !location.pathname.includes('/login') &&
+    !location.pathname.includes('/otp') &&
+    !location.pathname.includes('/landing') &&
+    !location.pathname.includes('/onboarding') &&
+    !location.pathname.includes('/application');
+
+  const merchantHomeRoute = isMerchantPortal
+    ? '/merchant/dashboard'
+    : (location.pathname.startsWith('/merchant') ? '/merchant/landing' : '/merchant/dashboard');
+
   return (
     <header className="w-full top-0 sticky z-40 bg-white/95 text-[#12302b] border-b border-[#12302b]/10 shadow-sm backdrop-blur-md transition-all font-tajawal">
       {/* Main Merchant Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         
         {/* Brand Anchor */}
-        <Link to="/" className="flex items-center gap-3 group focus:outline-none shrink-0">
+        <Link to={merchantHomeRoute} className="flex items-center gap-3 group focus:outline-none shrink-0">
           <div className="h-10 sm:h-11 w-auto flex items-center justify-center">
             <img
               alt="شعار منصة تبادل"
@@ -150,7 +161,7 @@ export default function MerchantHeader() {
           ) : (
             <>
               <Link
-                to="/"
+                to="/merchant/landing"
                 className="text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5 px-3 py-2 rounded-xl transition-colors"
               >
                 الرئيسية
@@ -171,19 +182,41 @@ export default function MerchantHeader() {
 
         {/* Left Actions Cluster (Merchant Focus) */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          <Link
-            to="/login"
-            className="px-3.5 py-1.5 rounded-xl bg-[#12302b] hover:bg-[#1f7a6e] text-white font-black text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
-          >
-            <span className="material-symbols-outlined text-sm text-[#e9b44c]">person</span>
-            <span>بوابة الزبائن</span>
-          </Link>
-          <Link
-            to="/"
-            className="hidden sm:inline-flex px-3 py-1.5 rounded-xl bg-[#f6f3ec] hover:bg-[#12302b]/10 text-[#12302b] font-bold text-xs border border-[#12302b]/15 transition-all"
-          >
-            الرئيسية
-          </Link>
+          {isMerchantPortal ? (
+            <>
+              <Link
+                to="/merchant/profile"
+                className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#12302b]/5 hover:bg-[#12302b]/10 text-[#12302b] font-bold text-xs border border-[#12302b]/15 transition-all"
+              >
+                <span className="w-5 h-5 rounded-full bg-[#1F7A6E] text-white flex items-center justify-center text-[10px] font-bold">ل</span>
+                <span>بوتيك لمسة</span>
+              </Link>
+              <Link
+                to="/merchant/logout"
+                className="px-3 py-1.5 rounded-xl bg-[#ba1a1a]/10 hover:bg-[#ba1a1a]/20 text-[#ba1a1a] font-bold text-xs flex items-center gap-1 transition-all"
+                title="تسجيل الخروج"
+              >
+                <span className="material-symbols-outlined text-sm">logout</span>
+                <span className="hidden sm:inline">خروج</span>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/merchant/landing"
+                className="hidden sm:inline-flex px-3 py-1.5 rounded-xl bg-[#f6f3ec] hover:bg-[#12302b]/10 text-[#12302b] font-bold text-xs border border-[#12302b]/15 transition-all"
+              >
+                رئيسية التجار
+              </Link>
+              <Link
+                to="/merchant/login"
+                className="px-3.5 py-1.5 rounded-xl bg-[#12302b] hover:bg-[#1f7a6e] text-white font-black text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
+              >
+                <span className="material-symbols-outlined text-sm text-[#e9b44c]">storefront</span>
+                <span>دخول التاجر</span>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>

@@ -63,7 +63,7 @@ export default function PaymentOtpErrorPage() {
       <div className="bg-[#f2f3fc] border-t border-[#e1e2ea] py-3">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <nav aria-label="مسار التنقل" className="flex items-center flex-wrap gap-2 text-xs font-semibold">
-            <Link to="/" className="text-[#43474e] hover:text-[#032448] transition-colors flex items-center gap-1">
+            <Link to="/shopper" className="text-[#43474e] hover:text-[#032448] transition-colors flex items-center gap-1">
               <span className="material-symbols-outlined text-base">home</span>
               <span>الرئيسية</span>
             </Link>

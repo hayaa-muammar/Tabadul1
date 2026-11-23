@@ -6,6 +6,7 @@ import MerchantHeader from '../../components/common/MerchantHeader';
 export default function MerchantOtpVerificationPage() {
   const navigate = useNavigate();
   const [otp, setOtp] = useState(['', '', '', '']);
+  const [otpError, setOtpError] = useState(null);
   const [secondsLeft, setSecondsLeft] = useState(52);
   const [isResendActive, setIsResendActive] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -77,7 +78,13 @@ export default function MerchantOtpVerificationPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setOtpError(null);
     const fullOtp = otp.join('');
+
+    if (fullOtp.length < 4) {
+      setOtpError("يرجى إدخال كامل أرقام رمز التحقق الـ 4 للمتابعة.");
+      return;
+    }
 
     // If entered incorrect code 7294 or if user navigates to error simulation
     if (fullOtp === '7294') {
@@ -161,24 +168,33 @@ export default function MerchantOtpVerificationPage() {
                   <label className="block text-center text-xs font-semibold text-[#43474e] mb-3">
                     أدخل رمز التحقق السريع المكون من 4 خانات
                   </label>
-                  <div className="flex justify-center items-center gap-3 sm:gap-4 dir-ltr" onPaste={handlePaste}>
+                  <div className="flex justify-center items-center gap-2.5 sm:gap-3 dir-ltr" onPaste={handlePaste}>
                     {otp.map((digit, idx) => (
                       <input
                         key={idx}
                         ref={inputRefs[idx]}
                         aria-label={`الرقم ${idx + 1}`}
                         autoFocus={idx === 0}
-                        className="w-14 h-16 sm:w-16 sm:h-20 text-center font-mono font-extrabold text-[#032448] bg-white rounded-xl border-2 border-[#c4c6cf] hover:border-[#1f3a5f] focus:border-[#032448] focus:ring-4 focus:ring-[#032448]/10 transition-all outline-none text-2xl shadow-xs"
+                        className="w-12 h-14 sm:w-14 sm:h-16 text-center font-mono font-extrabold text-[#032448] bg-white rounded-xl border-2 border-[#c4c6cf] hover:border-[#1f3a5f] focus:border-[#032448] focus:ring-2 focus:ring-[#032448]/20 transition-all outline-none text-xl shadow-xs"
                         inputMode="numeric"
                         maxLength={1}
                         pattern="[0-9]*"
                         type="text"
                         value={digit}
-                        onChange={(e) => handleChange(idx, e.target.value)}
+                        onChange={(e) => {
+                          handleChange(idx, e.target.value);
+                          setOtpError(null);
+                        }}
                         onKeyDown={(e) => handleKeyDown(idx, e)}
                       />
                     ))}
                   </div>
+                  {otpError && (
+                    <p className="text-red-600 text-xs text-center mt-2.5 font-bold flex items-center justify-center gap-1">
+                      <span className="material-symbols-outlined text-sm">error</span>
+                      <span>{otpError}</span>
+                    </p>
+                  )}
                 </div>
 
                 {/* Resend Timer & Fallback Options */}

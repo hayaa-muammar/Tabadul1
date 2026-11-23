@@ -9,16 +9,16 @@ export default function Footer() {
           
           {/* Col 1: Brand & Description */}
           <div className="md:col-span-5 space-y-3 text-right">
-            <div className="flex items-center gap-3">
+            <Link to="/shopper" className="inline-flex items-center gap-3 group">
               <div className="h-9 flex items-center justify-center">
                 <img
                   alt="شعار تبادل"
-                  className="h-8 w-auto object-contain"
+                  className="h-8 w-auto object-contain transition-transform group-hover:scale-105 rounded-md"
                   src="/logo.png"
                 />
               </div>
               <span className="text-xl font-black text-[#e9b44c] tracking-tight">تبادل | Tabadul</span>
-            </div>
+            </Link>
             <p className="text-xs sm:text-sm text-white/80 leading-relaxed max-w-sm">
               المنصة والتطبيق الموحد لمكافآت وولاء المتاجر 2026. اجمع نقاط كاش باك 5% من أرقى محلات الأزياء والأحذية واستبدلها فورياً برقم جوالك بدون بطاقات.
             </p>
@@ -33,7 +33,7 @@ export default function Footer() {
             <h4 className="text-xs font-black text-[#e9b44c] tracking-wider uppercase">روابط المنصة</h4>
             <ul className="space-y-2 text-xs sm:text-sm text-white/85">
               <li>
-                <Link to="/" className="hover:text-[#e9b44c] transition-colors">الرئيسية</Link>
+                <Link to="/shopper" className="hover:text-[#e9b44c] transition-colors">الرئيسية</Link>
               </li>
               <li>
                 <Link to="/stores" className="hover:text-[#e9b44c] transition-colors">استكشاف المتاجر الشريكة</Link>

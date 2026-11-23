@@ -96,6 +96,21 @@ import AdminLoginErrorPage from './pages/admin/AdminLoginErrorPage';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import AdminMerchantApplicationsPage from './pages/admin/AdminMerchantApplicationsPage';
 import AdminApplicationDetailPage from './pages/admin/AdminApplicationDetailPage';
+import AdminCustomersPage from './pages/admin/AdminCustomersPage'; // A-08 إدارة العملاء
+import AdminMerchantsPage from './pages/admin/AdminMerchantsPage'; // A-06 قائمة التجار المعتمدين
+import AdminMerchantDetailPage from './pages/admin/AdminMerchantDetailPage'; // A-07 تفاصيل التاجر
+import AdminLedgerPage from './pages/admin/AdminLedgerPage'; // A-09 الدفتر المالي والتسويات
+import AdminTransfersPage from './pages/admin/AdminTransfersPage'; // A-10 التحويلات وجدولة التجار
+import AdminDisputesPage from './pages/admin/AdminDisputesPage'; // A-11 العمليات المتنازع عليها
+import AdminComplaintsPage from './pages/admin/AdminComplaintsPage'; // A-12 الشكاوى وفض النزاعات
+import AdminComplaintDetailPage from './pages/admin/AdminComplaintDetailPage'; // A-13 تفاصيل الشكوى والتحكيم
+import AdminProductsPage from './pages/admin/AdminProductsPage'; // A-14 العروض والمنتجات
+import AdminReportsPage from './pages/admin/AdminReportsPage'; // A-15 التقارير ومؤشرات الأداء
+import AdminRulesPage from './pages/admin/AdminRulesPage'; // A-16 قواعد النقاط والإعدادات
+import AdminRolesPage from './pages/admin/AdminRolesPage'; // A-17 الأدوار والصلاحيات
+import AdminAuditLogPage from './pages/admin/AdminAuditLogPage'; // A-18 سجل الإجراءات والتدقيق
+import AdminReviewsPage from './pages/admin/AdminReviewsPage'; // A-19 التقييمات وضبط المحتوى
+import AdminPackagesPage from './pages/admin/AdminPackagesPage'; // A-20 الباقات والاشتراكات
 
 export default function App() {
   return (
@@ -195,6 +210,10 @@ export default function App() {
                 <Route path="/customer/profile" element={<CustomerProfilePage />} />
                 <Route path="/customer/wallet" element={<CustomerWalletPage />} />
                 <Route path="/customer/dashboard" element={<CustomerDashboardPage />} />
+                <Route path="/shopper" element={<CustomerDashboardPage />} />
+                <Route path="/shopper/dashboard" element={<CustomerDashboardPage />} />
+                <Route path="/shopper-landing" element={<CustomerDashboardPage />} />
+                <Route path="/shopper/rewards" element={<CustomerDashboardPage />} />
                 <Route path="/customer/logout" element={<ShopperLogoutConfirmationPage />} />
                 <Route path="/shopper/logout" element={<ShopperLogoutConfirmationPage />} />
                 <Route path="/logout" element={<ShopperLogoutConfirmationPage />} />
@@ -286,6 +305,62 @@ export default function App() {
                 <Route path="/admin/applications/review" element={<AdminApplicationDetailPage />} />
                 <Route path="/admin/applications/REQ-2026-0842" element={<AdminApplicationDetailPage />} />
                 <Route path="/admin/review-application" element={<AdminApplicationDetailPage />} />
+
+                {/* A-06: Approved Merchants Directory */}
+                <Route path="/admin/merchants" element={<AdminMerchantsPage />} />
+                <Route path="/admin/stores" element={<AdminMerchantsPage />} />
+
+                {/* A-07: Merchant Details Dossier & Suspension Control */}
+                <Route path="/admin/merchants/:id" element={<AdminMerchantDetailPage />} />
+                <Route path="/admin/merchant-detail" element={<AdminMerchantDetailPage />} />
+
+                {/* A-08: Customers Accounts & Inspection */}
+                <Route path="/admin/customers" element={<AdminCustomersPage />} />
+                <Route path="/admin/clients" element={<AdminCustomersPage />} />
+
+                {/* A-09: Financial Ledger & Double-Entry Accounting */}
+                <Route path="/admin/ledger" element={<AdminLedgerPage />} />
+                <Route path="/admin/settlements" element={<AdminLedgerPage />} />
+
+                {/* A-10: Merchant Transfers & Payout Scheduling */}
+                <Route path="/admin/transfers" element={<AdminTransfersPage />} />
+                <Route path="/admin/payouts" element={<AdminTransfersPage />} />
+
+                {/* A-11: Disputed Operations & Financial Arbitration */}
+                <Route path="/admin/disputes" element={<AdminDisputesPage />} />
+
+                {/* A-12: Complaints & Dispute Resolution Hub */}
+                <Route path="/admin/complaints" element={<AdminComplaintsPage />} />
+
+                {/* A-13: Complaint Details & Case Arbitration Dossier */}
+                <Route path="/admin/complaints/:id" element={<AdminComplaintDetailPage />} />
+
+                {/* A-14: Offers & Products Moderation */}
+                <Route path="/admin/products" element={<AdminProductsPage />} />
+                <Route path="/admin/ads" element={<AdminProductsPage />} />
+
+                {/* A-15: Performance Reports & Analytics */}
+                <Route path="/admin/reports" element={<AdminReportsPage />} />
+                <Route path="/admin/analytics" element={<AdminReportsPage />} />
+
+                {/* A-16: Points Tokenomics & General Platform Settings */}
+                <Route path="/admin/rules" element={<AdminRulesPage />} />
+                <Route path="/admin/settings" element={<AdminRulesPage />} />
+
+                {/* A-17: Governance Roles & Single Admin Permissions */}
+                <Route path="/admin/roles" element={<AdminRolesPage />} />
+                <Route path="/admin/permissions" element={<AdminRolesPage />} />
+
+                {/* A-18: WORM Immutable Audit Log & Regulatory Compliance */}
+                <Route path="/admin/audit-log" element={<AdminAuditLogPage />} />
+                <Route path="/admin/audit" element={<AdminAuditLogPage />} />
+
+                {/* A-19: Customer Reviews & Content Integrity Moderation */}
+                <Route path="/admin/reviews" element={<AdminReviewsPage />} />
+
+                {/* A-20: VIP Pro Packages & Subscriptions Management */}
+                <Route path="/admin/packages" element={<AdminPackagesPage />} />
+                <Route path="/admin/plans" element={<AdminPackagesPage />} />
 
                 {/* General Policy and Help Aliases */}
                 <Route path="/terms" element={<MerchantHelpPage />} />

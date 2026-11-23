@@ -21,7 +21,7 @@ export default function CustomerHeader() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           
           {/* Brand Identity */}
-          <Link to="/" className="flex items-center gap-3 group focus:outline-none shrink-0">
+          <Link to="/shopper" className="flex items-center gap-3 group focus:outline-none shrink-0" title="لوحة تحكم المتسوق الرئيسية">
             <div className="h-10 sm:h-11 w-auto flex items-center justify-center">
               <img
                 alt="شعار منصة تبادل"
@@ -40,9 +40,9 @@ export default function CustomerHeader() {
           {/* Center Shopper Links */}
           <nav className="hidden lg:flex items-center gap-2 xl:gap-3 text-xs xl:text-sm font-bold">
             <Link
-              to="/"
+              to="/shopper"
               className={`px-3 py-2 rounded-xl transition-colors ${
-                location.pathname === '/'
+                ['/shopper', '/shopper/dashboard', '/customer/dashboard', '/shopper-landing', '/shopper/rewards'].includes(location.pathname)
                   ? 'text-[#12302b] bg-[#12302b]/10 font-black'
                   : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
               }`}
@@ -60,6 +60,30 @@ export default function CustomerHeader() {
             >
               <span className="material-symbols-outlined text-[18px] text-[#1f7a6e]">storefront</span>
               <span>استكشاف المتاجر</span>
+            </Link>
+
+            <Link
+              to="/customer/orders"
+              className={`px-3 py-2 rounded-xl transition-colors flex items-center gap-1.5 ${
+                location.pathname.startsWith('/customer/orders') || location.pathname.startsWith('/orders')
+                  ? 'text-[#12302b] bg-[#12302b]/10 font-black'
+                  : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
+              }`}
+            >
+              <span className="material-symbols-outlined text-[18px] text-[#1f7a6e]">local_mall</span>
+              <span>طلباتي</span>
+            </Link>
+
+            <Link
+              to="/customer/wallet"
+              className={`px-3 py-2 rounded-xl transition-colors flex items-center gap-1.5 ${
+                location.pathname === '/customer/wallet'
+                  ? 'text-[#12302b] bg-[#12302b]/10 font-black'
+                  : 'text-[#52606d] hover:text-[#12302b] hover:bg-[#12302b]/5'
+              }`}
+            >
+              <span className="material-symbols-outlined text-[18px] text-[#1f7a6e]">account_balance_wallet</span>
+              <span>محفظتي</span>
             </Link>
 
             {/* Points Wallet Pill (Active Customer Balance) */}
@@ -111,7 +135,7 @@ export default function CustomerHeader() {
             {!user.isGuest ? (
               <>
                 <Link
-                  to="/customer/dashboard"
+                  to="/shopper"
                   className="hidden sm:flex items-center gap-2 pr-1.5 pl-3 py-1 rounded-xl bg-[#f6f3ec] hover:bg-[#12302b]/10 border border-[#12302b]/15 transition-all cursor-pointer"
                   title="لوحة تحكم المتسوق والمكافآت"
                 >

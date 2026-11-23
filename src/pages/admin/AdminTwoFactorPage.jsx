@@ -3,9 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function AdminTwoFactorPage() {
   const navigate = useNavigate();
-  const [digits, setDigits] = useState(['1', '0', '9', '2', '4', '7']);
+  const [digits, setDigits] = useState(['', '', '', '', '', '']);
   const [seconds, setSeconds] = useState(44);
   const [isVerifying, setIsVerifying] = useState(false);
+  const [error, setError] = useState('');
   const [showSupportModal, setShowSupportModal] = useState(false);
   const [fidoActive, setFidoActive] = useState(false);
   const inputRefs = useRef([]);
@@ -21,6 +22,7 @@ export default function AdminTwoFactorPage() {
     const char = value.slice(-1);
     if (!/^\d*$/.test(char)) return;
 
+    setError('');
     const newDigits = [...digits];
     newDigits[index] = char;
     setDigits(newDigits);
@@ -38,6 +40,12 @@ export default function AdminTwoFactorPage() {
 
   const handleVerify = (e) => {
     e.preventDefault();
+    const otp = digits.join('');
+    if (otp.length < 6) {
+      setError('يرجى إدخال رمز الأمان كاملاً المكوّن من 6 أرقام');
+      return;
+    }
+    setError('');
     setIsVerifying(true);
     setTimeout(() => {
       setIsVerifying(false);
@@ -48,6 +56,7 @@ export default function AdminTwoFactorPage() {
 
   const handleRegenerate = () => {
     setDigits(['', '', '', '', '', '']);
+    setError('');
     setSeconds(60);
     inputRefs.current[0]?.focus();
   };
@@ -56,7 +65,7 @@ export default function AdminTwoFactorPage() {
     setFidoActive(true);
     setTimeout(() => {
       setFidoActive(false);
-      navigate('/merchant/dashboard');
+      navigate('/admin/dashboard');
     }, 1200);
   };
 
@@ -69,7 +78,7 @@ export default function AdminTwoFactorPage() {
         <div className="max-w-[1280px] mx-auto px-6 h-20 flex items-center justify-between">
           {/* Brand & Platform Identity */}
           <div className="flex items-center gap-4">
-            <Link to="/" className="flex items-center gap-4 group focus:outline-none">
+            <Link to="/admin/login" className="flex items-center gap-4 group focus:outline-none">
               <div className="h-12 w-auto flex items-center justify-center">
                 <img
                   alt="شعار منصة تبادل"
@@ -183,7 +192,14 @@ export default function AdminTwoFactorPage() {
             </div>
 
             {/* Interactive 6-Digit Verification Inputs */}
-            <form className="space-y-6" onSubmit={handleVerify}>
+            <form className="space-y-5" onSubmit={handleVerify}>
+              {error && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-xs sm:text-sm flex items-center gap-2">
+                  <span className="material-symbols-outlined text-base">error</span>
+                  <span>{error}</span>
+                </div>
+              )}
+
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <label className="text-xs sm:text-sm font-semibold text-[#12302B] flex items-center gap-2">
@@ -202,12 +218,12 @@ export default function AdminTwoFactorPage() {
                 </div>
 
                 {/* 6 Segmented Digit Boxes with LTR Alignment */}
-                <div className="grid grid-cols-6 gap-2 sm:gap-3.5" dir="ltr">
+                <div className="grid grid-cols-6 gap-2 sm:gap-3" dir="ltr">
                   {digits.map((digit, idx) => (
                     <input
                       key={idx}
                       ref={(el) => (inputRefs.current[idx] = el)}
-                      className="h-14 sm:h-16 text-center font-mono text-2xl sm:text-3xl font-bold rounded-xl border-2 border-[#1F7A6E] bg-white text-[#12302B] shadow-xs focus:border-[#1F7A6E] focus:ring-4 focus:ring-[#1F7A6E]/15 transition-all outline-none"
+                      className="h-12 sm:h-14 text-center font-mono text-xl sm:text-2xl font-bold rounded-xl border-2 border-[#1F7A6E]/40 focus:border-[#1F7A6E] bg-white text-[#12302B] shadow-xs focus:ring-4 focus:ring-[#1F7A6E]/15 transition-all outline-none"
                       maxLength={1}
                       type="text"
                       value={digit}
@@ -237,7 +253,7 @@ export default function AdminTwoFactorPage() {
               {/* Primary Submit Action Button */}
               <div className="pt-2">
                 <button
-                  className="w-full h-14 bg-[#12302B] hover:bg-[#12302B]/90 text-white text-sm sm:text-base font-bold rounded-xl shadow-md flex items-center justify-center gap-3 transition-all duration-150 active:scale-[0.99] group cursor-pointer disabled:opacity-75"
+                  className="w-full h-12 bg-[#12302B] hover:bg-[#12302B]/90 text-white text-sm sm:text-base font-bold rounded-xl shadow-md flex items-center justify-center gap-3 transition-all duration-150 active:scale-[0.99] group cursor-pointer disabled:opacity-75"
                   disabled={isVerifying}
                   type="submit"
                 >

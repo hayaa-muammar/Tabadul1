@@ -3,11 +3,11 @@ import React, { createContext, useContext, useState } from 'react';
 const PointsContext = createContext();
 
 export function PointsProvider({ children }) {
-  const [pointsBalance, setPointsBalance] = useState(2400); // Sarah's 2,400 points
-  const [isRedeemed, setIsRedeemed] = useState(true); // Default checked as in 14code.html
+  const [pointsBalance, setPointsBalance] = useState(3000); // Sarah's 3,000 points
+  const [isRedeemed, setIsRedeemed] = useState(true);
 
-  // 2,400 points = 12.00 NIS discount (200 pts = 1 NIS)
-  const discountAmount = isRedeemed ? 12.00 : 0.00;
+  // 3,000 points = 15.00 NIS discount (200 pts = 1 NIS)
+  const discountAmount = isRedeemed ? 15.00 : 0.00;
 
   const toggleRedemption = () => {
     setIsRedeemed((prev) => !prev);
@@ -17,6 +17,10 @@ export function PointsProvider({ children }) {
     setPointsBalance((prev) => prev + amount);
   };
 
+  const redeemPoints = (cost) => {
+    setPointsBalance((prev) => Math.max(0, prev - cost));
+  };
+
   return (
     <PointsContext.Provider
       value={{
@@ -24,7 +28,8 @@ export function PointsProvider({ children }) {
         isRedeemed,
         discountAmount,
         toggleRedemption,
-        addPoints
+        addPoints,
+        redeemPoints
       }}
     >
       {children}

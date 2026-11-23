@@ -20,7 +20,7 @@ export default function CancelOrderPage() {
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* Breadcrumbs */}
         <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs sm:text-sm text-[#576b66] overflow-x-auto whitespace-nowrap pb-1">
-          <Link to="/" className="hover:text-[#12302b] transition-colors flex items-center gap-1">
+          <Link to="/shopper" className="hover:text-[#12302b] transition-colors flex items-center gap-1">
             <span className="material-symbols-outlined text-[16px]">home</span>
             <span>الرئيسية</span>
           </Link>

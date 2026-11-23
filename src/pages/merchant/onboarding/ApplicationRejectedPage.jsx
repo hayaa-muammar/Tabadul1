@@ -171,10 +171,10 @@ export default function ApplicationRejectedPage() {
                 </a>
 
                 <Link
-                  to="/"
+                  to="/merchant/landing"
                   className="w-full py-2.5 px-4 rounded-xl bg-[#F6F3EC] text-gray-700 text-xs font-bold hover:bg-gray-100 transition-colors flex items-center justify-center gap-1"
                 >
-                  العودة للصفحة الرئيسية
+                  العودة لبوابة انضمام التجار
                 </Link>
               </div>
             </div>

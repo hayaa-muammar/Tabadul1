@@ -76,7 +76,7 @@ export default function MerchantLandingPage() {
           
           {/* Brand Logo + Identity */}
           <Link
-            to="/"
+            to="/merchant/landing"
             className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-teal rounded-xl p-1"
           >
             <img

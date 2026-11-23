@@ -59,7 +59,7 @@ export default function ProductDetailPage() {
           </div>
 
           {/* Details & Purchasing Column (6 cols) */}
-          <div className="lg:col-span-6 space-y-6 bg-surface-container-lowest p-6 sm:p-8 rounded-3xl border border-outline-variant/60 shadow-xs">
+          <div className="lg:col-span-6 space-y-5 bg-surface-container-lowest p-5 sm:p-6 rounded-2xl border border-outline-variant/60 shadow-xs">
             
             {/* Header / Store Tag */}
             <div className="space-y-2">
@@ -217,29 +217,29 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Action Buttons: Add to Cart & Buy Now */}
-            <div className="space-y-3 pt-2">
+            <div className="space-y-2.5 pt-2">
               <button
                 type="button"
                 onClick={handleAddToCart}
-                className="w-full h-13 sm:h-14 bg-primary hover:bg-primary-container text-white rounded-xl font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-md transition-all active:scale-95 cursor-pointer"
+                className="w-full h-11 sm:h-12 bg-primary hover:bg-primary-container text-white rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95 cursor-pointer"
               >
-                <span className="material-symbols-outlined text-xl">shopping_bag</span>
+                <span className="material-symbols-outlined text-lg">shopping_bag</span>
                 <span>إضافة إلى سلة المشتريات</span>
               </button>
 
               <button
                 type="button"
                 onClick={handleBuyNow}
-                className="w-full h-12 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl font-bold text-sm sm:text-base flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer shadow-xs"
+                className="w-full h-11 sm:h-12 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer shadow-xs"
               >
-                <span className="material-symbols-outlined text-xl">bolt</span>
+                <span className="material-symbols-outlined text-lg">bolt</span>
                 <span>شراء فوري مع كود الأمان OTP</span>
               </button>
             </div>
 
             {/* Guarantee Callout */}
-            <div className="p-3.5 rounded-xl bg-amber-50/80 border border-amber-200/80 flex items-start gap-2.5 text-xs text-amber-950">
-              <span className="material-symbols-outlined text-amber-700 text-lg shrink-0 icon-fill">shield</span>
+            <div className="p-3 rounded-xl bg-amber-50/80 border border-amber-200/80 flex items-start gap-2 text-xs text-amber-950">
+              <span className="material-symbols-outlined text-amber-700 text-base shrink-0 icon-fill">shield</span>
               <p className="leading-relaxed">
                 <strong>ضمان تبادل الذهبي:</strong> قيسي الفستان في بيتك مع خدمة استبدال المقاس مجاناً خلال 24 ساعة، ودفع محمي بالأمانة حتى استلامك للقطعة والتأكد منها.
               </p>
@@ -249,7 +249,7 @@ export default function ProductDetailPage() {
         </div>
 
         {/* Specifications & Fabric Care Accordion */}
-        <section className="bg-surface-container-lowest p-6 sm:p-8 rounded-3xl border border-outline-variant/60 shadow-xs space-y-4">
+        <section className="bg-surface-container-lowest p-5 sm:p-6 rounded-2xl border border-outline-variant/60 shadow-xs space-y-4">
           <h2 className="font-bold text-base sm:text-lg text-primary flex items-center gap-2">
             <span className="material-symbols-outlined text-gaza-teal">info</span>
             <span>تفاصيل ومواصفات القطعة والعناية بها</span>

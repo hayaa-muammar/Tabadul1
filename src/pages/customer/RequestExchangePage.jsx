@@ -21,7 +21,7 @@ export default function RequestExchangePage() {
       {/* Breadcrumb Strip */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
         <nav className="flex items-center gap-2 text-xs sm:text-sm text-[#74777f]">
-          <Link to="/" className="hover:text-[#12302b] transition-colors">
+          <Link to="/shopper" className="hover:text-[#12302b] transition-colors">
             الرئيسية
           </Link>
           <span className="material-symbols-outlined text-sm">chevron_left</span>

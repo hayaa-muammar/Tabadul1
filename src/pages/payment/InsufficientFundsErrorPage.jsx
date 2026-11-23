@@ -36,7 +36,7 @@ export default function InsufficientFundsErrorPage() {
       <section className="bg-white/70 border-b border-[#e1e2ea]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-3 text-xs">
           <nav className="flex items-center gap-2 text-[#43474e] overflow-x-auto whitespace-nowrap">
-            <Link to="/" className="hover:text-[#032448] transition-colors">الرئيسية</Link>
+            <Link to="/shopper" className="hover:text-[#032448] transition-colors">الرئيسية</Link>
             <span className="material-symbols-outlined text-xs">chevron_left</span>
             <Link to="/stores" className="hover:text-[#032448] transition-colors">استكشاف المتاجر</Link>
             <span className="material-symbols-outlined text-xs">chevron_left</span>

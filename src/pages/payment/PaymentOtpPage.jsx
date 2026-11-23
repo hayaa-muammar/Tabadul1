@@ -88,7 +88,7 @@ export default function PaymentOtpPage() {
       <div className="border-t border-[#e1e2ea] bg-[#F6F3EC]/80 py-3.5">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="flex items-center flex-wrap gap-2 text-xs md:text-sm text-[#4a5a56] font-medium text-right w-full justify-start">
-            <Link to="/" className="hover:text-[#1f7a6e] transition-colors flex items-center gap-1">
+            <Link to="/shopper" className="hover:text-[#1f7a6e] transition-colors flex items-center gap-1">
               <span className="material-symbols-outlined text-[16px] leading-none">home</span>
               <span>الرئيسية</span>
             </Link>

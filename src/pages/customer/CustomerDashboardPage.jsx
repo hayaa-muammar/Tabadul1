@@ -1,51 +1,197 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CustomerHeader from '../../components/common/CustomerHeader';
 import Footer from '../../components/common/Footer';
+import { usePoints } from '../../context/PointsContext';
 
 export default function CustomerDashboardPage() {
+  const { pointsBalance, redeemPoints } = usePoints();
   const [showQrModal, setShowQrModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [redeemedVouchers, setRedeemedVouchers] = useState({});
+  const [redeemSuccessMsg, setRedeemSuccessMsg] = useState(null);
+
+  // Countdown timer for 2X flash banner
+  const [timeLeft, setTimeLeft] = useState({
+    hours: 9,
+    minutes: 42,
+    seconds: 18,
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev.seconds > 0) {
+          return { ...prev, seconds: prev.seconds - 1 };
+        } else if (prev.minutes > 0) {
+          return { ...prev, minutes: 59, seconds: 59 };
+        } else if (prev.hours > 0) {
+          return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        }
+        return prev;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const vouchers = [
+    {
+      id: 'v1',
+      title: 'قسيمة خصم نقدي 15 ₪',
+      cost: 3000,
+      description: 'تطبق فوراً عند الدفع لدى أي من متاجر الأزياء أو الأحذية الشريكة في المنصة دون حد أدنى.',
+      validity: 'صالح لغاية 30 يوماً',
+      badge: 'موصى به لكِ',
+      isFeatured: true,
+    },
+    {
+      id: 'v2',
+      title: 'قسيمة خصم نقدي 10 ₪',
+      cost: 2000,
+      description: 'خصم مباشر عند شراء أي فستان أو سنيكرز، ويبقى في رصيدك 1,000 نقطة للمشتريات التالية.',
+      validity: 'جاهز للاستبدال',
+      badge: 'قسيمة متوسطة',
+      isFeatured: false,
+    },
+    {
+      id: 'v3',
+      title: 'توصيل مجاني للطلب القادم',
+      cost: 1500,
+      description: 'توصيل سريع مجاني لباب المنزل لكافة محافظات قطاع غزة مع أي متجر شريك.',
+      validity: 'صالح لـ 3 استخدامات',
+      badge: 'توفير فوري',
+      isFeatured: false,
+    },
+  ];
+
+  const stores = [
+    {
+      id: 'lamsa',
+      name: 'بوتيك لمسة للأزياء الراقية',
+      slug: 'lamsa-boutique',
+      category: 'dresses',
+      categoryLabel: 'أزياء راقية وسهرة',
+      location: 'غزة - شارع الرمال',
+      description: 'أرقى الفساتين والتصاميم العصرية للمناسبات الخاصة مع ضمان المقاس والجودة الفاخرة.',
+      cashback: 'كاش باك 10% نقاط',
+      rating: '4.9',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBI-KwPt614r6Smxnqgw4tuOHc1qXjDN0tQI9uGS9rDiNpFweOnCGAa3CHBWhq4BrH0kjpzqEiy6xrB8JJypvPWXlXwdBRVSgLII7cEoC1dEW0Xw2nmb54J2gO5ATZADQLIfnqusUe9beozig1GSLDnzPyQYubNJgWfmk2y_FnbEFrIvBYqD2vUEouLSBHR8jtbh4xzFBZDNyqg6zlEBDPAuo8lfV8TJSWKxqJLZbo4CFgmPZEmk0i7YA',
+    },
+    {
+      id: 'yaqout',
+      name: 'دار الياقوت للعبايات',
+      slug: 'yaqout-abayas',
+      category: 'abayas',
+      categoryLabel: 'عبايات وشالات مطرزة',
+      location: 'غزة - الميناء',
+      description: 'عبايات خليجية وتطريز فلسطيني فاخر مع شالات حريرية متناسقة بأعلى درجات الإتقان.',
+      cashback: 'كاش باك 8% نقاط',
+      rating: '4.95',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBUW-Z1A9dFmYAeglZgYEkpY280oURr84rD044IACCNhN3VHZLIxChKeAsSrz-5UafvTLQm1CnyTp2Q1xgTmcjkaN-8n3Aqw-HxX77E9AzULs20VlPwQ1pPxhAWfDSOd5tghm36hDxvjz3HvaXIM-bT_liNFPcSLRNVBRe_GlpVkXR1cnDEC6aafk80UbiY1Y8x8qX0AArYaZ4z51j_sHfEAyRIRi_TVRC8mIXaI_e9B4vPTTpPxIj2cQ',
+    },
+    {
+      id: 'milano',
+      name: 'ميلانو فوتوير للأحذية',
+      slug: 'milano-shoes',
+      category: 'shoes',
+      categoryLabel: 'أحذية وسنيكرز رسمية',
+      location: 'غزة - شارع عمر المختار',
+      description: 'أحذية إيطالية طبية، وسنيكرز مريحة وعصرية للمشي والعمل والمناسبات اليومية.',
+      cashback: 'كاش باك 7% نقاط',
+      rating: '4.88',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBZguWpJ5Lmj6DSo0azYaaQ7mWuRGGDaABMVjGUXgNj3evYVngMliXtl2aU32vtv4XABQRA9NGe1s7pVKZzG-26NZhEkEXywRD3fkZNIyqJ3_T9wi5j1EgoVgiF6CUUtufCVX6oMnRp7xXYZMaogUEitT-bj-ec3INmV6w-fTLHxtsMorVPnBg70edK83mh08KD8hSb6KccrqT0iALq5Kk5ceZ8C1mMa384ib969AbUTOyBSvanBF7tAg',
+    },
+    {
+      id: 'velvet',
+      name: 'بوتيك فيلفت روز',
+      slug: 'velvet-rose',
+      category: 'dresses',
+      categoryLabel: 'حقائب وأحذية سهرة',
+      location: 'غزة - تل الهوى',
+      description: 'تشكيلات حصرية من حقائب اليد الجلدية والأحذية المتناسقة لإكمال إطلالتك الفاخرة.',
+      cashback: 'كاش باك 5% نقاط',
+      rating: '4.92',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAwWjt4zqdcxYhvSgega8HTOCSL0ejmjpnUqidA97TP37KcPkdM9dtwHpDyp5MABEnjLVwO0YVEmxgdEN__j3HWOaN1lT-GZxzqqxdTIWVVO8H89H_CnZMLFmmIbljoCeN4x-XvuUUpDkYw_JpM-RTXhn2mwGD-JbC-KjS4DYZI8wGoKHHpnPPI-4esyy1a6dsLUnhEHOSte-31ugzmrqmkvwj9Ci-5Ho10fJ-CsZ2tpuMyWhoX4BieBw',
+    },
+  ];
+
+  const filteredStores = stores.filter((store) => {
+    if (selectedCategory === 'all') return true;
+    if (selectedCategory === 'abayas') return store.category === 'abayas';
+    if (selectedCategory === 'shoes') return store.category === 'shoes';
+    if (selectedCategory === 'dresses') return store.category === 'dresses';
+    return true;
+  });
+
+  const handleRedeemVoucher = (voucher) => {
+    if (pointsBalance < voucher.cost) {
+      alert(`عذراً، رصيد نقاطك الحالي (${pointsBalance} نقطة) غير كافٍ لاستبدال هذه القسيمة (${voucher.cost} نقطة).`);
+      return;
+    }
+    redeemPoints(voucher.cost);
+    setRedeemedVouchers((prev) => ({ ...prev, [voucher.id]: true }));
+    setRedeemSuccessMsg(`تم استبدال "${voucher.title}" بنجاح! تم خصم ${voucher.cost} نقطة من رصيدك.`);
+    setTimeout(() => setRedeemSuccessMsg(null), 5000);
+  };
+
+  const padZero = (n) => String(n).padStart(2, '0');
 
   return (
     <div className="text-[#191c22] antialiased min-h-screen flex flex-col bg-[#f6f3ec] font-tajawal selection:bg-[#e9b44c]/30 selection:text-[#12302b]">
+      {/* Top Header with Shopper Navigation */}
       <CustomerHeader />
 
+      {/* Floating Success Alert */}
+      {redeemSuccessMsg && (
+        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-[#12302b] text-white px-6 py-3.5 rounded-2xl shadow-2xl border border-[#e9b44c] flex items-center gap-3 animate-bounce">
+          <span className="material-symbols-outlined text-[#e9b44c] text-2xl">check_circle</span>
+          <span className="text-sm font-bold">{redeemSuccessMsg}</span>
+          <button onClick={() => setRedeemSuccessMsg(null)} className="text-white/70 hover:text-white mr-2">
+            <span className="material-symbols-outlined text-sm">close</span>
+          </button>
+        </div>
+      )}
+
       {/* ==================== MAIN DASHBOARD CONTENT ==================== */}
-      <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* 1. HERO WALLET SECTION */}
+      <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
+        
+        {/* 1. HERO WALLET SECTION (Hero Wallet Card) */}
         <section className="w-full">
-          <div className="relative overflow-hidden rounded-3xl bg-[#12302b] text-white p-6 sm:p-8 lg:p-10 shadow-xl border border-[#214b43]">
+          <div className="relative overflow-hidden rounded-3xl bg-[#12302b] text-white p-5 sm:p-7 lg:p-8 shadow-lg border border-[#214b43]">
+            {/* Decorative Ambient Watermark */}
             <div className="absolute -left-12 -bottom-16 w-64 h-64 rounded-full bg-[#1f7a6e]/20 blur-3xl pointer-events-none"></div>
             <div className="absolute -right-8 -top-8 w-60 h-60 rounded-full bg-[#e9b44c]/10 blur-2xl pointer-events-none"></div>
 
-            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-              {/* Balance Summary */}
-              <div className="space-y-4 max-w-xl">
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 sm:gap-8">
+              {/* Balance Summary & Value Equations */}
+              <div className="space-y-3.5 max-w-xl">
                 <div className="flex flex-wrap items-center gap-2.5">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#e9b44c] text-[#12302b] shadow-sm">
-                    <span className="material-symbols-outlined text-[15px]">stars</span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#e9b44c] text-[#12302b] shadow-xs">
+                    <span className="material-symbols-outlined text-[15px]" style={{ fontVariationSettings: "'FILL' 1" }}>stars</span>
                     المستوى الذهبي المميّز
                   </span>
                   <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-emerald-300 border border-emerald-400/20">
                     <span className="material-symbols-outlined text-[14px]">check_circle</span>
-                    3,000 نقطة متاحة للاستبدال الفوري
+                    {pointsBalance.toLocaleString()} نقطة متاحة للاستبدال الفوري
                   </span>
                 </div>
 
+                {/* Points Big Number Display */}
                 <div className="space-y-1">
                   <span className="text-xs text-white/70 block">إجمالي رصيد نقاط المكافآت المتاح</span>
-                  <div className="flex items-baseline gap-3 flex-wrap">
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
-                      3,000
+                  <div className="flex items-baseline gap-2.5 flex-wrap">
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-mono">
+                      {pointsBalance.toLocaleString()}
                     </h1>
-                    <span className="text-base sm:text-lg text-white/80">نقطة كاش باك</span>
-                    <span className="text-xl sm:text-2xl font-bold text-[#e9b44c]">
-                      ≈ 15.00 ₪
+                    <span className="text-sm sm:text-base text-white/80">نقطة كاش باك</span>
+                    <span className="text-lg sm:text-xl font-bold text-[#e9b44c] flex items-center gap-1 font-mono">
+                      ≈ {(pointsBalance / 200).toFixed(2)} ₪
                     </span>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-white/80">
+                {/* Conversion Rule Legend & Expiry Notice */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-white/80">
                   <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs">
                     <span className="material-symbols-outlined text-[#e9b44c] text-[18px]">swap_horizontal_circle</span>
                     <span>كل <strong>1 ₪</strong> مشتريات = <strong>10 نقاط</strong> كاش باك</span>
@@ -56,35 +202,44 @@ export default function CustomerDashboardPage() {
                   </div>
                 </div>
 
-                <div className="inline-flex items-center gap-2 bg-[#1f7a6e]/40 border border-[#1f7a6e] px-4 py-2 rounded-xl text-xs sm:text-sm text-emerald-200">
+                {/* Total Savings Highlight Pill */}
+                <div className="inline-flex items-center gap-2 bg-[#1f7a6e]/40 border border-[#1f7a6e] px-3.5 py-1.5 rounded-xl text-xs sm:text-sm text-emerald-200">
                   <span className="material-symbols-outlined text-[#e9b44c] text-[18px]">verified</span>
-                  <span>وفّرتِ حتى الآن <strong className="text-white font-bold">345 ₪</strong> عبر شبكة شركاء منصة تبادل</span>
+                  <span>وفّرتِ حتى الآن <strong className="text-white font-bold font-mono">345 ₪</strong> عبر شبكة شركاء منصة تبادل</span>
                 </div>
               </div>
 
-              {/* Quick Actions */}
-              <div className="flex flex-col sm:flex-row lg:flex-col gap-3 min-w-[240px]">
-                <Link
-                  to="/customer/wallet"
-                  className="bg-[#e9b44c] hover:bg-[#d49a32] text-[#12302b] active:scale-95 transition-all text-xs sm:text-sm font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-[#e9b44c]/20 cursor-pointer"
+              {/* Quick Action Buttons Tray & QR Preview */}
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 min-w-[220px]">
+                {/* Primary Gold Redeem Button */}
+                <button
+                  onClick={() => {
+                    const voucherSection = document.getElementById('quick-redemptions');
+                    if (voucherSection) {
+                      voucherSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="bg-gradient-to-r from-[#e9b44c] via-[#feb64e] to-[#d49a32] text-[#12302b] hover:brightness-105 active:scale-95 transition-all text-xs sm:text-sm font-bold py-2.5 sm:py-3 px-5 rounded-xl flex items-center justify-center gap-2 shadow-sm cursor-pointer"
                 >
-                  <span className="material-symbols-outlined text-[20px]">redeem</span>
+                  <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>redeem</span>
                   <span>استبدل نقاطك الآن</span>
-                </Link>
+                </button>
 
+                {/* Barcode / QR Direct Modal Trigger */}
                 <button
                   onClick={() => setShowQrModal(true)}
-                  className="bg-white/10 hover:bg-white/15 text-white border border-white/20 active:scale-95 transition-all text-xs sm:text-sm font-bold py-3 px-5 rounded-xl flex items-center justify-center gap-2 backdrop-blur-sm cursor-pointer"
+                  className="bg-white/10 hover:bg-white/15 text-white border border-white/20 active:scale-95 transition-all text-xs sm:text-sm font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 backdrop-blur-xs cursor-pointer"
                 >
-                  <span className="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+                  <span className="material-symbols-outlined text-[18px]">qr_code_scanner</span>
                   <span>رمز الاستبدال / الباركود المباشر</span>
                 </button>
 
+                {/* Ledger History Secondary Button */}
                 <Link
                   to="/customer/wallet"
-                  className="text-white/80 hover:text-white hover:bg-white/5 active:scale-95 transition-all py-2.5 px-4 rounded-xl flex items-center justify-center gap-1.5 text-xs"
+                  className="text-white/80 hover:text-white hover:bg-white/5 active:scale-95 transition-all py-2 px-3 rounded-xl flex items-center justify-center gap-1.5 text-xs text-center"
                 >
-                  <span className="material-symbols-outlined text-[18px]">receipt_long</span>
+                  <span className="material-symbols-outlined text-[16px]">receipt_long</span>
                   <span>سجل حركات المحفظة</span>
                 </Link>
               </div>
@@ -92,37 +247,7 @@ export default function CustomerDashboardPage() {
           </div>
         </section>
 
-        {/* Modal QR */}
-        {showQrModal && (
-          <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-            <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center space-y-4 shadow-2xl relative border-2 border-[#e9b44c]">
-              <button
-                onClick={() => setShowQrModal(false)}
-                className="absolute top-4 left-4 p-2 text-[#74777f] hover:text-[#12302B] cursor-pointer"
-              >
-                <span className="material-symbols-outlined">close</span>
-              </button>
-              <div className="w-12 h-12 rounded-2xl bg-[#12302B] text-[#e9b44c] flex items-center justify-center mx-auto text-2xl font-bold">
-                ت
-              </div>
-              <h3 className="text-lg font-bold text-[#12302B]">رمز الاستبدال الشخصي</h3>
-              <p className="text-xs text-[#576b66]">
-                أظهري هذا الكود عند كاشير المتجر لاستبدال نقاطك فورياً بخصم مباشر:
-              </p>
-              <div className="bg-[#f6f3ec] p-4 rounded-2xl border border-[#e1dacb] space-y-2">
-                <div className="h-20 bg-[repeating-linear-gradient(90deg,#12302b,#12302b_3px,transparent_3px,transparent_6px,#12302b_6px,#12302b_10px,transparent_10px,transparent_13px)] w-full rounded"></div>
-                <span className="font-mono text-base font-black text-[#12302B] tracking-widest block">
-                  #TBD-8821-3000
-                </span>
-              </div>
-              <p className="text-xs text-emerald-700 font-bold">
-                الرصيد المتاح: 3,000 نقطة (15.00 ₪)
-              </p>
-            </div>
-          </div>
-        )}
-
-        {/* 2. DOUBLE POINTS FLASH BANNER */}
+        {/* 2. DOUBLE POINTS FLASH BANNER (شريط عروض النقاط المضاعفة) */}
         <section className="w-full">
           <div className="bg-gradient-to-l from-[#1f7a6e] via-[#12302b] to-[#0f2420] text-white rounded-2xl p-5 sm:p-6 shadow-md border border-[#2b6459] flex flex-col md:flex-row items-center justify-between gap-5">
             <div className="flex items-center gap-4">
@@ -140,181 +265,325 @@ export default function CustomerDashboardPage() {
               </div>
             </div>
 
+            {/* Live Countdown & Action Button */}
             <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
               <div className="flex items-center gap-1.5 text-center font-mono text-xs" dir="ltr">
                 <div className="bg-black/30 border border-white/10 rounded-lg px-2.5 py-1.5">
-                  <span className="font-bold text-sm text-[#e9b44c]">09</span>
+                  <span className="font-bold text-sm text-[#e9b44c]">{padZero(timeLeft.hours)}</span>
                   <span className="block text-[9px] text-white/60">ساعة</span>
                 </div>
                 <span className="text-[#e9b44c] font-bold">:</span>
                 <div className="bg-black/30 border border-white/10 rounded-lg px-2.5 py-1.5">
-                  <span className="font-bold text-sm text-[#e9b44c]">42</span>
+                  <span className="font-bold text-sm text-[#e9b44c]">{padZero(timeLeft.minutes)}</span>
                   <span className="block text-[9px] text-white/60">دقيقة</span>
+                </div>
+                <span className="text-[#e9b44c] font-bold">:</span>
+                <div className="bg-black/30 border border-white/10 rounded-lg px-2.5 py-1.5">
+                  <span className="font-bold text-sm text-[#e9b44c]">{padZero(timeLeft.seconds)}</span>
+                  <span className="block text-[9px] text-white/60">ثانية</span>
                 </div>
               </div>
 
               <Link
                 to="/stores"
-                className="px-4 py-2.5 rounded-xl bg-white text-[#12302b] hover:bg-[#e9b44c] text-xs font-bold transition-colors whitespace-nowrap"
+                className="bg-white text-[#12302b] hover:bg-[#e9b44c] hover:text-[#12302b] transition-colors px-4 py-2 rounded-xl font-bold text-xs whitespace-nowrap shadow-sm"
               >
-                تصفح العروض
+                تسوّقي العرض
               </Link>
             </div>
           </div>
         </section>
 
-        {/* 3. ACTIVE SHIPMENT QUICK TRACKER */}
-        <section className="bg-white rounded-2xl p-6 border border-[#e1dacb] shadow-sm">
-          <div className="flex items-center justify-between pb-4 border-b border-[#e1dacb]">
-            <div className="flex items-center gap-2.5">
-              <span className="material-symbols-outlined text-[#1f7a6e] text-2xl">local_shipping</span>
-              <div>
-                <h3 className="text-base font-bold text-[#12302b]">شحنتك الحالية قيد التوصيل</h3>
-                <span className="text-xs text-[#576b66]">الطلب #TBD-2026-7841 • بوتيك لمسة</span>
-              </div>
+        {/* 3. QUICK REDEMPTIONS (المكافآت السريعة الجاهزة للاستبدال) */}
+        <section id="quick-redemptions" className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-6 rounded-full bg-[#e9b44c]"></span>
+              <h2 className="text-xl font-bold text-[#12302b]">
+                مكافآت جاهزة للاستبدال برصيدك الحالي ({pointsBalance.toLocaleString()} نقطة)
+              </h2>
             </div>
-            <Link
-              to="/customer/orders/TBD-2026-7841"
-              className="text-xs font-bold text-[#1f7a6e] hover:underline flex items-center gap-1"
-            >
-              <span>تفاصيل الطلب والـ PIN</span>
-              <span className="material-symbols-outlined text-sm">chevron_left</span>
+            <Link to="/customer/wallet" className="text-xs font-bold text-[#1f7a6e] hover:underline flex items-center gap-1">
+              <span>عرض جميع القسائم (14)</span>
+              <span className="material-symbols-outlined text-[16px]">chevron_left</span>
             </Link>
           </div>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <span className="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
-              <span className="text-xs sm:text-sm font-semibold text-[#12302b]">
-                المندوب محمود الناجي يقترب من موقعك (الوصول متوقع بعد 25 دقيقة)
-              </span>
-            </div>
-            <div className="flex items-center gap-2 bg-[#f6f3ec] px-3.5 py-1.5 rounded-xl border border-[#e1dacb] text-xs">
-              <span className="text-[#576b66]">رمز الاستلام السري:</span>
-              <span className="font-mono font-black text-sm text-[#12302b]">9184</span>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {vouchers.map((v) => {
+              const isRedeemed = redeemedVouchers[v.id];
+              return (
+                <div
+                  key={v.id}
+                  className={`bg-white rounded-2xl p-5 shadow-sm relative overflow-hidden flex flex-col justify-between transition-all ${
+                    v.isFeatured ? 'border-2 border-[#e9b44c]' : 'border border-[#e2ddd3] hover:border-[#1f7a6e]'
+                  }`}
+                >
+                  {v.isFeatured && (
+                    <div className="absolute -left-6 -top-6 w-20 h-20 bg-[#e9b44c]/10 rounded-full pointer-events-none"></div>
+                  )}
+                  <div className="space-y-3">
+                    <div className="flex items-start justify-between">
+                      <span
+                        className={`px-2.5 py-1 rounded-full text-xs font-bold ${
+                          v.isFeatured
+                            ? 'bg-[#e9b44c]/20 text-[#643f00] border border-[#e9b44c]/30'
+                            : 'bg-[#f2f3fc] text-[#43474e]'
+                        }`}
+                      >
+                        {v.badge}
+                      </span>
+                      <span className="text-xs font-bold font-mono text-[#2e9e6b] bg-emerald-50 px-2 py-0.5 rounded-md">
+                        {v.cost.toLocaleString()} نقطة
+                      </span>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-[#12302b]">{v.title}</h3>
+                      <p className="text-xs text-[#43474e] mt-1 leading-relaxed">{v.description}</p>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 mt-2 border-t border-[#f0eee6] flex items-center justify-between">
+                    <span className="text-[11px] text-[#74777f]">{v.validity}</span>
+                    {isRedeemed ? (
+                      <span className="bg-emerald-50 text-[#2e9e6b] px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1">
+                        <span className="material-symbols-outlined text-[14px]">check</span>
+                        تم الاستبدال!
+                      </span>
+                    ) : (
+                      <button
+                        onClick={() => handleRedeemVoucher(v)}
+                        className={`px-4 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
+                          v.isFeatured
+                            ? 'bg-[#12302b] hover:bg-[#1a403a] text-white shadow-sm'
+                            : 'bg-white border border-[#12302b] hover:bg-[#12302b] hover:text-white text-[#12302b]'
+                        }`}
+                      >
+                        <span>{v.isFeatured ? 'استبدال القسيمة' : `استبدل بـ ${v.cost.toLocaleString()} نقطة`}</span>
+                        <span className="material-symbols-outlined text-[14px]">arrow_back</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
-        {/* 4. FEATURED PARTNER STORES */}
+        {/* 4. FEATURED FASHION & FOOTWEAR STORES (شبكة المتاجر المقترحة والشريكة) */}
         <section className="space-y-4">
           <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-xl font-bold text-[#12302b]">المتاجر الشريكة الموصى بها</h2>
-              <p className="text-xs text-[#576b66]">اكسب واستبدل نقاطك في أرقى بوتيكات ومحلات الأزياء</p>
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-6 rounded-full bg-[#1f7a6e]"></span>
+              <div>
+                <h2 className="text-xl font-bold text-[#12302b]">متاجر الأزياء والأحذية الشريكة</h2>
+                <p className="text-xs text-[#43474e]">تسوّقي واكسبي نقاط كاش باك فورية مضافة لمحفظتك مع كل طلب</p>
+              </div>
             </div>
-            <Link to="/stores" className="text-xs font-bold text-[#1f7a6e] hover:underline flex items-center gap-0.5">
-              <span>عرض جميع المتاجر</span>
-              <span className="material-symbols-outlined text-sm">chevron_left</span>
+
+            {/* Filter chips */}
+            <div className="hidden sm:flex items-center gap-2 text-xs">
+              <button
+                onClick={() => setSelectedCategory('all')}
+                className={`px-3 py-1.5 rounded-full font-semibold transition-colors cursor-pointer ${
+                  selectedCategory === 'all'
+                    ? 'bg-[#12302b] text-white'
+                    : 'bg-white border border-[#e2ddd3] text-[#43474e] hover:text-[#12302b]'
+                }`}
+              >
+                الكل
+              </button>
+              <button
+                onClick={() => setSelectedCategory('abayas')}
+                className={`px-3 py-1.5 rounded-full font-semibold transition-colors cursor-pointer ${
+                  selectedCategory === 'abayas'
+                    ? 'bg-[#12302b] text-white'
+                    : 'bg-white border border-[#e2ddd3] text-[#43474e] hover:text-[#12302b]'
+                }`}
+              >
+                أزياء وعبايات
+              </button>
+              <button
+                onClick={() => setSelectedCategory('shoes')}
+                className={`px-3 py-1.5 rounded-full font-semibold transition-colors cursor-pointer ${
+                  selectedCategory === 'shoes'
+                    ? 'bg-[#12302b] text-white'
+                    : 'bg-white border border-[#e2ddd3] text-[#43474e] hover:text-[#12302b]'
+                }`}
+              >
+                أحذية وسنيكرز
+              </button>
+              <button
+                onClick={() => setSelectedCategory('dresses')}
+                className={`px-3 py-1.5 rounded-full font-semibold transition-colors cursor-pointer ${
+                  selectedCategory === 'dresses'
+                    ? 'bg-[#12302b] text-white'
+                    : 'bg-white border border-[#e2ddd3] text-[#43474e] hover:text-[#12302b]'
+                }`}
+              >
+                فساتين ومناسبات
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {filteredStores.map((store) => (
+              <div
+                key={store.id}
+                className="bg-white rounded-2xl overflow-hidden border border-[#e2ddd3] hover:shadow-lg transition-all group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative aspect-video w-full overflow-hidden bg-gray-100">
+                    <img
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      src={store.image}
+                      alt={store.name}
+                      loading="lazy"
+                    />
+                    <span className="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold text-[#2e9e6b] flex items-center gap-1 shadow-sm">
+                      <span className="material-symbols-outlined text-[14px]">local_fire_department</span>
+                      {store.cashback}
+                    </span>
+                    <span className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] px-2 py-0.5 rounded-md flex items-center gap-1 font-semibold">
+                      <span className="material-symbols-outlined text-[13px] text-[#e9b44c]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                      {store.rating}
+                    </span>
+                  </div>
+
+                  <div className="p-4 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] text-[#1f7a6e] font-semibold">{store.categoryLabel}</span>
+                      <span className="text-[10px] text-[#74777f]">{store.location}</span>
+                    </div>
+                    <h3 className="text-base font-bold text-[#12302b]">{store.name}</h3>
+                    <p className="text-xs text-[#43474e] line-clamp-2 leading-relaxed">{store.description}</p>
+                  </div>
+                </div>
+
+                <div className="p-4 pt-0">
+                  <Link
+                    to={`/stores/${store.slug}`}
+                    className="w-full bg-[#f6f3ec] hover:bg-[#12302b] hover:text-white text-[#12302b] py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <span>تسوق واكسب نقاط</span>
+                    <span className="material-symbols-outlined text-[15px]">arrow_back</span>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 5. RECENT POINTS ACTIVITY (سجل الحركات الأخير) */}
+        <section className="bg-white rounded-2xl border border-[#e2ddd3] p-6 shadow-sm space-y-4">
+          <div className="flex items-center justify-between border-b border-[#f0eee6] pb-4">
+            <div>
+              <h2 className="text-lg font-bold text-[#12302b]">آخر حركات النقاط والكاش باك</h2>
+              <p className="text-xs text-[#43474e]">النقاط المكتسبة والمستبدلة خلال آخر 30 يوماً</p>
+            </div>
+            <Link
+              to="/customer/wallet"
+              className="text-xs font-bold text-[#1f7a6e] hover:underline flex items-center gap-1"
+            >
+              <span>عرض الكشف الكامل</span>
+              <span className="material-symbols-outlined text-[14px]">arrow_back</span>
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Store 1 */}
-            <div className="bg-white rounded-2xl border border-[#e1dacb] p-5 shadow-sm hover:border-[#1f7a6e] transition-all space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-[#12302b] text-white flex items-center justify-center font-bold text-lg">
-                    ل
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-[#12302b]">بوتيك لمسة للأزياء</h3>
-                    <span className="text-xs text-[#576b66]">فساتين سهرة وأطقم راقية</span>
-                  </div>
+          <div className="divide-y divide-[#f5f3ec]">
+            {/* Transaction 1 */}
+            <div className="py-3.5 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-emerald-50 text-[#2e9e6b] flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[20px]">add_shopping_cart</span>
                 </div>
-                <span className="text-xs font-bold text-[#e9b44c] flex items-center gap-0.5">
-                  <span className="material-symbols-outlined text-sm">star</span>
-                  4.9
-                </span>
+                <div>
+                  <p className="text-sm font-bold text-[#12302b]">شراء فستان سهرة - بوتيك لمسة</p>
+                  <span className="text-[11px] text-[#74777f]">أمس، الساعة 05:40 م • فاتورة رقم #TB-9412</span>
+                </div>
               </div>
-              <p className="text-xs text-[#576b66] leading-relaxed">
-                غزة - شارع الرمال التجاري • كاش باك 5% على كافة القطع
-              </p>
-              <div className="pt-2 border-t border-[#e1dacb] flex items-center justify-between">
-                <span className="text-[11px] text-[#005232] font-bold bg-[#71dba2]/20 px-2.5 py-0.5 rounded-full">
-                  شريك ماسي معتمد
-                </span>
-                <Link
-                  to="/stores/lamsa-boutique"
-                  className="text-xs font-bold text-[#12302b] hover:text-[#1f7a6e] flex items-center gap-1"
-                >
-                  <span>زيارة المتجر</span>
-                  <span className="material-symbols-outlined text-sm">arrow_left_alt</span>
-                </Link>
+              <div className="text-left">
+                <span className="font-mono font-bold text-sm text-[#2e9e6b] block" dir="ltr">+600 PTS</span>
+                <span className="text-[11px] text-[#74777f] font-mono">+3.00 ₪ كاش باك</span>
               </div>
             </div>
 
-            {/* Store 2 */}
-            <div className="bg-white rounded-2xl border border-[#e1dacb] p-5 shadow-sm hover:border-[#1f7a6e] transition-all space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-[#835400] text-white flex items-center justify-center font-bold text-lg">
-                    ي
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-[#12302b]">دار الياقوت للعبايات</h3>
-                    <span className="text-xs text-[#576b66]">عبايات خليجية وشيلات</span>
-                  </div>
+            {/* Transaction 2 */}
+            <div className="py-3.5 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-teal-50 text-[#1f7a6e] flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[20px]">redeem</span>
                 </div>
-                <span className="text-xs font-bold text-[#e9b44c] flex items-center gap-0.5">
-                  <span className="material-symbols-outlined text-sm">star</span>
-                  4.85
-                </span>
+                <div>
+                  <p className="text-sm font-bold text-[#12302b]">استبدال قسيمة شراء بقيمة 10 ₪</p>
+                  <span className="text-[11px] text-[#74777f]">12 فبراير 2026 • ميلانو فوتوير</span>
+                </div>
               </div>
-              <p className="text-xs text-[#576b66] leading-relaxed">
-                غزة - تقاطع النصر • خصومات خاصة ونقاط مضاعفة
-              </p>
-              <div className="pt-2 border-t border-[#e1dacb] flex items-center justify-between">
-                <span className="text-[11px] text-[#005232] font-bold bg-[#71dba2]/20 px-2.5 py-0.5 rounded-full">
-                  شريك معتمد
-                </span>
-                <Link
-                  to="/stores"
-                  className="text-xs font-bold text-[#12302b] hover:text-[#1f7a6e] flex items-center gap-1"
-                >
-                  <span>زيارة المتجر</span>
-                  <span className="material-symbols-outlined text-sm">arrow_left_alt</span>
-                </Link>
+              <div className="text-left">
+                <span className="font-mono font-bold text-sm text-[#ba1a1a] block" dir="ltr">-2,000 PTS</span>
+                <span className="text-[11px] text-[#74777f]">تم الاستخدام بنجاح</span>
               </div>
             </div>
 
-            {/* Store 3 */}
-            <div className="bg-white rounded-2xl border border-[#e1dacb] p-5 shadow-sm hover:border-[#1f7a6e] transition-all space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-[#1f7a6e] text-white flex items-center justify-center font-bold text-lg">
-                    أ
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-[#12302b]">أحذية الأميرة الفاخرة</h3>
-                    <span className="text-xs text-[#576b66]">أحذية كعب وسنيكرز إيطالي</span>
-                  </div>
+            {/* Transaction 3 */}
+            <div className="py-3.5 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-emerald-50 text-[#2e9e6b] flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[20px]">add_shopping_cart</span>
                 </div>
-                <span className="text-xs font-bold text-[#e9b44c] flex items-center gap-0.5">
-                  <span className="material-symbols-outlined text-sm">star</span>
-                  4.92
-                </span>
+                <div>
+                  <p className="text-sm font-bold text-[#12302b]">شراء عباءة مطرزة - دار الياقوت</p>
+                  <span className="text-[11px] text-[#74777f]">04 فبراير 2026 • فاتورة رقم #TB-8841</span>
+                </div>
               </div>
-              <p className="text-xs text-[#576b66] leading-relaxed">
-                غزة - شارع عمر المختار • استبدال نقاط مباشر بدون حد أدنى
-              </p>
-              <div className="pt-2 border-t border-[#e1dacb] flex items-center justify-between">
-                <span className="text-[11px] text-[#005232] font-bold bg-[#71dba2]/20 px-2.5 py-0.5 rounded-full">
-                  شريك ذهبي
-                </span>
-                <Link
-                  to="/stores"
-                  className="text-xs font-bold text-[#12302b] hover:text-[#1f7a6e] flex items-center gap-1"
-                >
-                  <span>زيارة المتجر</span>
-                  <span className="material-symbols-outlined text-sm">arrow_left_alt</span>
-                </Link>
+              <div className="text-left">
+                <span className="font-mono font-bold text-sm text-[#2e9e6b] block" dir="ltr">+850 PTS</span>
+                <span className="text-[11px] text-[#74777f] font-mono">+4.25 ₪ كاش باك</span>
               </div>
             </div>
           </div>
         </section>
       </main>
 
+      {/* QR / Barcode Modal */}
+      {showQrModal && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center space-y-4 shadow-2xl relative border-2 border-[#e9b44c]">
+            <button
+              onClick={() => setShowQrModal(false)}
+              className="absolute top-4 left-4 p-2 text-[#74777f] hover:text-[#12302b] cursor-pointer"
+            >
+              <span className="material-symbols-outlined">close</span>
+            </button>
+            <div className="w-12 h-12 rounded-2xl bg-[#12302b] text-[#e9b44c] flex items-center justify-center mx-auto text-2xl font-bold">
+              ت
+            </div>
+            <h3 className="text-lg font-bold text-[#12302b]">رمز الاستبدال الشخصي المباشر</h3>
+            <p className="text-xs text-[#43474e]">
+              أظهري هذا الكود عند كاشير المتجر لاستبدال نقاطك فورياً بخصم مباشر:
+            </p>
+            <div className="bg-[#f6f3ec] p-4 rounded-2xl border border-[#e2ddd3] space-y-2">
+              <div className="h-20 bg-[repeating-linear-gradient(90deg,#12302b,#12302b_3px,transparent_3px,transparent_6px,#12302b_6px,#12302b_10px,transparent_10px,transparent_13px)] w-full rounded"></div>
+              <span className="font-mono text-base font-black text-[#12302b] tracking-widest block">
+                #TBD-8821-3000
+              </span>
+            </div>
+            <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-200">
+              <p className="text-xs text-emerald-800 font-bold">
+                الرصيد المتاح: {pointsBalance.toLocaleString()} نقطة ({(pointsBalance / 200).toFixed(2)} ₪)
+              </p>
+            </div>
+            <button
+              onClick={() => setShowQrModal(false)}
+              className="w-full py-2.5 bg-[#12302b] hover:bg-[#1f7a6e] text-white rounded-xl text-xs font-bold transition-colors cursor-pointer"
+            >
+              إغلاق
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Footer */}
       <Footer />
     </div>
   );

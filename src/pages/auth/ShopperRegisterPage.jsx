@@ -34,6 +34,12 @@ export default function ShopperRegisterPage() {
     setWhatsappError(null);
     setError(null);
 
+    // 0. Validate Full Name
+    if (!fullName.trim()) {
+      setError("يرجى إدخال الاسم الكامل (الثلاثي).");
+      return;
+    }
+
     // 1. Validate Phone Number
     const phoneVal = validatePhoneNumber(phone, phoneCountry, { isWhatsApp: false, required: true });
     if (!phoneVal.isValid) {
@@ -53,12 +59,26 @@ export default function ShopperRegisterPage() {
     }
 
     // 3. Validate Passwords
+    if (!password) {
+      setError("يرجى إدخال كلمة المرور.");
+      return;
+    }
+    if (password.length < 6) {
+      setError("يجب أن تتكون كلمة المرور من 6 أحرف أو أرقام على الأقل.");
+      return;
+    }
     if (password !== confirmPassword) {
       setError("كلمات المرور غير متطابقة، يرجى التأكد وإعادة المحاولة.");
       return;
     }
 
-    loginAsShopper(phoneVal.formatted || phone, fullName || "سارة أحمد");
+    // 4. Validate Terms Agreement
+    if (!agreeTerms) {
+      setError("يرجى الموافقة على شروط الاستخدام وسياسة الخصوصية للمتابعة.");
+      return;
+    }
+
+    loginAsShopper(phoneVal.formatted || phone, fullName.trim());
     navigate('/verify-otp');
   };
 
@@ -70,7 +90,7 @@ export default function ShopperRegisterPage() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* Right/Primary Column: Registration Form Card (7 cols) */}
-          <div className="lg:col-span-7 bg-surface-container-lowest rounded-3xl border border-outline-variant/60 p-6 sm:p-8 md:p-10 shadow-sm relative space-y-6">
+          <div className="lg:col-span-7 bg-surface-container-lowest rounded-2xl border border-outline-variant/60 p-5 sm:p-7 md:p-8 shadow-xs relative space-y-5">
             
             {/* Top Back Action */}
             <div className="flex items-center justify-between pb-2">

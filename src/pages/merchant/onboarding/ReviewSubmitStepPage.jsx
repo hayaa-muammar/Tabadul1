@@ -9,11 +9,13 @@ export default function ReviewSubmitStepPage() {
   const [agreedReturn, setAgreedReturn] = useState(true);
   const [agreedSettlement, setAgreedSettlement] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError('');
     if (!agreedTerms || !agreedReturn || !agreedSettlement) {
-      alert('يرجى الموافقة على جميع الشروط والإقرارات الإلزامية للمتابعة.');
+      setError('يرجى الموافقة على جميع الشروط والإقرارات الإلزامية الثلاثة للمتابعة.');
       return;
     }
     setIsSubmitting(true);
@@ -299,6 +301,13 @@ export default function ReviewSubmitStepPage() {
                 </h3>
               </div>
 
+              {error && (
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-xs sm:text-sm flex items-center gap-2">
+                  <span className="material-symbols-outlined text-base">error</span>
+                  <span>{error}</span>
+                </div>
+              )}
+
               <div className="space-y-3.5">
                 <label className="flex items-start gap-3 p-3 rounded-xl bg-white border border-[#E5E7EB] hover:border-[#1F7A6E] cursor-pointer transition-colors">
                   <input
@@ -464,7 +473,7 @@ export default function ReviewSubmitStepPage() {
             <button
               onClick={() => navigate('/merchant/onboarding/payouts')}
               type="button"
-              className="w-full sm:w-auto px-5 py-3 rounded-xl border border-gray-300 text-[#12302B] font-bold text-sm hover:bg-[#F6F3EC] transition-colors flex items-center justify-center gap-1.5"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-gray-300 text-[#12302B] font-bold text-xs sm:text-sm hover:bg-[#F6F3EC] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <span className="material-symbols-outlined text-base">arrow_forward</span>
               <span>السابق (المستحقات والتحويل المالي)</span>
@@ -474,7 +483,7 @@ export default function ReviewSubmitStepPage() {
               onClick={handleSubmit}
               disabled={isSubmitting}
               type="button"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-[#E9B44C] hover:bg-[#dfa637] text-[#12302B] font-extrabold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50"
+              className="w-full sm:w-auto px-7 py-2.5 rounded-xl bg-[#E9B44C] hover:bg-[#dfa637] text-[#12302B] font-bold text-xs sm:text-sm shadow-sm hover:shadow transition-all flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50 cursor-pointer"
             >
               <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>verified_user</span>
               <span>{isSubmitting ? 'جاري الإرسال والاعتماد...' : 'إرسال طلب الانضمام واعتماد المتجر رسمياً'}</span>

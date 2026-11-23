@@ -287,8 +287,8 @@ export default function AdminDashboardPage() {
                   </p>
                 </div>
                 <button
-                  onClick={() => navigate('/admin/applications')}
-                  className="w-full h-11 px-3 bg-white border border-[#E4DFD3] text-[#12302B] hover:bg-[#F6F3EC] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                  onClick={() => navigate('/admin/disputes')}
+                  className="w-full h-10 sm:h-11 px-3 bg-white border border-[#E4DFD3] text-[#12302B] hover:bg-[#F6F3EC] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <span className="material-symbols-outlined text-base text-[#8A6420]">policy</span>
                   <span>اتخاذ قرار</span>
@@ -314,8 +314,8 @@ export default function AdminDashboardPage() {
                   </p>
                 </div>
                 <button
-                  onClick={() => navigate('/merchant/help')}
-                  className="w-full h-11 px-3 bg-white border border-[#E4DFD3] text-[#12302B] hover:bg-[#F6F3EC] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                  onClick={() => navigate('/admin/complaints')}
+                  className="w-full h-10 sm:h-11 px-3 bg-white border border-[#E4DFD3] text-[#12302B] hover:bg-[#F6F3EC] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <span className="material-symbols-outlined text-base text-[#1F7A6E]">support</span>
                   <span>معالجة الشكاوى</span>
@@ -341,8 +341,8 @@ export default function AdminDashboardPage() {
                   </p>
                 </div>
                 <button
-                  onClick={() => navigate('/merchant/wallet')}
-                  className="w-full h-11 px-3 bg-white border border-[#E4DFD3] text-[#12302B] hover:bg-[#F6F3EC] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                  onClick={() => navigate('/admin/transfers')}
+                  className="w-full h-10 sm:h-11 px-3 bg-white border border-[#E4DFD3] text-[#12302B] hover:bg-[#F6F3EC] rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <span className="material-symbols-outlined text-base text-[#1F7A6E]">check_circle</span>
                   <span>اعتماد التحويلات</span>
@@ -368,8 +368,8 @@ export default function AdminDashboardPage() {
               </div>
             </div>
             <button
-              onClick={() => navigate('/merchant/wallet')}
-              className="px-3.5 py-2 bg-white border border-[#8A6420]/40 hover:bg-[#FBF1DC] rounded-xl text-xs font-bold text-[#8A6420] transition-colors flex items-center gap-1.5 shrink-0 min-h-[44px] cursor-pointer"
+              onClick={() => navigate('/admin/ledger')}
+              className="px-3.5 py-2 bg-white border border-[#8A6420]/40 hover:bg-[#FBF1DC] rounded-xl text-xs font-bold text-[#8A6420] transition-colors flex items-center gap-1.5 shrink-0 min-h-[40px] cursor-pointer"
             >
               <span className="material-symbols-outlined text-base">sync_alt</span>
               <span>المطابقة السريعة للدفتر</span>

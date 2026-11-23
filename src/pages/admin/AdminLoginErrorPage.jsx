@@ -26,7 +26,7 @@ export default function AdminLoginErrorPage() {
         <div className="max-w-[1280px] mx-auto px-6 h-18 py-3.5 flex items-center justify-between">
           {/* Brand & Sovereign Identifier */}
           <div className="flex items-center gap-4">
-            <Link to="/" className="flex items-center justify-center p-1 bg-[#f2f3fc] rounded-xl border border-[#E1DACB] hover:border-[#1F7A6E] transition-colors">
+            <Link to="/admin/login" className="flex items-center justify-center p-1 bg-[#f2f3fc] rounded-xl border border-[#E1DACB] hover:border-[#1F7A6E] transition-colors">
               <img
                 alt="شعار منصة تبادل"
                 className="h-10 w-auto object-contain rounded-lg"

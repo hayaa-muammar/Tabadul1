@@ -20,7 +20,7 @@ export default function ConfirmDeliveryPage() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* 1. Breadcrumbs Trail */}
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs sm:text-sm text-[#74777f] font-medium flex-wrap">
-          <Link to="/" className="hover:text-[#1F7A6E] transition-colors">
+          <Link to="/shopper" className="hover:text-[#1F7A6E] transition-colors">
             الرئيسية
           </Link>
           <span className="material-symbols-outlined text-sm">chevron_left</span>

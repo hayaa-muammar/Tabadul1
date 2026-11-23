@@ -3,11 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function AdminLoginPage() {
   const navigate = useNavigate();
-  const [adminId, setAdminId] = useState('admin.ops@tabadul.ps');
-  const [password, setPassword] = useState('••••••••••••••••');
+  const [adminId, setAdminId] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showSupportModal, setShowSupportModal] = useState(false);
   const [lockoutTime, setLockoutTime] = useState(299); // 04:59
+  const [formError, setFormError] = useState('');
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -24,6 +25,23 @@ export default function AdminLoginPage() {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
+    setFormError('');
+
+    if (!adminId || !adminId.trim()) {
+      setFormError('يرجى إدخال البريد الإلكتروني الإداري المعتمد أو رقم الهاتف المصرح به.');
+      return;
+    }
+
+    if (!password || !password.trim()) {
+      setFormError('يرجى إدخال كلمة المرور الإدارية للمتابعة.');
+      return;
+    }
+
+    if (password.length < 6) {
+      setFormError('كلمة المرور يجب ألا تقل عن 6 خانات.');
+      return;
+    }
+
     // Proceed to Step 2: 2FA Authentication
     navigate('/admin/2fa');
   };
@@ -35,7 +53,7 @@ export default function AdminLoginPage() {
         <div className="max-w-[1280px] mx-auto flex items-center justify-between">
           {/* Brand Cluster */}
           <div className="flex items-center gap-3">
-            <Link to="/" className="flex items-center gap-3 group focus:outline-none">
+            <Link to="/admin/login" className="flex items-center gap-3 group focus:outline-none">
               <img
                 alt="شعار منصة تبادل الإدارية"
                 className="h-9 w-auto object-contain transition-transform group-hover:scale-105 rounded-lg"
@@ -162,51 +180,64 @@ export default function AdminLoginPage() {
                 </p>
               </div>
 
-              <form className="space-y-6" onSubmit={handleLoginSubmit}>
+              <form className="space-y-4" onSubmit={handleLoginSubmit}>
+                {formError && (
+                  <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-xs font-bold flex items-center gap-2">
+                    <span className="material-symbols-outlined text-base">error</span>
+                    <span>{formError}</span>
+                  </div>
+                )}
+
                 {/* Step 1: Identifier */}
                 <div>
-                  <label className="block text-xs sm:text-sm text-[#191c22] mb-2 font-bold" htmlFor="admin-id">
+                  <label className="block text-xs sm:text-sm text-[#191c22] mb-1.5 font-bold" htmlFor="admin-id">
                     البريد الإلكتروني الإداري المعتمد أو رقم الهاتف المصرح به
                   </label>
                   <div className="relative">
                     <input
-                      className="w-full h-12 pr-11 pl-4 rounded-xl bg-white border border-[#E1DACB] text-[#191c22] text-xs sm:text-sm focus:border-[#1f3a5f] focus:ring-2 focus:ring-[#1f3a5f]/20 transition-colors font-mono"
+                      className="w-full h-11 pr-11 pl-4 rounded-xl bg-white border border-[#E1DACB] text-[#191c22] text-xs sm:text-sm focus:border-[#1f3a5f] focus:ring-2 focus:ring-[#1f3a5f]/20 transition-colors font-mono"
                       id="admin-id"
                       name="admin-id"
                       placeholder="name@tabadul.ps أو +970 59..."
                       required
                       type="text"
                       value={adminId}
-                      onChange={(e) => setAdminId(e.target.value)}
+                      onChange={(e) => {
+                        setAdminId(e.target.value);
+                        setFormError('');
+                      }}
                     />
                     <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-[#43474e]">
-                      <span className="material-symbols-outlined text-[20px]">badge</span>
+                      <span className="material-symbols-outlined text-[18px]">badge</span>
                     </div>
                   </div>
-                  <p className="text-xs text-[#004328] mt-1.5 flex items-center gap-1 font-medium">
-                    <span className="material-symbols-outlined text-[16px]">check_circle</span>
-                    تم التحقق من نطاق الهوية الإدارية المعتمدة
+                  <p className="text-[11px] text-[#004328] mt-1 flex items-center gap-1 font-medium">
+                    <span className="material-symbols-outlined text-[14px]">check_circle</span>
+                    نطاق الهوية الإدارية المعتمدة
                   </p>
                 </div>
 
                 {/* Step 1: Password with visibility toggle */}
                 <div>
-                  <label className="block text-xs sm:text-sm text-[#191c22] mb-2 font-bold" htmlFor="admin-pwd">
+                  <label className="block text-xs sm:text-sm text-[#191c22] mb-1.5 font-bold" htmlFor="admin-pwd">
                     كلمة المرور الإدارية المعقدة
                   </label>
                   <div className="relative">
                     <input
-                      className="w-full h-12 pr-11 pl-12 rounded-xl bg-white border border-[#E1DACB] text-[#191c22] text-xs sm:text-sm focus:border-[#1f3a5f] focus:ring-2 focus:ring-[#1f3a5f]/20 transition-colors font-mono tracking-wider"
+                      className="w-full h-11 pr-11 pl-12 rounded-xl bg-white border border-[#E1DACB] text-[#191c22] text-xs sm:text-sm focus:border-[#1f3a5f] focus:ring-2 focus:ring-[#1f3a5f]/20 transition-colors font-mono tracking-wider"
                       id="admin-pwd"
                       name="admin-pwd"
                       placeholder="أدخل كلمة المرور المشفرة"
                       required
                       type={showPassword ? 'text' : 'password'}
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                        setFormError('');
+                      }}
                     />
                     <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-[#43474e]">
-                      <span className="material-symbols-outlined text-[20px]">lock</span>
+                      <span className="material-symbols-outlined text-[18px]">lock</span>
                     </div>
                     <button
                       className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#43474e] hover:text-[#032448] transition-colors focus:outline-none cursor-pointer"
@@ -214,13 +245,13 @@ export default function AdminLoginPage() {
                       title="كشف/إخفاء كلمة المرور"
                       type="button"
                     >
-                      <span className="material-symbols-outlined text-[20px]">
+                      <span className="material-symbols-outlined text-[18px]">
                         {showPassword ? 'visibility_off' : 'visibility'}
                       </span>
                     </button>
                   </div>
-                  <p className="text-xs text-[#43474e] mt-1.5">
-                    يجب ألا تقل عن 12 خانة مع تضمين أحرف كبيرة وصغيرة ورموز خاصة.
+                  <p className="text-[11px] text-[#43474e] mt-1">
+                    يجب ألا تقل عن 6 خانات مع رموز وأحرف إدارية.
                   </p>
                 </div>
 

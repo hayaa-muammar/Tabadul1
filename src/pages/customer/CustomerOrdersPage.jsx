@@ -29,7 +29,7 @@ export default function CustomerOrdersPage() {
         
         {/* Breadcrumbs Navigation */}
         <nav aria-label="مسار التصفح" className="flex items-center gap-2 text-[#576b66] text-xs font-semibold mb-6">
-          <Link to="/" className="hover:text-[#1f7a6e] transition-colors flex items-center gap-1">
+          <Link to="/shopper" className="hover:text-[#1f7a6e] transition-colors flex items-center gap-1">
             <span className="material-symbols-outlined text-base">home</span>
             <span>الرئيسية</span>
           </Link>

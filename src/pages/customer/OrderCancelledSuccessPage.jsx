@@ -12,7 +12,7 @@ export default function OrderCancelledSuccessPage() {
       <section className="bg-[#FBF9F5] border-b border-[#E1DACB]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <nav aria-label="مسار التنقل" className="flex items-center gap-2 text-gray-500 text-xs sm:text-sm flex-wrap">
-            <Link to="/" className="hover:text-[#1F7A6E] transition-colors flex items-center gap-1">
+            <Link to="/shopper" className="hover:text-[#1F7A6E] transition-colors flex items-center gap-1">
               <span className="material-symbols-outlined text-[16px]">home</span>
               <span>الرئيسية</span>
             </Link>

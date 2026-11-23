@@ -21,7 +21,7 @@ export default function OrderDetailPage() {
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         {/* BREADCRUMBS */}
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs sm:text-sm font-medium">
-          <Link to="/" className="hover:text-[#1f7a6e] transition-colors flex items-center gap-1 text-[#576b66]">
+          <Link to="/shopper" className="hover:text-[#1f7a6e] transition-colors flex items-center gap-1 text-[#576b66]">
             <span className="material-symbols-outlined text-base">home</span>
             <span>الرئيسية</span>
           </Link>

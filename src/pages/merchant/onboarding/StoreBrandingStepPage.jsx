@@ -11,9 +11,21 @@ export default function StoreBrandingStepPage() {
   );
   const [instagram, setInstagram] = useState('instagram.com/lamsa_fashion_gaza');
   const [whatsapp, setWhatsapp] = useState('+970 59 912 3456');
+  const [error, setError] = useState('');
 
   const handleContinue = (e) => {
     if (e && e.preventDefault) e.preventDefault();
+    setError('');
+
+    if (!tagline.trim()) {
+      setError('يرجى إدخال الشعار التسويقي للمتجر.');
+      return;
+    }
+    if (!about.trim() || about.trim().length < 20) {
+      setError('يرجى كتابة نبذة تعريفية وافية عن المتجر (20 حرفاً على الأقل).');
+      return;
+    }
+
     navigate('/merchant/onboarding/delivery-fees');
   };
 
@@ -21,9 +33,9 @@ export default function StoreBrandingStepPage() {
     <div className="min-h-screen flex flex-col bg-[#F6F3EC] text-[#12302B] font-tajawal antialiased selection:bg-[#E9B44C] selection:text-[#12302B]">
       <MerchantHeader />
 
-      <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-8 py-8 flex flex-col gap-6">
+      <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8 flex flex-col gap-5 sm:gap-6">
         {/* Step Progress Tracker Card */}
-        <div className="bg-white rounded-2xl p-6 border border-[#E1DACB] shadow-sm">
+        <div className="bg-white rounded-2xl p-5 md:p-6 border border-[#E1DACB] shadow-xs">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-[#EBF7F4] flex items-center justify-center text-[#1F7A6E]">
@@ -122,10 +134,10 @@ export default function StoreBrandingStepPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Main Form Column (8 cols) */}
           <section className="lg:col-span-8 flex flex-col gap-6">
-            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E1DACB] shadow-sm">
-              <div className="border-b border-[#F6F3EC] pb-5 mb-6">
+            <div className="bg-white rounded-2xl p-5 sm:p-6 md:p-7 border border-[#E1DACB] shadow-xs">
+              <div className="border-b border-[#F6F3EC] pb-5 mb-5">
                 <div className="flex items-center justify-between">
-                  <h1 className="text-xl sm:text-2xl font-bold text-[#12302B]">الخطوة 3: هوية المتجر البصرية والوصف التعريفي</h1>
+                  <h1 className="text-lg sm:text-xl font-bold text-[#12302B]">الخطوة 3: هوية المتجر البصرية والوصف التعريفي</h1>
                   <span className="px-3 py-1 bg-[#EBF7F4] text-[#1F7A6E] rounded-full text-xs font-bold border border-[#BCE7DF]">
                     متجر نشط: بوتيك لمسة
                   </span>
@@ -134,6 +146,13 @@ export default function StoreBrandingStepPage() {
                   الصور والوصف هي واجهة متجرك أمام آلاف المتسوقين في تبادل، احرص على الجودة والوضوح لجذب العملاء في قطاع غزة وتحقيق نسب تحويل أعلى ومكافآت مستمرة.
                 </p>
               </div>
+
+              {error && (
+                <div className="mb-6 p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-xs sm:text-sm flex items-center gap-2">
+                  <span className="material-symbols-outlined text-base">error</span>
+                  <span>{error}</span>
+                </div>
+              )}
 
               {/* Component: Store Logo Dropzone & Preview */}
               <div className="mb-8">
@@ -419,12 +438,12 @@ export default function StoreBrandingStepPage() {
         </div>
 
         {/* ================= Bottom Navigation / Actions Ribbon ================= */}
-        <div className="bg-white rounded-2xl p-5 border border-[#E1DACB] shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 sticky bottom-4 z-40">
+        <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E1DACB] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 sticky bottom-4 z-40">
           {/* Previous Step Button */}
           <button
             type="button"
             onClick={() => navigate('/merchant/onboarding/store-info')}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-[#E1DACB] text-[#12302B] text-xs sm:text-sm font-bold hover:bg-[#F6F3EC] transition active:scale-95 shadow-sm cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-[#E1DACB] text-[#12302B] text-xs sm:text-sm font-bold hover:bg-[#F6F3EC] transition active:scale-95 shadow-xs cursor-pointer"
           >
             <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
             <span>السابق (بيانات المتجر وفئات الأزياء)</span>
@@ -440,10 +459,10 @@ export default function StoreBrandingStepPage() {
           <button
             type="button"
             onClick={handleContinue}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-[#E9B44C] hover:bg-[#dca43b] text-[#12302B] text-xs sm:text-sm font-black transition active:scale-95 shadow-md cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-2.5 rounded-xl bg-[#E9B44C] hover:bg-[#dca43b] text-[#12302B] text-xs sm:text-sm font-bold transition active:scale-95 shadow-xs cursor-pointer"
           >
             <span>متابعة إلى التوصيل والرسوم (الخطوة 4)</span>
-            <span className="material-symbols-outlined text-[20px]">arrow_back</span>
+            <span className="material-symbols-outlined text-[18px]">arrow_back</span>
           </button>
         </div>
       </main>

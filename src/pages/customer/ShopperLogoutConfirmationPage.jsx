@@ -28,7 +28,7 @@ export default function ShopperLogoutConfirmationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           {/* Right: Tabadul Logo & Brand Tagline */}
           <div className="flex items-center gap-4">
-            <Link to="/" className="flex items-center gap-3 group focus:outline-none">
+            <Link to="/shopper" className="flex items-center gap-3 group focus:outline-none">
               <div className="h-10 sm:h-11 w-auto flex items-center justify-center">
                 <img
                   alt="شعار منصة تبادل"
@@ -49,7 +49,7 @@ export default function ShopperLogoutConfirmationPage() {
 
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-6 mr-6 border-r border-[#E4DFD3] pr-6 text-sm font-semibold text-[#43474e]">
-              <Link to="/" className="hover:text-[#12302B] transition-colors">
+              <Link to="/shopper" className="hover:text-[#12302B] transition-colors">
                 الرئيسية
               </Link>
               <Link to="/stores" className="hover:text-[#12302B] transition-colors">
@@ -116,7 +116,7 @@ export default function ShopperLogoutConfirmationPage() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         {/* Breadcrumb Navigation */}
         <nav aria-label="مسار التنقل" className="flex items-center gap-2 mb-8 text-[#43474e] text-xs">
-          <Link to="/" className="hover:text-[#12302B] transition-colors flex items-center gap-1">
+          <Link to="/shopper" className="hover:text-[#12302B] transition-colors flex items-center gap-1">
             <svg className="w-4 h-4 text-[#43474e] fill-none stroke-current stroke-2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
               <polyline points="9 22 9 12 15 12 15 22"></polyline>
