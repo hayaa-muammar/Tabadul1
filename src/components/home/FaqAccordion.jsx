@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function FaqAccordion() {
+  const [openFaqId, setOpenFaqId] = useState(null);
+
   const faqs = [
     {
       num: 1,
@@ -36,19 +38,41 @@ export default function FaqAccordion() {
         </div>
 
         <div className="space-y-3">
-          {faqs.map((faq) => (
-            <div key={faq.num} className="bg-[#f6f3ec] rounded-xl border border-[#12302b]/10 p-4 sm:p-5">
-              <div className="flex items-center gap-2 text-[#12302b] font-bold text-base mb-1.5">
-                <span className="w-6 h-6 rounded-full bg-[#1f7a6e] text-white flex items-center justify-center text-xs font-black flex-shrink-0">
-                  {faq.num}
-                </span>
-                <span>{faq.q}</span>
+          {faqs.map((faq) => {
+            const isOpen = openFaqId === faq.num;
+            return (
+              <div
+                key={faq.num}
+                className="bg-[#f6f3ec] rounded-xl border border-[#12302b]/10 p-4 sm:p-5 transition-all"
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenFaqId(isOpen ? null : faq.num)}
+                  className="w-full flex items-center justify-between gap-2 text-[#12302b] font-bold text-base text-right cursor-pointer select-none focus:outline-none"
+                  aria-expanded={isOpen}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-full bg-[#1f7a6e] text-white flex items-center justify-center text-xs font-black flex-shrink-0">
+                      {faq.num}
+                    </span>
+                    <span>{faq.q}</span>
+                  </div>
+                  <span
+                    className={`material-symbols-outlined text-[#1f7a6e] text-lg transition-transform duration-300 flex-shrink-0 ${
+                      isOpen ? 'rotate-180' : ''
+                    }`}
+                  >
+                    expand_more
+                  </span>
+                </button>
+                {isOpen && (
+                  <p className="text-xs sm:text-sm text-[#52606d] leading-relaxed pr-8 pt-2">
+                    {faq.a}
+                  </p>
+                )}
               </div>
-              <p className="text-xs sm:text-sm text-[#52606d] leading-relaxed pr-8">
-                {faq.a}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
